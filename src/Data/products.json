@@ -1,0 +1,512 @@
+[
+    {
+        "id": 1,
+        "nombre":"Emiliano Martinez",
+        "category": "Argentina",
+        "posicion": "Arquero",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 200,
+        "imagen": "https://i.imgur.com/QRciq3p.jpg"
+    },
+    {
+        "id": 2,
+        "nombre":"Franco Armani",
+        "category": "Argentina",
+        "posicion": "Arquero",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 50,
+        "imagen": "https://i.imgur.com/zk6OwPa.jpg"
+    },
+    {
+        "id": 3,
+        "nombre":"Marcos Acuña",
+        "category": "Argentina",
+        "posicion": "Defensor",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 100,
+        "imagen": "https://i.imgur.com/kZve12q.jpg"
+    },
+    {
+        "id": 4,
+        "nombre":"Nahuel Molina",
+        "category": "Argentina",
+        "posicion": "Defensor",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 50,
+        "imagen": "https://i.imgur.com/8lqON5r.jpg"
+    },
+    {
+        "id": 5,
+        "nombre":"Nicolás Otamendi",
+        "category": "Argentina",
+        "posicion": "Defensor",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 100,
+        "imagen": "https://i.imgur.com/pSrwo07.jpg"
+    },
+    {
+        "id": 6,
+        "nombre":"Germán Pezzella",
+        "category": "Argentina",
+        "posicion": "Defensor",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 100,
+        "imagen": "https://i.imgur.com/8Y9NeHX.jpg"
+    },
+    {
+        "id": 7,
+        "nombre":"Cristian Romero",
+        "category": "Argentina",
+        "posicion": "Defensor",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 100,
+        "imagen": "https://i.imgur.com/WcMDF0C.jpg"
+    },
+    {
+        "id": 8,
+        "nombre":"Rodrigo De Paul",
+        "category": "Argentina",
+        "posicion": "Mediocampista",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 100,
+        "imagen": "https://i.imgur.com/fBhqV27.jpg"
+    },
+    {
+        "id": 9,
+        "nombre":"Ángel Di María",
+        "category": "Argentina",
+        "posicion": "Mediocampista",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 300,
+        "imagen": "https://i.imgur.com/iKPyKJO.jpg"
+    },
+    {
+        "id": 10,
+        "nombre":"Giovani Lo Celso",
+        "category": "Argentina",
+        "posicion": "Mediocampista",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 100,
+        "imagen": "https://i.imgur.com/FKBQ0EN.jpg"
+    },
+    {
+        "id": 11,
+        "nombre":"Leandro Paredes",
+        "category": "Argentina",
+        "posicion": "Mediocampista",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 50,
+        "imagen": "https://i.imgur.com/zqz4hpS.jpg"
+    },
+    {
+        "id": 12,
+        "nombre":"Guido Rodríguez",
+        "category":"Argentina",
+        "posicion": "Mediocampista",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 50,
+        "imagen": "https://i.imgur.com/eiXUeYt.jpg"
+    },
+    {
+        "id": 13,
+        "nombre":"Julián Álvarez ",
+        "category":"Argentina",
+        "posicion": "Delantero",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 150,
+        "imagen": "https://i.imgur.com/qJsW5x0.jpg"
+    },
+    {
+        "id": 14,
+        "nombre":"Joaquín Correa",
+        "category":"Argentina",
+        "posicion": "Delantero",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 50,
+        "imagen": "https://i.imgur.com/w5WgV6V.jpg"
+    },
+    {
+        "id": 15,
+        "nombre":"Alejandro Gómez",
+        "category":"Argentina",
+        "posicion": "Delantero",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 50,
+        "imagen": "https://i.imgur.com/PQlnlki.jpg"
+    },
+    {
+        "id": 16,
+        "nombre":"Nicolás González",
+        "category": "Argentina",
+        "posicion": "Delantero",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 50,
+        "imagen": "https://i.imgur.com/Ow3f9jJ.jpg"
+    },
+    {
+        "id": 17,
+        "nombre":"Lautaro Martínez",
+        "category": "Argentina",
+        "posicion": "Delantero",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 50,
+        "imagen": "https://i.imgur.com/uPLG1sF.jpg"
+    },
+    {
+        "id": 18,
+        "nombre":"Lionel Messi",
+        "category": "Argentina",
+        "posicion": "Delantero",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 500,
+        "imagen": "https://i.imgur.com/NP1lV8L.jpg"
+    },
+    {
+        "id": 19,
+        "nombre":"Antonio Rudiger",
+        "category": "Alemania",
+        "posicion": "Defensor",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 200,
+        "imagen": "https://i.imgur.com/S8oXyK9.jpg"
+    },
+    {
+        "id": 20,
+        "nombre":"David Raum",
+        "category": "Alemania",
+        "posicion": "Defensor",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 50,
+        "imagen": "https://i.imgur.com/hXvKSjJ.jpg"
+    },
+    {
+        "id": 21,
+        "nombre":"Ilkay Gundogan",
+        "category": "Alemania",
+        "posicion": "Mediocampista",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 200,
+        "imagen": "https://i.imgur.com/YJwwOuF.jpg"
+    },
+    {
+        "id": 22,
+        "nombre":"Jonas Hofmann",
+        "category": "Alemania",
+        "posicion": "Mediocampista",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 50,
+        "imagen": "https://i.imgur.com/LTt9QK0.jpg"
+    },
+    {
+        "id": 23,
+        "nombre":"Joshua Kimmich",
+        "category": "Alemania",
+        "posicion": "Mediocampista",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 50,
+        "imagen": "https://i.imgur.com/jNZKd9l.jpg"
+    },
+    {
+        "id": 24,
+        "nombre":"Kai Havertz",
+        "category": "Alemania",
+        "posicion": "Mediocampista",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 50,
+        "imagen": "https://i.imgur.com/4eKXE2j.jpg"
+    },
+    {
+        "id": 25,
+        "nombre":"Leon Goretzka",
+        "category": "Alemania",
+        "posicion": "Mediocampista",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 50,
+        "imagen": "https://i.imgur.com/sId95BH.jpg"
+    },
+    {
+        "id": 26,
+        "nombre":"Leroy Sane",
+        "category": "Alemania",
+        "posicion": "Delantero",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 50,
+        "imagen": "https://i.imgur.com/nu23eD5.jpg"
+    },
+    {
+        "id": 27,
+        "nombre":"Manuel Neuer",
+        "category": "Alemania",
+        "posicion": "Arquero",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 150,
+        "imagen": "https://i.imgur.com/x6Ul3yc.jpg"
+    },
+    {
+        "id": 28,
+        "nombre":"Marc-André ter Stegen",
+        "category": "Alemania",
+        "posicion": "Arquero",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 100,
+        "imagen": "https://i.imgur.com/dTvnp3x.jpg"
+    },
+    {
+        "id": 29,
+        "nombre":"Marco Reus",
+        "category": "Alemania",
+        "posicion": "Delantero",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 200,
+        "imagen": "https://i.imgur.com/NmS3TG4.jpg"
+    },
+    {
+        "id": 30,
+        "nombre":"Matthias Ginter",
+        "category": "Alemania",
+        "posicion": "Defensor",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 50,
+        "imagen": "https://i.imgur.com/rx42dy1.jpg"
+    },
+    {
+        "id": 31,
+        "nombre":"Niklas Sule",
+        "category": "Alemania",
+        "posicion": "Defensor",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 50,
+        "imagen": "https://i.imgur.com/mkTxsPC.jpg"
+    },
+    {
+        "id": 32,
+        "nombre":"Robin Gosens",
+        "category": "Alemania",
+        "posicion": "Defensor",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 100,
+        "imagen": "https://i.imgur.com/v2WUUhq.jpg"
+    },
+    {
+        "id": 33,
+        "nombre":"Serge Gnabry",
+        "category": "Alemania",
+        "posicion": "Delantero",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 50,
+        "imagen": "https://i.imgur.com/6bdERFs.jpg"
+    },
+    {
+        "id": 34,
+        "nombre":"Thilo Kehrer",
+        "category": "Alemania",
+        "posicion": "Defensor",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 100,
+        "imagen": "https://i.imgur.com/8eMdkY5.jpg"
+    },
+    {
+        "id": 35,
+        "nombre":"Thomas Muller",
+        "category": "Alemania",
+        "posicion": "Delantero",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 350,
+        "imagen": "https://i.imgur.com/iG0SrOz.jpg"
+    },
+    {
+        "id": 36,
+        "nombre":"Timo Werner",
+        "category": "Alemania",
+        "posicion": "Delantero",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 150,
+        "imagen": "https://i.imgur.com/oH8GHtt.jpg"
+    },
+    {
+        "id": 37,
+        "nombre":"Alex Sandro",
+        "category": "Brasil",
+        "posicion": "Defensor",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 100,
+        "imagen": "https://i.imgur.com/9sgcJT5.jpg"
+    },
+    {
+        "id": 38,
+        "nombre":"Alisson",
+        "category": "Brasil",
+        "posicion": "Arquero",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 200,
+        "imagen": "https://i.imgur.com/pUavEcv.jpg"
+    },
+    {
+        "id": 39,
+        "nombre":"Antony",
+        "category": "Brasil",
+        "posicion": "Delantero",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 250,
+        "imagen": "https://i.imgur.com/4OB2jT3.jpg"
+    },
+    {
+        "id": 40,
+        "nombre":"Casemiro",
+        "category": "Brasil",
+        "posicion": "Mediocampista",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 150,
+        "imagen": "https://i.imgur.com/DfqKqvw.jpg"
+    },
+    {
+        "id": 41,
+        "nombre":"Danilo",
+        "category": "Brasil",
+        "posicion": "Defensor",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 150,
+        "imagen": "https://i.imgur.com/DWXgaH5.jpg"
+    },
+    {
+        "id": 42,
+        "nombre":"Éder Militao",
+        "category": "Brasil",
+        "posicion": "Defensor",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 100,
+        "imagen": "https://i.imgur.com/lR5MrLQ.jpg"
+    },
+    {
+        "id": 43,
+        "nombre":"Ederson",
+        "category": "Brasil",
+        "posicion": "Arquero",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 150,
+        "imagen": "https://i.imgur.com/jfqcnOK.jpg"
+    },
+    {
+        "id": 44,
+        "nombre":"Gabriel Jesus",
+        "category": "Brasil",
+        "posicion": "Delantero",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 150,
+        "imagen": "https://i.imgur.com/nbPGH0D.jpg"
+    },
+    {
+        "id": 45,
+        "nombre":"Luca Paquetá",
+        "category": "Brasil",
+        "posicion": "Mediocampista",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 200,
+        "imagen": "https://i.imgur.com/7PS4cFU.jpg"
+    },
+    {
+        "id": 46,
+        "nombre":"Marquinhos",
+        "category": "Brasil",
+        "posicion": "Defensor",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 150,
+        "imagen": "https://i.imgur.com/XmGP9ci.jpg"
+    },
+    {
+        "id": 47,
+        "nombre":"Neymar Jr",
+        "category": "Brasil",
+        "posicion": "Delantero",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 450,
+        "imagen": "https://i.imgur.com/MuGpTA0.jpg"
+    },
+    {
+        "id": 48,
+        "nombre":"Raphinha",
+        "category": "Brasil",
+        "posicion": "Delantero",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 200,
+        "imagen": "https://i.imgur.com/QyqW3t4.jpg"
+    },
+    {
+        "id": 49,
+        "nombre":"Richarlison",
+        "category": "Brasil",
+        "posicion": "Delantero",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 200,
+        "imagen": "https://i.imgur.com/YII9T4i.jpg"
+    },
+    {
+        "id": 50,
+        "nombre":"Thiago Silva",
+        "category": "Brasil",
+        "posicion": "Defensor",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 200,
+        "imagen": "https://i.imgur.com/UQonPWb.jpg"
+    },
+    {
+        "id": 51,
+        "nombre":"Vinícius Jr",
+        "category": "Brasil",
+        "posicion": "Delantero",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 150,
+        "imagen": "https://i.imgur.com/vXDPSGk.jpg"
+    }
+]
