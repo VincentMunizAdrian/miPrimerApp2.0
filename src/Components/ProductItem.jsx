@@ -2,27 +2,39 @@ import {
     StyleSheet,
     Text,
     Image,
-    useWindowDimensions
+    useWindowDimensions,
+    Pressable
 } from 'react-native'
 import React from 'react'
 import Card from './Card'
 
-const ProductItem = ({item}) => {
+const ProductItem = ({
+    item,
+    setObjectChoice,
+    setCategoryChoise
+}) => {
 
     const {width, height} = useWindowDimensions();
     // console.log(width, height);
 
+    const onSelect = (id) => {
+        setObjectChoice(id)
+        setCategoryChoise("")
+    }
+
     return (
-    <Card
-        otherStyle={styles.otherStyleCard}
-    >
-        <Image
-        resizeMode='cover'
-        style={styles.image}
-        source={{uri: item.imagen}}
-        />
-        <Text style={styles.categoryText}>{item.nombre}</Text>
-    </Card>
+        <Pressable onPress={() => onSelect(item.id)}>
+            <Card
+                otherStyle={styles.otherStyleCard}
+            >
+                <Image
+                resizeMode='cover'
+                style={styles.image}
+                source={{uri: item.imagen}}
+                />
+                <Text style={styles.categoryText}>{item.nombre}</Text>
+            </Card>
+        </Pressable>
     )
 }
 

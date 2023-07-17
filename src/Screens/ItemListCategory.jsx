@@ -15,14 +15,15 @@ import { Ionicons } from '@expo/vector-icons';
 
 const ItemListCategory = ({
     category,
-    setCategory
+    setCategory,
+    setObjectChoice
 }) => {
 
-    const {width, height} = useWindowDimensions
     const [selectedCategory, setSelectedCategory] = useState(category)
     const [products, setProducts] = useState([])
     const [keyWord, setKeyWord] = useState("")
     const [searchError, setSearchError] = useState("")
+    const {width, height} = useWindowDimensions
 
     useEffect(() => {
     const productsFiltred = productsRaw.filter(product => product.category === 
@@ -56,7 +57,11 @@ const ItemListCategory = ({
                 <FlatList
                     data={products}
                     keyExtractor={product => product.id}
-                    renderItem={({item}) => <ProductItem item={item}/>}
+                    renderItem={({item}) => <ProductItem 
+                        item={item}
+                        setObjectChoice={setObjectChoice}
+                        setCategoryChoise={setCategory}
+                    />}
                     showsVerticalScrollIndicator={false}
                 />
         </View>
