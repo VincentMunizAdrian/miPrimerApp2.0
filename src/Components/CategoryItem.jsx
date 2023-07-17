@@ -28,5 +28,6 @@ const styles = StyleSheet.create({
     textCategory: {
         color: colors.white,
         fontSize: 20,
+        fontFamily: 'Anton',
     },
 })

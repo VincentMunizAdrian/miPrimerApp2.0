@@ -3,13 +3,14 @@ import {
     View,
     FlatList,
     Text,
-    Pressable
-} from 'react-native'
-import React, { useEffect, useState } from 'react'
-import { colors } from '../Global/Colors'
-import productsRaw from '../Data/products.json'
-import Search from '../Components/Search'
-import ProductItem from '../Components/ProductItem'
+    Pressable,
+    useWindowDimensions
+} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { colors } from '../Global/Colors';
+import productsRaw from '../Data/products.json';
+import Search from '../Components/Search';
+import ProductItem from '../Components/ProductItem';
 import { Ionicons } from '@expo/vector-icons';
 
 const ItemListCategory = ({
@@ -17,6 +18,7 @@ const ItemListCategory = ({
     setCategory
 }) => {
 
+    const {width, height} = useWindowDimensions
     const [selectedCategory, setSelectedCategory] = useState(category)
     const [products, setProducts] = useState([])
     const [keyWord, setKeyWord] = useState("")
@@ -41,22 +43,22 @@ const ItemListCategory = ({
 
     return (
         <View style = {styles.containerHome}>
-        <View style={styles.conteinerTitleCategory}>
-            <Pressable onPress={()=> setCategory("")}>
-                <Ionicons name="arrow-back-circle-outline" size={36} color="black" />
-            </Pressable>
-            <Text style={styles.textCategorySelect}>{category}</Text>
-        </View>  
-            <Search
-            onSearch={onSearch}
-            error= {searchError}
-            />
-            <FlatList 
-                data={products}
-                keyExtractor={product => product.id}
-                renderItem={({item}) => ProductItem({item})}
-                showsVerticalScrollIndicator={false}
-            />
+            <View style={styles.conteinerTitleCategory}>
+                <Pressable onPress={()=> setCategory("")}>
+                    <Ionicons name="arrow-back-circle-outline" size={36} color="black" />
+                </Pressable>
+                <Text style={styles.textCategorySelect}>{category}</Text>
+            </View>  
+                <Search
+                onSearch={onSearch}
+                error= {searchError}
+                />
+                <FlatList
+                    data={products}
+                    keyExtractor={product => product.id}
+                    renderItem={({item}) => <ProductItem item={item}/>}
+                    showsVerticalScrollIndicator={false}
+                />
         </View>
     )
 }
@@ -65,9 +67,9 @@ export default ItemListCategory
 
 const styles = StyleSheet.create({
     containerHome: {
-    height: '90%',
-    backgroundColor: colors.platinum,
-    alignItems: 'center',
+        height: '90%',
+        backgroundColor: colors.platinum,
+        alignItems: 'center',
     },
     conteinerTitleCategory:{
         width: '100%',

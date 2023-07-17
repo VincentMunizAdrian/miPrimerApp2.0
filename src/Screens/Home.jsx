@@ -13,10 +13,10 @@ const Home = ({
 }) => {
     return (
         <View style = {styles.containerHome}>
-            <FlatList 
+            <FlatList
                 data={categories}
                 keyExtractor={category => category}
-                renderItem={({item}) => CategoryItem({item, setCategoryChoice})}
+                renderItem={({item}) => <CategoryItem item={item} setCategoryChoice={setCategoryChoice}/>}
                 showsVerticalScrollIndicator={false}
             />
         </View>
@@ -30,5 +30,5 @@ const styles = StyleSheet.create({
         height: '90%',
         backgroundColor: colors.platinum,
         alignItems: 'center',
-    }
+    },
 })

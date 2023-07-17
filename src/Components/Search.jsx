@@ -3,7 +3,8 @@ import {
     View,
     TextInput,
     Text,
-    Pressable
+    Pressable,
+    useWindowDimensions
 } from 'react-native'
 import React, { useState } from 'react'
 import { Ionicons } from '@expo/vector-icons';
@@ -15,21 +16,26 @@ const Search = ({
     error = ""
 }) => {
     const [keyWord, setKeyWord] = useState("")
+    const {width, height} = useWindowDimensions()
+
+    console.log(width, height);
 
     return (
         <View style={styles.searchContainer}>
-            <View style={styles.searchContainerPress}>
+            <View style={width > 400 ? styles.searchContainerPress : styles.searchContainerPressSmallView}>
                 <TextInput style={styles.searchText}
                     placeholder='Buscar...'
                     value={keyWord}
                     onChangeText={setKeyWord}
                 />
-                <Pressable onPress={() => onSearch(keyWord)}>
-                    <Ionicons name="search-circle-outline" size={36} color="black" />
-                </Pressable>
-                <Pressable onPress={() => setKeyWord("")}>
-                    <MaterialIcons name="cancel" size={34} color="black" />
-                </Pressable>
+                <View style={styles.searchButtons}>
+                    <Pressable onPress={() => onSearch(keyWord)}>
+                        <Ionicons name="search-circle-outline" size={36} color="black" />
+                    </Pressable>
+                    <Pressable onPress={() => setKeyWord("")}>
+                        <MaterialIcons name="cancel" size={34} color="black" />
+                    </Pressable>
+                </View>
             </View>
             <View>
                 {error ? <Text>{error}</Text> : null}
@@ -51,10 +57,21 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        gap: 20,
+        gap: 10,
+    },
+    searchContainerPressSmallView: {
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: 10,
+    },
+    searchButtons:{
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
     },
     searchText: {
-        width: 250,
+        width: 200,
         padding: 8,
         fontSize: 18,
         backgroundColor: colors.gray,
