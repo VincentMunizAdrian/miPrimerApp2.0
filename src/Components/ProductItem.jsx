@@ -2,7 +2,7 @@ import {
     StyleSheet,
     Text,
     Image,
-    useWindowDimensions,
+    // useWindowDimensions,
     Pressable
 } from 'react-native'
 import React from 'react'
@@ -14,8 +14,8 @@ const ProductItem = ({
     setCategoryChoise
 }) => {
 
-    const {width, height} = useWindowDimensions();
-    // console.log(width, height);
+    // const {width, height} = useWindowDimensions();
+    // // console.log(width, height);
 
     const onSelect = (id) => {
         setObjectChoice(id)

@@ -3,7 +3,6 @@
     "name": "miPrimerApp2.0",
     "slug": "miPrimerApp2.0",
     "version": "1.0.0",
-    "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
