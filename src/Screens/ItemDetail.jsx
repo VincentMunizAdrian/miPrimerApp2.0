@@ -1,19 +1,22 @@
 import { 
   Image,
-  Pressable, 
+  // Pressable,
   StyleSheet, 
   Text, 
   View 
 } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import objects from '../Data/products.json'
-import { Ionicons } from '@expo/vector-icons';
+// import { Ionicons } from '@expo/vector-icons';
 
 const ItemDetail = ({
-  idChoice,
-  setObjectChoice
+  // idChoice,
+  // setObjectChoice
+  navigation,
+  route
 }) => {
-  console.log(idChoice);
+
+  const {objectId: idChoice} = route.params;
 
   const [object, setObject] = useState(null)
 
@@ -27,9 +30,9 @@ const ItemDetail = ({
   return (
     <View>
       <View>
-        <Pressable onPress={()=> setObjectChoice("")}>
+        {/* <Pressable onPress={()=> navigation.goBack()}>
             <Ionicons name="arrow-back-circle-outline" size={36} color="black" />
-        </Pressable>
+        </Pressable> */}
       </View>
       { object ? (
       <View>

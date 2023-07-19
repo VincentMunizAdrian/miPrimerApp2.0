@@ -2,8 +2,8 @@ import {
     StyleSheet,
     View,
     FlatList,
-    Text,
-    Pressable,
+    // Text,
+    // Pressable,
     useWindowDimensions
 } from 'react-native';
 import React, { useEffect, useState } from 'react';
@@ -11,25 +11,33 @@ import { colors } from '../Global/Colors';
 import productsRaw from '../Data/products.json';
 import Search from '../Components/Search';
 import ProductItem from '../Components/ProductItem';
-import { Ionicons } from '@expo/vector-icons';
+// import { Ionicons } from '@expo/vector-icons';
 
 const ItemListCategory = ({
-    category,
-    setCategory,
-    setObjectChoice
+    // category,
+    // setCategory,
+    // setObjectChoice
+    navigation,
+    route
 }) => {
 
-    const [selectedCategory, setSelectedCategory] = useState(category)
+    const {category} = route.params
+
+    console.log(category);
+
+    // const [selectedCategory, setSelectedCategory] = useState(category)
+    // const [selectedCategory, setSelectedCategory] = useState(category)
     const [products, setProducts] = useState([])
     const [keyWord, setKeyWord] = useState("")
     const [searchError, setSearchError] = useState("")
     const {width, height} = useWindowDimensions
 
     useEffect(() => {
-    const productsFiltred = productsRaw.filter(product => product.category === 
-    selectedCategory && product.nombre.toLocaleLowerCase().includes(keyWord.toLowerCase()))
+    // const productsFiltred = productsRaw.filter(product => product.category === selectedCategory && product.nombre.toLowerCase().includes(keyWord.toLowerCase()))
+    const productsFiltred = productsRaw.filter(product => product.category === category && product.nombre.toLowerCase().includes(keyWord.toLowerCase()))
     setProducts(productsFiltred)
-    }, [selectedCategory, keyWord])
+    // }, [selectedCategory, keyWord])
+    }, [category, keyWord])
 
     const onSearch = (input) => {
     const searching = /^[a-zA-Z0-9\ ]*$/
@@ -45,10 +53,11 @@ const ItemListCategory = ({
     return (
         <View style = {styles.containerHome}>
             <View style={styles.conteinerTitleCategory}>
-                <Pressable onPress={()=> setCategory("")}>
+                {/* <Pressable onPress={()=> setCategory("")}> */}
+                {/* <Pressable onPress={()=> navigation.goBack()}>
                     <Ionicons name="arrow-back-circle-outline" size={36} color="black" />
-                </Pressable>
-                <Text style={styles.textCategorySelect}>{category}</Text>
+                </Pressable> */}
+                {/* <Text style={styles.textCategorySelect}>{category}</Text> */}
             </View>  
                 <Search
                 onSearch={onSearch}
@@ -59,8 +68,9 @@ const ItemListCategory = ({
                     keyExtractor={product => product.id}
                     renderItem={({item}) => <ProductItem 
                         item={item}
-                        setObjectChoice={setObjectChoice}
-                        setCategoryChoise={setCategory}
+                        navigation={navigation}
+                        // setObjectChoice={setObjectChoice}
+                        // setCategoryChoise={setCategory}
                     />}
                     showsVerticalScrollIndicator={false}
                 />

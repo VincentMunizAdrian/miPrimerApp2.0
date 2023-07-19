@@ -9,14 +9,17 @@ import categories from '../Data/categories.json'
 import CategoryItem from '../Components/CategoryItem'
 
 const Home = ({
-    setCategoryChoice
+    // setCategoryChoice
+    navigation
 }) => {
     return (
         <View style = {styles.containerHome}>
             <FlatList
                 data={categories}
                 keyExtractor={category => category}
-                renderItem={({item}) => <CategoryItem item={item} setCategoryChoice={setCategoryChoice}/>}
+                // renderItem={({item}) => <CategoryItem item={item} setCategoryChoice={setCategoryChoice}/>}
+                renderItem={({item}) => <CategoryItem item={item} navigation={navigation} 
+                />}
                 showsVerticalScrollIndicator={false}
             />
         </View>
@@ -27,7 +30,6 @@ export default Home
 
 const styles = StyleSheet.create({
     containerHome: {
-        height: '90%',
         backgroundColor: colors.platinum,
         alignItems: 'center',
     },

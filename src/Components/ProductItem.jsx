@@ -2,39 +2,45 @@ import {
     StyleSheet,
     Text,
     Image,
-    // useWindowDimensions,
-    Pressable
+    useWindowDimensions,
+    Pressable,
+    View,
 } from 'react-native'
 import React from 'react'
 import Card from './Card'
 
 const ProductItem = ({
     item,
-    setObjectChoice,
-    setCategoryChoise
+    // setObjectChoice,
+    // setCategoryChoise
+    navigation
 }) => {
 
+    const {width} = useWindowDimensions();
     // const {width, height} = useWindowDimensions();
     // // console.log(width, height);
-
+    
     const onSelect = (id) => {
-        setObjectChoice(id)
-        setCategoryChoise("")
+        navigation.navigate('Detail', {objectId: item.id, title: item.nombre})
+        // setObjectChoice(id)
+        // setCategoryChoise("")
     }
 
     return (
-        <Pressable onPress={() => onSelect(item.id)}>
-            <Card
-                otherStyle={styles.otherStyleCard}
-            >
-                <Image
-                resizeMode='cover'
-                style={styles.image}
-                source={{uri: item.imagen}}
-                />
-                <Text style={styles.categoryText}>{item.nombre}</Text>
-            </Card>
-        </Pressable>
+        <View style={{ width: width, alignItems: 'center'}}>
+            <Pressable onPress={() => onSelect(item.id)}>
+                <Card
+                    otherStyle={styles.otherStyleCard}
+                >
+                    <Image
+                    resizeMode='cover'
+                    style={styles.image}
+                    source={{uri: item.imagen}}
+                    />
+                    <Text style={styles.categoryText}>{item.nombre}</Text>
+                </Card>
+            </Pressable>
+        </View>
     )
 }
 

@@ -18,7 +18,12 @@ const Search = ({
     const [keyWord, setKeyWord] = useState("")
     const {width, height} = useWindowDimensions()
 
-    console.log(width, height);
+    const cancelSearch = () => {
+        setKeyWord("")
+        onSearch("")
+    }
+
+    // console.log(width, height);
 
     return (
         <View style={styles.searchContainer}>
@@ -32,7 +37,7 @@ const Search = ({
                     <Pressable onPress={() => onSearch(keyWord)}>
                         <Ionicons name="search-circle-outline" size={36} color="black" />
                     </Pressable>
-                    <Pressable onPress={() => setKeyWord("")}>
+                    <Pressable onPress={cancelSearch}>
                         <MaterialIcons name="cancel" size={34} color="black" />
                     </Pressable>
                 </View>
