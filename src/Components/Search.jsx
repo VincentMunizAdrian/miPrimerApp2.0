@@ -5,8 +5,9 @@ import {
     Text,
     Pressable,
     useWindowDimensions
-} from 'react-native'
-import React, { useState } from 'react'
+} from 'react-native';
+import React, { useState } from 'react';
+
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../Global/Colors';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -15,19 +16,17 @@ const Search = ({
     onSearch,
     error = ""
 }) => {
-    const [keyWord, setKeyWord] = useState("")
-    const {width, height} = useWindowDimensions()
 
+    const [keyWord, setKeyWord] = useState("")
+    const {width} = useWindowDimensions()
     const cancelSearch = () => {
         setKeyWord("")
         onSearch("")
     }
 
-    // console.log(width, height);
-
     return (
         <View style={styles.searchContainer}>
-            <View style={width > 400 ? styles.searchContainerPress : styles.searchContainerPressSmallView}>
+            <View style={width >= 360 ? styles.searchContainerPress : styles.searchContainerPressSmallView}>
                 <TextInput style={styles.searchText}
                     placeholder='Buscar...'
                     value={keyWord}
@@ -56,7 +55,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        marginVertical: 50,
+        marginVertical: 20,
     },
     searchContainerPress: {
         flexDirection: 'row',

@@ -5,9 +5,9 @@ import {
 import React from 'react'
 import { colors } from '../Global/Colors'
 
-const Card = ({children, otherStyle=[]}) => {
+const Card = ({children, otherStyle=[], anotherStyle=[]}) => {
     return (
-        <View style = {[styles.containerCard, otherStyle]}>
+        <View style = {[styles.containerCard, otherStyle, anotherStyle]}>
             {children}
         </View>
     )

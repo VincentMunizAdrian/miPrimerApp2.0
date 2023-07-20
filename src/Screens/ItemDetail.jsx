@@ -1,18 +1,18 @@
 import { 
+  Button,
   Image,
-  // Pressable,
   StyleSheet, 
   Text, 
   View 
-} from 'react-native'
-import React, { useEffect, useState } from 'react'
-import objects from '../Data/products.json'
-// import { Ionicons } from '@expo/vector-icons';
+} from 'react-native';
+import React, { useEffect, useState } from 'react';
+
+import Card from '../Components/Card';
+import objects from '../Data/products.json';
+
+import { colors } from '../Global/Colors';
 
 const ItemDetail = ({
-  // idChoice,
-  // setObjectChoice
-  navigation,
   route
 }) => {
 
@@ -28,24 +28,41 @@ const ItemDetail = ({
   console.log(object);
 
   return (
-    <View>
-      <View>
-        {/* <Pressable onPress={()=> navigation.goBack()}>
-            <Ionicons name="arrow-back-circle-outline" size={36} color="black" />
-        </Pressable> */}
-      </View>
+    <View style={styles.containerCard}>
       { object ? (
-      <View>
-        <Text>Algo de texto</Text>
-        <Image
-          source={{uri: object.imagen}}
-          style={styles.image}
-          resizeMode='contain'
-        />
-        <Text style={styles.textCategorySelect}>{object.nombre}</Text>
-      </View>
-      ) : null 
-      }
+          
+        <Card anotherStyle={styles.anotherStyleCard}>
+            <View style={styles.containerTitle}>
+              <Text style={styles.textTitle}>{object.nombre}</Text>
+            </View>
+
+            <View style={styles.containerTextImg}>
+              <View style={styles.text}>
+                <Text>Posición: {object.posicion}</Text>
+                <Text>Pais: {object.category}</Text>
+                <Text>Torneo: {object.torneo}</Text>
+                <Text>Precio: $ {object.precio}</Text>
+              </View>
+              <View>
+                <Image
+                  source={{uri: object.imagen}}
+                  style={styles.image}
+                  resizeMode='cover'
+                />
+              </View>
+            </View>
+            
+            <View>
+              {/* por ahora el Button queda sin funcionar */}
+              <Button
+                onPress={()=>{}}
+                title="Agregar al carrito"
+                color= {colors.onyx}
+              />
+            </View>
+        </Card>
+            ) : null 
+        }
     </View>
   )
 }
@@ -53,8 +70,38 @@ const ItemDetail = ({
 export default ItemDetail
 
 const styles = StyleSheet.create({
+  anotherStyleCard: {
+    flexDirection: 'column',
+    width: '90%',
+    height: '70%',
+  },
+  containerCard:{
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  containerTitle:{
+    width: '100%',
+    justifyContent:'flex-start',
+  },
+  textTitle: {
+    fontSize: 28,
+  },
+  containerTextImg:{
+    width: '100%',
+    height: 250,
+    flexDirection:'row',
+    justifyContent: 'space-around',
+    alignItems: 'center'
+  },
+  text: {
+    padding: 8,
+    backgroundColor: colors.white,
+    borderRadius: 6,
+  },
   image: {
+    width: 150,
     height: 200,
-    width: '80%',
+    borderRadius: 10,
   },
 })

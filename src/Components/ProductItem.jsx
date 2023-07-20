@@ -7,23 +7,18 @@ import {
     View,
 } from 'react-native'
 import React from 'react'
+
 import Card from './Card'
 
 const ProductItem = ({
     item,
-    // setObjectChoice,
-    // setCategoryChoise
     navigation
 }) => {
 
     const {width} = useWindowDimensions();
-    // const {width, height} = useWindowDimensions();
-    // // console.log(width, height);
     
     const onSelect = (id) => {
         navigation.navigate('Detail', {objectId: item.id, title: item.nombre})
-        // setObjectChoice(id)
-        // setCategoryChoise("")
     }
 
     return (
@@ -47,14 +42,12 @@ const ProductItem = ({
 export default ProductItem
 
 const styles = StyleSheet.create({
+    otherStyleCard: {
+        justifyContent: 'center',
+    },
     image: {
         height: 150,
         width: '100%',
         borderRadius: 8,
-    },
-    otherStyleCard: {
-        justifyContent: 'center',
-        height: 200,
-        gap: 10,
     },
 })

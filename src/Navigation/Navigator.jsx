@@ -3,16 +3,16 @@ import {
     StyleSheet,
     Platform,
     StatusBar
-    // Text, 
-    // View 
-} from 'react-native'
-import React from 'react'
+} from 'react-native';
+import React from 'react';
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import Header from '../Components/Header';
 import ItemListCategory from '../Screens/ItemListCategory';
 import Home from '../Screens/Home';
 import ItemDetail from '../Screens/ItemDetail';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,7 +20,6 @@ const Navigator = () => {
     return (
         <SafeAreaView style = {styles.container}>
             <NavigationContainer>
-                {/* <Header/> */}
                 <Stack.Navigator
                     initialRouteName='Home'
                     screenOptions={({route, navigation}) => (
@@ -31,20 +30,8 @@ const Navigator = () => {
                                     navigation = {navigation}
                                 />
                             }
-                    })}
-                    // screenOptions={
-                    //     ({route}) => (
-                    //         {
-                    //             header: () => {
-                    //                 return <Header title={
-                    //                     route.name === 'Categories' ? 'Categories' :
-                    //                     route.name === 'ItemListCategory' ? route.params.category :
-                    //                     'Detail'
-                    //                 }/>
-                    //             }
-                    //         }
-                    //     )
-                    // }
+                        }
+                    )}
                 >
                     <Stack.Screen
                         name='Home'

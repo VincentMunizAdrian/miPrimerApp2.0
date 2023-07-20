@@ -5,23 +5,15 @@ import {
     View 
 } from 'react-native'
 import React from 'react'
+
 import { colors } from '../Global/Colors'
 import { Ionicons } from '@expo/vector-icons';
-// import ItemDetail from '../Screens/ItemDetail';
-import ItemListCategory from '../Screens/ItemListCategory';
-import object from '../Data/products.json'
 
 const Header = ({
     route,
     navigation,
 }
 ) => {
-
-    // let title
-    //     if (route.name === 'Home') title = 'Home'
-    //     if (route.name === 'ListCategory') title = route.params.category
-    //     if (route.name === 'Detail') title = 'Detail'
-
     return (
         <View style = {styles.containerHeader}>
             {
@@ -48,7 +40,7 @@ export default Header
 
 const styles = StyleSheet.create({
     containerHeader: {
-        height: 120,
+        height: 80,
         backgroundColor: colors.frenchGray,
         justifyContent: 'center',
         alignItems: 'center',

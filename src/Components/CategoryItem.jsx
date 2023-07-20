@@ -5,13 +5,13 @@ import {
     View,
     useWindowDimensions,
 } from 'react-native'
+
 import React from 'react'
 import Card from './Card'
 import { colors } from '../Global/Colors'
 
 const CategoryItem = ({
     item,
-    // setCategoryChoice
     navigation
 }) => {
 
@@ -20,7 +20,6 @@ const CategoryItem = ({
     return (
         <View style={{width: width, alignItems: 'center'}}>
             <Pressable
-            // onPress={()=>setCategoryChoice(item)}
             onPress={()=>navigation.navigate('ListCategory', {category: item})}
             >
                 <Card>
