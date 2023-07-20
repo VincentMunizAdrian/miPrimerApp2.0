@@ -9,7 +9,6 @@ import React, { useEffect, useState } from 'react';
 
 import Card from '../Components/Card';
 import objects from '../Data/products.json';
-
 import { colors } from '../Global/Colors';
 
 const ItemDetail = ({

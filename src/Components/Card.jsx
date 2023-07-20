@@ -3,6 +3,7 @@ import {
     View 
 } from 'react-native'
 import React from 'react'
+
 import { colors } from '../Global/Colors'
 
 const Card = ({children, otherStyle=[], anotherStyle=[]}) => {

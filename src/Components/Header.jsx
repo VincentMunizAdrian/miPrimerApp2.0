@@ -7,6 +7,7 @@ import {
 import React from 'react'
 
 import { colors } from '../Global/Colors'
+
 import { Ionicons } from '@expo/vector-icons';
 
 const Header = ({

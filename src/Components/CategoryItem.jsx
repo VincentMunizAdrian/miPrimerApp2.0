@@ -5,8 +5,8 @@ import {
     View,
     useWindowDimensions,
 } from 'react-native'
-
 import React from 'react'
+
 import Card from './Card'
 import { colors } from '../Global/Colors'
 
