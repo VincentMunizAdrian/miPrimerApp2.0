@@ -7,20 +7,25 @@ import {
 import React from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+// import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import Header from '../Components/Header';
-import ItemListCategory from '../Screens/ItemListCategory';
-import Home from '../Screens/Home';
-import ItemDetail from '../Screens/ItemDetail';
+// import Header from '../Components/Header';
+// import ItemListCategory from '../Screens/ItemListCategory';
+// import Home from '../Screens/Home';
+// import ItemDetail from '../Screens/ItemDetail';
+import ShopStack from './ShopStack';
+import CartStack from './CartStack';
 
-const Stack = createNativeStackNavigator();
+// const Stack = createNativeStackNavigator();
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+const Tab = createBottomTabNavigator();
 
 const Navigator = () => {
     return (
         <SafeAreaView style = {styles.container}>
             <NavigationContainer>
-                <Stack.Navigator
+                {/* <Stack.Navigator
                     initialRouteName='Home'
                     screenOptions={({route, navigation}) => (
                         {
@@ -45,7 +50,36 @@ const Navigator = () => {
                         name='Detail'
                         component={ItemDetail}
                     />
-                </Stack.Navigator>
+                </Stack.Navigator> */}
+                {/* <ShopStack/> */}
+                {/* <CartStack/> */}
+                <Tab.Navigator
+                // initialRouteName='Home'
+                
+                screenOptions={(
+                    // {route, navigation}
+                ) => (
+                    {
+                        // header: () => {
+                        //     return <Header
+                        //     route = {route}
+                        //     navigation = {navigation}
+                        //     />
+                        // },
+                        headerShown: false,
+                        tabBarShowLabel: false,
+                    }
+                )}
+                >
+                    <Tab.Screen
+                        name='Shop'
+                        component={ShopStack}
+                    />
+                    <Tab.Screen
+                        name='Cart'
+                        component={CartStack}
+                    />
+                </Tab.Navigator>
             </NavigationContainer>
         </SafeAreaView>
     )
