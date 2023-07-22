@@ -25,7 +25,8 @@ const Header = ({
             route.name === "ListCategory" ? 
             <Text style = {styles.textHeader}> {route.params.category} </Text> :
             // <Text style = {styles.textHeader}> {route.params.title} </Text>
-            null
+            // null
+            <Text style = {styles.textHeader}> {route.name} </Text>
             }
             
             {

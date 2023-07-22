@@ -3,13 +3,16 @@ import {
   Image,
   StyleSheet, 
   Text, 
-  View 
+  View,
+  ImageBackground
 } from 'react-native';
 import React, { useEffect, useState } from 'react';
 
 import Card from '../Components/Card';
 import objects from '../Data/products.json';
 import { colors } from '../Global/Colors';
+
+const imagenBack = {uri: 'https://i.imgur.com/qQhkm4N.jpg'}
 
 const ItemDetail = ({
   route
@@ -27,7 +30,13 @@ const ItemDetail = ({
   console.log(object);
 
   return (
+    <ImageBackground
+        source={imagenBack}
+        resizeMode='stretch'
+        style={{width: '100%', height: '100%'}}
+      >
     <View style={styles.containerCard}>
+
       { object ? (
           
         <Card anotherStyle={styles.anotherStyleCard}>
@@ -62,7 +71,9 @@ const ItemDetail = ({
         </Card>
             ) : null 
         }
+
     </View>
+        </ImageBackground>
   )
 }
 

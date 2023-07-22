@@ -1,5 +1,6 @@
 import { 
     FlatList, 
+    ImageBackground, 
     StyleSheet,
     View 
 } from 'react-native';
@@ -9,18 +10,27 @@ import { colors } from '../Global/Colors';
 import categories from '../Data/categories.json';
 import CategoryItem from '../Components/CategoryItem';
 
+const imagenBack = {uri: 'https://i.imgur.com/qQhkm4N.jpg'}
+
 const Home = ({
     navigation
 }) => {
     return (
         <View style = {styles.containerHome}>
-            <FlatList
-                data={categories}
-                keyExtractor={category => category}
-                renderItem={({item}) => <CategoryItem item={item} navigation={navigation} 
-                />}
-                showsVerticalScrollIndicator={false}
-            />
+            <ImageBackground
+                source={imagenBack}
+                resizeMode='stretch'
+                style={styles.imagen}
+            >
+
+                <FlatList
+                    data={categories}
+                    keyExtractor={category => category}
+                    renderItem={({item}) => <CategoryItem item={item} navigation={navigation} 
+                    />}
+                    showsVerticalScrollIndicator={false}
+                />
+            </ImageBackground>
         </View>
     )
 }
@@ -32,5 +42,9 @@ const styles = StyleSheet.create({
         height: '100%',
         backgroundColor: colors.platinum,
         alignItems: 'center',
+    },
+    imagen: {
+        width: '100%',
+        height: '100%'
     },
 })

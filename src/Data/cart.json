@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1,
+        "nombre":"Emiliano Martinez",
+        "category": "Argentina",
+        "posicion": "Arquero",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 200,
+        "imagen": "https://i.imgur.com/QRciq3p.jpg",
+        "quantity": 2
+    },
+    {
+        "id": 2,
+        "nombre":"Franco Armani",
+        "category": "Argentina",
+        "posicion": "Arquero",
+        "torneo": "Mundial",
+        "año": "2022",
+        "precio": 50,
+        "imagen": "https://i.imgur.com/zk6OwPa.jpg",
+        "quantity": 3
+    }
+]

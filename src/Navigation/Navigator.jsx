@@ -3,7 +3,8 @@ import {
     StyleSheet,
     Platform,
     StatusBar,
-    View
+    View,
+    ImageBackground
 } from 'react-native';
 import React from 'react';
 
@@ -16,12 +17,14 @@ import { NavigationContainer } from '@react-navigation/native';
 // import ItemDetail from '../Screens/ItemDetail';
 import ShopStack from './ShopStack';
 import CartStack from './CartStack';
+import OrderStack from './OrderStack';
 
 // const Stack = createNativeStackNavigator();
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { colors } from '../Global/Colors';
 import { Ionicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 
@@ -73,8 +76,9 @@ const Navigator = () => {
                         headerShown: false,
                         tabBarShowLabel: false,
                         tabBarStyle: styles.navigatorBar,
+                        tabBarHideOnKeyboard: true,
                     }
-                    )}
+                )}
                     >
                     <Tab.Screen
                         name='Shop'
@@ -105,6 +109,19 @@ const Navigator = () => {
                             }} 
                         }
                     />
+                    <Tab.Screen
+                        name='Order'
+                        component={OrderStack}
+                        options={{
+                            tabBarIcon: ({focused}) => {
+                                return (
+                                    <View>
+                                        <MaterialCommunityIcons name="clipboard-list-outline" size={34} color={ focused ? "black" : colors.gray} />
+                                    </View>
+                                )
+                            }} 
+                        }
+                    />
                 </Tab.Navigator>
             </NavigationContainer>
         </SafeAreaView>
@@ -119,7 +136,7 @@ const styles = StyleSheet.create({
         paddingTop: Platform.OS ==="android" ? StatusBar.currentHeight : 0
     },
     navigatorBar: {
-        height: 70,
+        height: 65,
         backgroundColor: colors.whiteGray,
         shadowColor: colors.black,
         elevation: 8,

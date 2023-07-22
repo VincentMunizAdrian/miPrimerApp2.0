@@ -10,6 +10,9 @@ import Search from '../Components/Search';
 import ProductItem from '../Components/ProductItem';
 import productsRaw from '../Data/products.json';
 import { colors } from '../Global/Colors';
+import { ImageBackground } from 'react-native';
+
+const imagenBack = {uri: 'https://i.imgur.com/qQhkm4N.jpg'}
 
 const ItemListCategory = ({
     navigation,
@@ -40,20 +43,26 @@ const ItemListCategory = ({
 
     return (
         <View style = {styles.containerHome}>
-            <Search
-            onSearch={onSearch}
-            error= {searchError}
-            />
-            <FlatList
-                style={styles.list}
-                data={products}
-                keyExtractor={product => product.id}
-                renderItem={({item}) => <ProductItem 
+            <ImageBackground
+                source={imagenBack}
+                resizeMode='stretch'
+                style={{width: '100%', height: '100%'}}
+            >
+                <Search
+                onSearch={onSearch}
+                error= {searchError}
+                />
+                <FlatList
+                    style={styles.list}
+                    data={products}
+                    keyExtractor={product => product.id}
+                    renderItem={({item}) => <ProductItem 
                     item={item}
                     navigation={navigation}
-                />} 
-                showsVerticalScrollIndicator={false}
-            />
+                    />} 
+                    showsVerticalScrollIndicator={false}
+                />
+            </ImageBackground>
         </View>
     )
 }

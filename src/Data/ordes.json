@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "userId": 2,
+        "createdAt": 1679869276580,
+        "items": [
+            {
+                "id": 9,
+                "nombre":"Ángel Di María",
+                "category": "Argentina",
+                "posicion": "Mediocampista",
+                "torneo": "Mundial",
+                "año": "2022",
+                "precio": 300,
+                "imagen": "https://i.imgur.com/iKPyKJO.jpg",
+                "quantity": 1
+            },
+            {
+                "id": 13,
+                "nombre":"Julián Álvarez ",
+                "category":"Argentina",
+                "posicion": "Delantero",
+                "torneo": "Mundial",
+                "año": "2022",
+                "precio": 150,
+                "imagen": "https://i.imgur.com/qJsW5x0.jpg",
+                "quantity": 2
+            },
+            {
+                "id": 47,
+                "nombre":"Neymar Jr",
+                "category": "Brasil",
+                "posicion": "Delantero",
+                "torneo": "Mundial",
+                "año": "2022",
+                "precio": 450,
+                "imagen": "https://i.imgur.com/MuGpTA0.jpg",
+                "quantity": 2
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "userId": 2,
+        "createdAt": 1679832276580,
+        "items": [
+            {
+                "id": 18,
+                "nombre":"Lionel Messi",
+                "category": "Argentina",
+                "posicion": "Delantero",
+                "torneo": "Mundial",
+                "año": "2022",
+                "precio": 500,
+                "imagen": "https://i.imgur.com/NP1lV8L.jpg",
+                "quantity": 3
+            },
+            {
+                "id": 27,
+                "nombre":"Manuel Neuer",
+                "category": "Alemania",
+                "posicion": "Arquero",
+                "torneo": "Mundial",
+                "año": "2022",
+                "precio": 150,
+                "imagen": "https://i.imgur.com/x6Ul3yc.jpg",
+                "quantity": 1
+            },
+            {
+                "id": 35,
+                "nombre":"Thomas Muller",
+                "category": "Alemania",
+                "posicion": "Delantero",
+                "torneo": "Mundial",
+                "año": "2022",
+                "precio": 350,
+                "imagen": "https://i.imgur.com/iG0SrOz.jpg",
+                "quantity": 1
+            }
+        ]
+    }
+]
