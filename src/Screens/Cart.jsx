@@ -11,9 +11,9 @@ import CartItem from '../Components/CartItem';
 import { Pressable } from 'react-native';
 
 const Cart = () => {
-  // additional queda para el costo de envio
-  const additional = 0
-  const total = CartData.reduce((acc, currentItem) => acc += currentItem.precio*currentItem.quantity, additional)
+  // // additional queda para el costo de envio
+  // const additional = 0
+  const total = CartData.reduce((acc, currentItem) => acc += currentItem.precio*currentItem.quantity, 0)
   console.log(total);
   return (
     <View style={styles.containerCart}>
