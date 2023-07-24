@@ -4,7 +4,7 @@ import {
     Platform,
     StatusBar,
     View,
-    ImageBackground
+    // ImageBackground
 } from 'react-native';
 import React from 'react';
 

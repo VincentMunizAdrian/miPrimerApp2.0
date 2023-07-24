@@ -9,6 +9,7 @@ import React from 'react';
 import { colors } from '../Global/Colors';
 import categories from '../Data/categories.json';
 import CategoryItem from '../Components/CategoryItem';
+import Counter from '../Components/Counter';
 
 const imagenBack = {uri: 'https://i.imgur.com/qQhkm4N.jpg'}
 
@@ -22,6 +23,8 @@ const Home = ({
                 resizeMode='stretch'
                 style={styles.imagen}
             >
+
+                <Counter/>
 
                 <FlatList
                     data={categories}

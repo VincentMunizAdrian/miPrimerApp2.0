@@ -11,6 +11,7 @@ import ProductItem from '../Components/ProductItem';
 import productsRaw from '../Data/products.json';
 import { colors } from '../Global/Colors';
 import { ImageBackground } from 'react-native';
+import { useSelector } from 'react-redux';
 
 const imagenBack = {uri: 'https://i.imgur.com/qQhkm4N.jpg'}
 
@@ -20,15 +21,20 @@ const ItemListCategory = ({
 }) => {
 
     const {category} = route.params
+
+    const productsSelected = useSelector(state => state.shopReducer.value.productsSelected)
+    
     const [products, setProducts] = useState([])
     const [keyWord, setKeyWord] = useState("")
     const [searchError, setSearchError] = useState("")
     const {width, height} = useWindowDimensions()
 
     useEffect(() => {
-    const productsFiltred = productsRaw.filter(product => product.category === category && product.nombre.toLowerCase().includes(keyWord.toLowerCase()))
+    const productsFiltred = productsSelected.filter(product => product.category === category && product.nombre.toLowerCase().includes(keyWord.toLowerCase()))
+    // const productsFiltred = productsRaw.filter(product => product.category === category && product.nombre.toLowerCase().includes(keyWord.toLowerCase()))
     setProducts(productsFiltred)
-    }, [category, keyWord])
+    }, [productsSelected, keyWord])
+    // }, [category, keyWord])
 
     const onSearch = (input) => {
     const searching = /^[a-zA-Z0-9\ ]*$/

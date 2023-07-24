@@ -1,5 +1,8 @@
+import { Provider } from 'react-redux';
 import { useFonts } from 'expo-font';
+
 import Navigator from './src/Navigation/Navigator.jsx';
+import store from './src/Store/store.js'
 
 export default function App() {
 
@@ -12,6 +15,8 @@ export default function App() {
   }
 
   return (
-    <Navigator/>
+    <Provider store={store}>
+      <Navigator/>
+    </Provider>
   );
 }
