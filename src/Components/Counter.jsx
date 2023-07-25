@@ -1,16 +1,23 @@
 import { 
+    Button,
     Pressable, 
     StyleSheet, 
     Text, 
-    TextInput, 
+    // TextInput, 
     View 
 } from 'react-native'
-import React, { useState } from 'react'
+// import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { increment, decrement, incrementByAmount } from '../Features/Counter/counterSlice'
+import { 
+    increment, 
+    decrement, 
+    // incrementByAmount 
+} from '../Features/Counter/counterSlice'
+import { colors } from '../Global/Colors'
 
 const Counter = () => {
-    const [inputToAdd, setInputToAdd] = useState(0);
+    // const [inputToAdd, setInputToAdd] = useState(0);
+
     
     const dispatch = useDispatch()
     const count = useSelector(state => state.counterReducer.value);
@@ -35,7 +42,14 @@ const Counter = () => {
                 </Pressable>
             </View>
             
-            <View style={styles.buttonsContainer}>
+            {/* por ahora el Button queda sin funcionar */}
+            <Button
+                onPress={()=>{}}
+                title="Agregar al carrito"
+                color= {colors.onyx}
+            />
+
+            {/* <View style={styles.buttonsContainer}>
                 <TextInput
                     placeholder='Cantidad a aumentar'
                     style={styles.spanInput}
@@ -52,7 +66,7 @@ const Counter = () => {
             
             <Pressable style={styles.button}>
                 <Text style={styles.buttonText}> Reset </Text>
-            </Pressable>
+            </Pressable> */}
         </View>
     )
 }

@@ -8,7 +8,7 @@ import React, { useEffect, useState } from 'react';
 
 import Search from '../Components/Search';
 import ProductItem from '../Components/ProductItem';
-import productsRaw from '../Data/products.json';
+// import productsRaw from '../Data/products.json';
 import { colors } from '../Global/Colors';
 import { ImageBackground } from 'react-native';
 import { useSelector } from 'react-redux';

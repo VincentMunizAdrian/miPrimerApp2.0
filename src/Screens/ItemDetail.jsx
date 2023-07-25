@@ -11,6 +11,7 @@ import React, { useEffect, useState } from 'react';
 import Card from '../Components/Card';
 import objects from '../Data/products.json';
 import { colors } from '../Global/Colors';
+import Counter from '../Components/Counter';
 
 const imagenBack = {uri: 'https://i.imgur.com/qQhkm4N.jpg'}
 
@@ -59,15 +60,17 @@ const ItemDetail = ({
                 />
               </View>
             </View>
+              <Counter/>
             
-            <View>
+            {/* <View> */}
+
               {/* por ahora el Button queda sin funcionar */}
-              <Button
+              {/* <Button
                 onPress={()=>{}}
                 title="Agregar al carrito"
                 color= {colors.onyx}
-              />
-            </View>
+              /> */}
+            {/* </View> */}
         </Card>
             ) : null 
         }
