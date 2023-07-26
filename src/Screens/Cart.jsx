@@ -11,10 +11,13 @@ import CartItem from '../Components/CartItem';
 import { Pressable } from 'react-native';
 
 const Cart = () => {
-  // // additional queda para el costo de envio
-  // const additional = 0
-  const total = CartData.reduce((acc, currentItem) => acc += currentItem.precio*currentItem.quantity, 0)
+  
+  // additional queda para el costo de envio
+  const additional = 0
+
+  const total = CartData.reduce((acc, currentItem) => acc += currentItem.precio*currentItem.quantity, additional)
   console.log(total);
+  
   return (
     <View style={styles.containerCart}>
       <FlatList
@@ -29,10 +32,10 @@ const Cart = () => {
         }}
       />
       <View style={styles.totalContainer}>
-        <Pressable>
+        <Pressable style={styles.confirmButton}>
           <Text>Confirmar Compra</Text>
-        </Pressable>
           <Text>Total: ${total}</Text>
+        </Pressable>
       </View>
     </View>
   )
@@ -49,6 +52,12 @@ const styles = StyleSheet.create({
   totalContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center'
-  }
+    alignItems: 'center',
+  },
+  confirmButton: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderBottomColor: 'red'
+  },
 })

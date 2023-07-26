@@ -1,5 +1,4 @@
 import { 
-  Button,
   Image,
   StyleSheet, 
   Text, 
@@ -9,11 +8,9 @@ import {
 import React, { useEffect, useState } from 'react';
 
 import Card from '../Components/Card';
-import objects from '../Data/products.json';
-// import item from '../Data/products.json';
-import { colors } from '../Global/Colors';
 import Counter from '../Components/Counter';
-// import { useSelector } from 'react-redux';
+import objects from '../Data/products.json';
+import { colors } from '../Global/Colors';
 
 const imagenBack = {uri: 'https://i.imgur.com/qQhkm4N.jpg'}
 
@@ -25,19 +22,10 @@ const ItemDetail = ({
 
   const [object, setObject] = useState(null)
 
-  // const productSelected = useSelector(state => state.shopReducer.value.productSelected)
-
   useEffect(() => {
     const objectChoice = objects.find(object => object.id === idChoice)
     setObject(objectChoice)
   }, [idChoice])
-
-  // useEffect(() => {
-  //   const objectChoice = productSelected.find(object => object.id === idChoice)
-  //   setObject(objectChoice)
-  // }, [productSelected])
-
-  // console.log(object);
 
   return (
     <ImageBackground
@@ -70,16 +58,6 @@ const ItemDetail = ({
               </View>
             </View>
               <Counter/>
-            
-            {/* <View> */}
-
-              {/* por ahora el Button queda sin funcionar */}
-              {/* <Button
-                onPress={()=>{}}
-                title="Agregar al carrito"
-                color= {colors.onyx}
-              /> */}
-            {/* </View> */}
         </Card>
             ) : null 
         } 

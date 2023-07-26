@@ -4,14 +4,13 @@ import {
     FlatList,
     useWindowDimensions
 } from 'react-native';
+import { ImageBackground } from 'react-native';
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import Search from '../Components/Search';
 import ProductItem from '../Components/ProductItem';
-// import productsRaw from '../Data/products.json';
 import { colors } from '../Global/Colors';
-import { ImageBackground } from 'react-native';
-import { useSelector } from 'react-redux';
 
 const imagenBack = {uri: 'https://i.imgur.com/qQhkm4N.jpg'}
 
@@ -31,10 +30,8 @@ const ItemListCategory = ({
 
     useEffect(() => {
     const productsFiltred = productsSelected.filter(product => product.category === category && product.nombre.toLowerCase().includes(keyWord.toLowerCase()))
-    // const productsFiltred = productsRaw.filter(product => product.category === category && product.nombre.toLowerCase().includes(keyWord.toLowerCase()))
     setProducts(productsFiltred)
     }, [productsSelected, keyWord])
-    // }, [category, keyWord])
 
     const onSearch = (input) => {
     const searching = /^[a-zA-Z0-9\ ]*$/
@@ -80,16 +77,5 @@ const styles = StyleSheet.create({
         height: '100%',
         backgroundColor: colors.platinum,
         alignItems: 'center',
-    },
-    conteinerTitleCategory:{
-        width: '100%',
-        flexDirection: 'row',
-        alignItems: 'baseline',
-        justifyContent: 'center',
-    },
-    textCategorySelect: {
-        fontFamily: 'Anton',
-        fontSize: 28,
-        marginTop: 15,
     },
 })

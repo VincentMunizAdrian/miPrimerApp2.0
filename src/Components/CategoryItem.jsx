@@ -6,10 +6,9 @@ import {
     useWindowDimensions,
 } from 'react-native'
 import React from 'react'
-
 import { useDispatch } from 'react-redux'
-import { setCategorySelected } from '../Features/Shop/shopSlice'
 
+import { setCategorySelected } from '../Features/Shop/shopSlice'
 import Card from './Card'
 import { colors } from '../Global/Colors'
 
@@ -30,7 +29,6 @@ const CategoryItem = ({
     return (
         <View style={{width: width, alignItems: 'center'}}>
             <Pressable
-            // onPress={()=>navigation.navigate('ListCategory', {category: item})}
             onPress={onSelectCategory}
             >
                 <Card>

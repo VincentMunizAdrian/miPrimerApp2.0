@@ -1,6 +1,5 @@
 import { 
   FlatList,
-  StyleSheet,
   View 
 } from 'react-native'
 import React from 'react'
@@ -27,5 +26,3 @@ const Order = () => {
 }
 
 export default Order
-
-const styles = StyleSheet.create({})

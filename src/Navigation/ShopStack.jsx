@@ -1,15 +1,11 @@
-import { 
-    StyleSheet, 
-} from 'react-native'
 import React from 'react'
+
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Header from '../Components/Header';
 import ItemListCategory from '../Screens/ItemListCategory';
 import Home from '../Screens/Home';
 import ItemDetail from '../Screens/ItemDetail';
-
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
 
 const Stack = createNativeStackNavigator();
 
@@ -45,5 +41,3 @@ const ShopStack = () => {
 }
 
 export default ShopStack
-
-const styles = StyleSheet.create({})
