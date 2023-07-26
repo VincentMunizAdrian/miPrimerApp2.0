@@ -9,6 +9,8 @@ import {
 import React from 'react'
 
 import Card from './Card'
+import { useDispatch } from 'react-redux';
+import { setIdSelected } from '../Features/Shop/shopSlice';
 
 const ProductItem = ({
     item,
@@ -17,13 +19,21 @@ const ProductItem = ({
 
     const {width} = useWindowDimensions();
     
-    const onSelect = (id) => {
+    const dispatch = useDispatch()
+
+    const onSelect = () => {
+        dispatch(setIdSelected(item.id))
         navigation.navigate('Detail', {objectId: item.id, title: item.nombre})
     }
 
+    // const onSelect = (id) => {
+    //     navigation.navigate('Detail', {objectId: item.id, title: item.nombre})
+    // }
+
     return (
         <View style={{ width: width, alignItems: 'center'}}>
-            <Pressable onPress={() => onSelect(item.id)}>
+            {/* <Pressable onPress={() => onSelect(item.id)}> */}
+            <Pressable onPress={onSelect}>
                 <Card
                     otherStyle={styles.otherStyleCard}
                 >

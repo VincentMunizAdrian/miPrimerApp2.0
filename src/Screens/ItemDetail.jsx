@@ -10,8 +10,10 @@ import React, { useEffect, useState } from 'react';
 
 import Card from '../Components/Card';
 import objects from '../Data/products.json';
+// import item from '../Data/products.json';
 import { colors } from '../Global/Colors';
 import Counter from '../Components/Counter';
+// import { useSelector } from 'react-redux';
 
 const imagenBack = {uri: 'https://i.imgur.com/qQhkm4N.jpg'}
 
@@ -23,12 +25,19 @@ const ItemDetail = ({
 
   const [object, setObject] = useState(null)
 
+  // const productSelected = useSelector(state => state.shopReducer.value.productSelected)
+
   useEffect(() => {
     const objectChoice = objects.find(object => object.id === idChoice)
     setObject(objectChoice)
   }, [idChoice])
 
-  console.log(object);
+  // useEffect(() => {
+  //   const objectChoice = productSelected.find(object => object.id === idChoice)
+  //   setObject(objectChoice)
+  // }, [productSelected])
+
+  // console.log(object);
 
   return (
     <ImageBackground
@@ -73,7 +82,7 @@ const ItemDetail = ({
             {/* </View> */}
         </Card>
             ) : null 
-        }
+        } 
 
     </View>
         </ImageBackground>
