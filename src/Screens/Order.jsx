@@ -1,15 +1,17 @@
 import { 
   FlatList,
+  StyleSheet,
   View 
 } from 'react-native'
 import React from 'react'
 
 import OrderInfo from '../Data/ordes.json'
 import OrderItem from '../Components/OrderItem'
+import { colors } from '../Global/Colors'
 
 const Order = () => {
   return (
-    <View>
+    <View style={styles.containerOrder}>
       <FlatList 
         data={OrderInfo}
         keyExtractor={orderItem => orderItem.id}
@@ -26,3 +28,11 @@ const Order = () => {
 }
 
 export default Order
+
+const styles = StyleSheet.create({
+  containerOrder: {
+    flex: 1,
+    justifyContent: 'space-between',
+    backgroundColor: colors.platinum,
+  },
+})

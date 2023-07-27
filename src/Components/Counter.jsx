@@ -56,35 +56,26 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         width: "100%",
-        // backgroundColor: colors.pink,
         padding: 10,
     },
     buttonsContainer: {
+        backgroundColor: colors.frenchGray,
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
         marginBottom: 10,
+        borderRadius: 5
     },
     button: {
-        padding: 10,
-        // backgroundColor: colors.lightPink,
+        backgroundColor: colors.gray,
+        borderRadius: 5
     },
     span: {
-        // backgroundColor: colors.red,
-        width: "60%",
-        padding: 10,
+        width: "50%",
         textAlign: "center",
-        fontSize: 20,
-    },
-    spanInput: {
-        // backgroundColor: colors.peach,
-        width: "60%",
-        padding: 10,
-        textAlign: "center",
-        fontSize: 16,
+        fontSize: 26,
     },
     buttonText: {
-        fontSize: 18,
-        // fontFamily: "Josefin",
+        fontSize: 30,
     },
 });

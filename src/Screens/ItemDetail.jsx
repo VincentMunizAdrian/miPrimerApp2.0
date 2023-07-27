@@ -42,13 +42,7 @@ const ItemDetail = ({
               <Text style={styles.textTitle}>{object.nombre}</Text>
             </View>
 
-            <View style={styles.containerTextImg}>
-              <View style={styles.text}>
-                <Text>Posición: {object.posicion}</Text>
-                <Text>Pais: {object.category}</Text>
-                <Text>Torneo: {object.torneo}</Text>
-                <Text>Precio: $ {object.precio}</Text>
-              </View>
+            <View style={styles.internalContainer}>
               <View>
                 <Image
                   source={{uri: object.imagen}}
@@ -56,8 +50,17 @@ const ItemDetail = ({
                   resizeMode='cover'
                 />
               </View>
+              <View style={styles.textAndButtonContainer}>
+                <View style={styles.text}>
+                  <Text>Posición: {object.posicion}</Text>
+                  <Text>Pais: {object.category}</Text>
+                  <Text>Torneo: {object.torneo}</Text>
+                  <Text>Precio: $ {object.precio}</Text>
+                </View>
+                <Counter
+                  />
+              </View>
             </View>
-              <Counter/>
         </Card>
             ) : null 
         } 
@@ -73,7 +76,7 @@ const styles = StyleSheet.create({
   anotherStyleCard: {
     flexDirection: 'column',
     width: '90%',
-    height: '70%',
+    height: '45%',
   },
   containerCard:{
     height: '100%',
@@ -83,18 +86,24 @@ const styles = StyleSheet.create({
   containerTitle:{
     width: '100%',
     justifyContent:'flex-start',
+    fontStyle: 'Anton'
   },
   textTitle: {
     fontSize: 28,
   },
-  containerTextImg:{
+  internalContainer:{
     width: '100%',
     height: 250,
     flexDirection:'row',
     justifyContent: 'space-around',
     alignItems: 'center'
   },
+  textAndButtonContainer: {
+    width: '50%',
+    alignItems: 'center',
+  },
   text: {
+    width: '80%',
     padding: 8,
     backgroundColor: colors.white,
     borderRadius: 6,

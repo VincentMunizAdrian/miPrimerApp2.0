@@ -1,6 +1,6 @@
 [
     {
-        "id": "1",
+        "id": 1,
         "nombre":"Emiliano Martinez",
         "category": "Argentina",
         "posicion": "Arquero",

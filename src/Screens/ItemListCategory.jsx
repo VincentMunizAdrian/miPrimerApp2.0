@@ -2,7 +2,6 @@ import {
     StyleSheet,
     View,
     FlatList,
-    useWindowDimensions
 } from 'react-native';
 import { ImageBackground } from 'react-native';
 import React, { useEffect, useState } from 'react';
@@ -26,7 +25,6 @@ const ItemListCategory = ({
     const [products, setProducts] = useState([])
     const [keyWord, setKeyWord] = useState("")
     const [searchError, setSearchError] = useState("")
-    const {width, height} = useWindowDimensions()
 
     useEffect(() => {
     const productsFiltred = productsSelected.filter(product => product.category === category && product.nombre.toLowerCase().includes(keyWord.toLowerCase()))

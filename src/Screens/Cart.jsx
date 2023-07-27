@@ -9,6 +9,7 @@ import React from 'react'
 import CartData from '../Data/cart.json'
 import CartItem from '../Components/CartItem';
 import { Pressable } from 'react-native';
+import { colors } from '../Global/Colors';
 
 const Cart = () => {
   
@@ -33,8 +34,8 @@ const Cart = () => {
       />
       <View style={styles.totalContainer}>
         <Pressable style={styles.confirmButton}>
-          <Text>Confirmar Compra</Text>
-          <Text>Total: ${total}</Text>
+          <Text style={styles.textCategory}>Confirmar Compra</Text>
+          <Text style={styles.textCategory}>Total: ${total}</Text>
         </Pressable>
       </View>
     </View>
@@ -45,9 +46,9 @@ export default Cart
 
 const styles = StyleSheet.create({
   containerCart: {
-    justifyContent: 'space-between',
     flex: 1,
-    marginBottom: 120,
+    justifyContent: 'space-between',
+    backgroundColor: colors.platinum,
   },
   totalContainer: {
     flexDirection: 'row',
@@ -55,9 +56,28 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   confirmButton: {
+    width: 150,
+    shadowColor: "#000",
+    shadowOffset:{
+        width: 0,
+        height: 7,
+    },
+    shadowOpacity: 0.41,
+    shadowRadius: 9.11,
+    elevation: 14,
+    borderWidth: 2,
+    marginVertical: 12,
+    borderColor: colors.black,
+    backgroundColor: colors.lightOnyx,
+    borderRadius: 7,
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    borderBottomColor: 'red'
+    marginBottom: 120,
   },
+  textCategory: {
+    color: colors.white,
+    fontSize: 18,
+    fontFamily: 'Anton',
+},
 })

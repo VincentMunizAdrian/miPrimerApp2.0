@@ -18,15 +18,14 @@ const Header = ({
     return (
         <View style = {styles.containerHeader}>
             {
-            // hay que volver a crear mas simple la logica para los titulos
-
+            // Intentar crear mas simple la logica para los titulos
             route.name === "Home" ? 
             <Text style = {styles.textHeader}> Mundial de Figus </Text> :
             route.name === "ListCategory" ? 
             <Text style = {styles.textHeader}> {route.params.category} </Text> :
-            // <Text style = {styles.textHeader}> {route.params.title} </Text>
-            // null
-            <Text style = {styles.textHeader}> {route.name} </Text>
+            route.name === "Detail" ?
+            <Text style = {styles.textHeader}> {route.params.title} </Text> : 
+            <Text style = {styles.textHeader}> {route.name} </Text> 
             }
             
             {

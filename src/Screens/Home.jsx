@@ -6,7 +6,6 @@ import {
 } from 'react-native';
 import React from 'react';
 
-import { colors } from '../Global/Colors';
 import categories from '../Data/categories.json';
 import CategoryItem from '../Components/CategoryItem';
 
@@ -40,7 +39,6 @@ export default Home
 const styles = StyleSheet.create({
     containerHome: {
         height: '100%',
-        backgroundColor: colors.platinum,
         alignItems: 'center',
     },
     imagen: {
