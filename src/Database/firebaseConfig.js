@@ -1,0 +1,1 @@
+export const realtime_database_url = "https://myfirstapp-c6aad-default-rtdb.firebaseio.com/"

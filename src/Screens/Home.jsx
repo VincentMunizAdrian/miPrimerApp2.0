@@ -6,14 +6,20 @@ import {
 } from 'react-native';
 import React from 'react';
 
-import categories from '../Data/categories.json';
+// import categories from '../Data/categories.json';
 import CategoryItem from '../Components/CategoryItem';
+import { useGetCategoriesQuery } from '../Services/shopServices';
 
 const imagenBack = {uri: 'https://i.imgur.com/qQhkm4N.jpg'}
 
 const Home = ({
-    navigation
+    navigation,
 }) => {
+    const {data: categories, isLoading, isError} = useGetCategoriesQuery()
+    
+    console.log(isError);
+    console.log(isLoading);
+    console.log(categories);
     return (
         <View style = {styles.containerHome}>
             <ImageBackground

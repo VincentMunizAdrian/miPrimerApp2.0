@@ -1,5 +1,4 @@
 import { 
-    Button,
     Pressable, 
     StyleSheet, 
     Text, 
@@ -7,6 +6,7 @@ import {
 } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 
+// import { addCartItem } from '../Features/Cart/cartSlice'
 import { increment, decrement } from '../Features/Counter/counterSlice'
 import { colors } from '../Global/Colors'
 
@@ -15,6 +15,10 @@ const Counter = () => {
     const dispatch = useDispatch()
 
     const count = useSelector(state => state.counterReducer.value);
+
+    // const onAddCart = () => {
+    //     dispatch(addCartItem({...item, quantity: count}))
+    // }
 
     return (
         <View style={styles.container}>
@@ -36,14 +40,15 @@ const Counter = () => {
                 </Pressable>
             </View>
             
-            <View>
-                {/* por ahora el Button queda sin funcionar */}
+            {/* <View>
+                por ahora el Button queda sin funcionar
                 <Button
-                    onPress={()=>{}}
+                    onPress={onAddCart}
                     title="Agregar al carrito"
                     color= {colors.onyx}
                 />
-            </View>
+            </View> */}
+            
         </View>
     )
 }

@@ -6,19 +6,29 @@ import {
 } from 'react-native'
 import React from 'react'
 
-import CartData from '../Data/cart.json'
+// import CartData from '../Data/cart.json'
 import CartItem from '../Components/CartItem';
 import { Pressable } from 'react-native';
 import { colors } from '../Global/Colors';
+import { useSelector } from 'react-redux';
+import { usePostCartMutation } from '../Services/shopServices';
 
 const Cart = () => {
   
   // additional queda para el costo de envio
-  const additional = 0
+  // const additional = 0
 
-  const total = CartData.reduce((acc, currentItem) => acc += currentItem.precio*currentItem.quantity, additional)
-  console.log(total);
-  
+  // const total = CartData.reduce((acc, currentItem) => acc += currentItem.precio*currentItem.quantity, additional)
+  // console.log(total);
+  const {items: CartData, total, updateAt, user} = useSelector(state => state.cartReducer.value)
+  const [triggerPostCart, result] = usePostCartMutation()
+
+  const onConfirm = () => {
+    triggerPostCart({items: CartData, total, user, updateAt})
+  }
+
+  console.log(result);
+
   return (
     <View style={styles.containerCart}>
       <FlatList
@@ -33,7 +43,10 @@ const Cart = () => {
         }}
       />
       <View style={styles.totalContainer}>
-        <Pressable style={styles.confirmButton}>
+        <Pressable 
+          style={styles.confirmButton}
+          onPress={onConfirm}
+        >
           <Text style={styles.textCategory}>Confirmar Compra</Text>
           <Text style={styles.textCategory}>Total: ${total}</Text>
         </Pressable>

@@ -3,9 +3,13 @@ import {
   StyleSheet, 
   Text, 
   View,
-  ImageBackground
+  ImageBackground,
+  Button
 } from 'react-native';
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { addCartItem } from '../Features/Cart/cartSlice'
 
 import Card from '../Components/Card';
 import Counter from '../Components/Counter';
@@ -15,8 +19,10 @@ import { colors } from '../Global/Colors';
 const imagenBack = {uri: 'https://i.imgur.com/qQhkm4N.jpg'}
 
 const ItemDetail = ({
-  route
+  route,
 }) => {
+
+  const dispatch = useDispatch()
 
   const {objectId: idChoice} = route.params;
 
@@ -26,6 +32,13 @@ const ItemDetail = ({
     const objectChoice = objects.find(object => object.id === idChoice)
     setObject(objectChoice)
   }, [idChoice])
+
+  const cantidad = useSelector(state => state.counterReducer.value)
+
+  const onAddCart = () => {
+      dispatch(addCartItem({...object, quantity: cantidad}))
+      // dispatch(addCartItem({...object, quantity: 1}))
+  }
 
   return (
     <ImageBackground
@@ -60,6 +73,14 @@ const ItemDetail = ({
                 <Counter
                   />
               </View>
+            </View>
+            <View>
+                {/* por ahora el Button queda sin funcionar */}
+                <Button
+                    onPress={onAddCart}
+                    title="Agregar al carrito"
+                    color= {colors.onyx}
+                />
             </View>
         </Card>
             ) : null 
