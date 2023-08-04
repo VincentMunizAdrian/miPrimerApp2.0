@@ -9,12 +9,18 @@ import React from 'react'
 import { colors } from '../Global/Colors'
 
 import { Ionicons } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { signOut } from '../Features/User/userSlice';
 
 const Header = ({
     route,
     navigation,
-}
-) => {
+}) => {
+
+    const dispatch = useDispatch()
+    const {email} = useSelector(state => state.userReducer.value)
+
     return (
         <View style = {styles.containerHeader}>
             {
@@ -29,13 +35,22 @@ const Header = ({
             }
             
             {
-            route.name === "Home" ? null :
-            <Pressable 
-            style={styles.pressable}
-            onPress={()=> navigation.goBack()}>
-                <Ionicons name="arrow-back-circle-outline" size={36} color="black" />
+            route.name === "Home" ? null : 
+            route.name === "Signup" ? null :
+            route.name === "Login" ? null 
+            : <Pressable 
+                style={styles.buttonBack}
+                onPress={()=> navigation.goBack()}>
+                    <Ionicons name="arrow-back-circle-outline" size={38} color="black" />
             </Pressable>
             }
+            {email ? 
+            <Pressable 
+                style={styles.buttonUser}
+                onPress={()=> dispatch(signOut())}>
+                    <FontAwesome5 name="user-circle" size={34} color="black" />
+            </Pressable>
+            : null}
         </View>
     )
 }
@@ -50,7 +65,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         position: 'relative'
     },
-    pressable:{
+    buttonBack:{
         position: 'absolute',
         left: 10,
         top: '37%'
@@ -58,5 +73,10 @@ const styles = StyleSheet.create({
     textHeader: {
         fontSize: 32,
         fontFamily: 'Anton',
+    },
+    buttonUser:{
+        position: 'absolute',
+        right: 10,
+        top: '37%'
     },
 })

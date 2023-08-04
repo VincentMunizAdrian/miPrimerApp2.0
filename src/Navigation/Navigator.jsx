@@ -17,64 +17,73 @@ import { colors } from '../Global/Colors';
 import { Ionicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import AuthStack from './AuthStack';
+import { useSelector } from 'react-redux';
 
 const Tab = createBottomTabNavigator();
 
 const Navigator = () => {
+
+    const {email} = useSelector(state => state.userReducer.value)
+
     return (
         <SafeAreaView style = {styles.container}>
             <NavigationContainer>
-                <Tab.Navigator                
-                    screenOptions={() => ({
-                        headerShown: false,
-                        tabBarShowLabel: false,
-                        tabBarStyle: styles.navigatorBar,
-                        tabBarHideOnKeyboard: true,
-                    }
-                )}
-                    >
-                    <Tab.Screen
-                        name='Shop'
-                        component={ShopStack}
-                        options={{
-                            tabBarIcon: ({focused}) => {
-                                return (
-                                    <View>
-                                        <Entypo name="shop" size={26} color={ focused ? "black" : colors.gray} />
-                                    </View>
-                                )
-                            }} 
+                { email ? 
+                    <Tab.Navigator
+                        screenOptions={() => ({
+                            headerShown: false,
+                            tabBarShowLabel: false,
+                            tabBarStyle: styles.navigatorBar,
+                            tabBarHideOnKeyboard: true,
                         }
-                    />
-                    <Tab.Screen
-                        name='Cart'
-                        component={CartStack}
-                        options={{
-                            tabBarIcon: ({focused}) => {
-                                return (
-                                    <View>
-                                        <Ionicons name="md-cart-outline" size={28} color={ focused ? "black" : colors.gray} />
-                                        {/* lo dejo para un condicional */}
-                                        {/* <Ionicons name="md-cart-sharp" size={34} color="black" /> */}
-                                    </View>
-                                )
-                            }} 
-                        }
-                    />
-                    <Tab.Screen
-                        name='Order'
-                        component={OrderStack}
-                        options={{
-                            tabBarIcon: ({focused}) => {
-                                return (
-                                    <View>
-                                        <MaterialCommunityIcons name="clipboard-list-outline" size={28} color={ focused ? "black" : colors.gray} />
-                                    </View>
-                                )
-                            }} 
-                        }
-                    />
-                </Tab.Navigator>
+                    )}
+                        >
+                        <Tab.Screen
+                            name='Shop'
+                            component={ShopStack}
+                            options={{
+                                tabBarIcon: ({focused}) => {
+                                    return (
+                                        <View>
+                                            <Entypo name="shop" size={26} color={ focused ? "black" : colors.gray} />
+                                        </View>
+                                    )
+                                }} 
+                            }
+                        />
+                        <Tab.Screen
+                            name='Cart'
+                            component={CartStack}
+                            options={{
+                                tabBarIcon: ({focused}) => {
+                                    return (
+                                        <View>
+                                            <Ionicons name="md-cart-outline" size={28} color={ focused ? "black" : colors.gray} />
+                                            {/* lo dejo para un condicional */}
+                                            {/* <Ionicons name="md-cart-sharp" size={34} color="black" /> */}
+                                        </View>
+                                    )
+                                }} 
+                            }
+                        />
+                        <Tab.Screen
+                            name='Order'
+                            component={OrderStack}
+                            options={{
+                                tabBarIcon: ({focused}) => {
+                                    return (
+                                        <View>
+                                            <MaterialCommunityIcons name="clipboard-list-outline" size={28} color={ focused ? "black" : colors.gray} />
+                                        </View>
+                                    )
+                                }} 
+                            }
+                        />
+                    </Tab.Navigator>
+                    : <AuthStack/>
+                }
+
             </NavigationContainer>
         </SafeAreaView>
     )
