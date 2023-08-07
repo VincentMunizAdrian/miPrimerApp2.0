@@ -19,6 +19,7 @@ import { Entypo } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import AuthStack from './AuthStack';
 import { useSelector } from 'react-redux';
+import MyProfileStack from './MyProfileStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -70,6 +71,19 @@ const Navigator = () => {
                         <Tab.Screen
                             name='Order'
                             component={OrderStack}
+                            options={{
+                                tabBarIcon: ({focused}) => {
+                                    return (
+                                        <View>
+                                            <MaterialCommunityIcons name="clipboard-list-outline" size={28} color={ focused ? "black" : colors.gray} />
+                                        </View>
+                                    )
+                                }} 
+                            }
+                        />
+                        <Tab.Screen
+                            name='myProfile'
+                            component={MyProfileStack}
                             options={{
                                 tabBarIcon: ({focused}) => {
                                     return (
