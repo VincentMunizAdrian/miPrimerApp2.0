@@ -4,7 +4,7 @@ export const cartSlice = createSlice({
     name: "Cart",
     initialState: {
         value: {
-            user: "Hardcoder user",
+            user: "",
             updatedAt: "",
             total: null,
             items: []
@@ -12,11 +12,8 @@ export const cartSlice = createSlice({
     },
     reducers: {
         addCartItem: (state, action) => {
-            //Logic to add item
-            //1. Check productExists
             const productExists = state.value.items.some(item => item.id === action.payload.id)
 
-            //2. Distinct logic if exists product or not
             if (productExists) {
                 state.value.items = state.value.items.map(item => {
                     if (item.id === action.payload.id) {
@@ -27,21 +24,38 @@ export const cartSlice = createSlice({
                 })
             } else state.value.items.push(action.payload)
 
-            //3. Update total
             state.value.total = state.value.items.reduce(
                 (acc, currentItem) => acc += currentItem.precio * currentItem.quantity,
                 0
             )
 
-            //4. Update updatedAt
             state.value.updatedAt = new Date().toLocaleString()
         },
         removeCartItem: (state, action) => {
-            //Logic to remove item
+            let newItems = state.value.items.filter(item => item.id != action.payload)
+            state.value.items = [...newItems]
+            state.value.total = state.value.items.reduce(
+                (acc, currentItem) => acc += currentItem.precio * currentItem.quantity,
+                0
+            )
+            state.value.updatedAt = Date.now()
+        },
+        setUserCart: (state, action) => {
+            state.value.user = action.payload
+        },
+        removeFullCart: (state) => {
+            state.value.items = []
+            state.value.total = 0
+            state.value.updatedAt = Date.now()
         }
     }
 })
 
-export const {addCartItem, removeCartItem} = cartSlice.actions
+export const {
+    addCartItem, 
+    removeCartItem, 
+    removeFullCart, 
+    setUserCart
+} = cartSlice.actions
 
 export default cartSlice.reducer

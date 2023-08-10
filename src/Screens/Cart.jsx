@@ -6,27 +6,32 @@ import {
 } from 'react-native'
 import React from 'react'
 
-// import CartData from '../Data/cart.json'
 import CartItem from '../Components/CartItem';
 import { Pressable } from 'react-native';
 import { colors } from '../Global/Colors';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { usePostCartMutation } from '../Services/shopServices';
+import { useEffect } from 'react';
+import { removeFullCart } from '../Features/Cart/cartSlice';
 
 const Cart = () => {
-  
-  // additional queda para el costo de envio
-  // const additional = 0
-
-  // const total = CartData.reduce((acc, currentItem) => acc += currentItem.precio*currentItem.quantity, additional)
-  // console.log(total);
   const {items: CartData, total, updateAt, user} = useSelector(state => state.cartReducer.value)
   const [triggerPostCart, result] = usePostCartMutation()
+  const dispatch = useDispatch()
 
+  useEffect(() => {
+    if (result.isSuccess) {
+      dispatch(removeFullCart())
+    }
+  }, [result])
+  
   const onConfirm = () => {
     triggerPostCart({items: CartData, total, user, updateAt})
   }
 
+  const totalCompra = useSelector(state => state.cartReducer.value.item)
+  
+  console.log(totalCompra);
   console.log(result);
 
   return (
@@ -43,13 +48,19 @@ const Cart = () => {
         }}
       />
       <View style={styles.totalContainer}>
-        <Pressable 
+
+        {
+          total === 0 ? 
+          <Text>El carrito esta vacio</Text>
+          : 
+          <Pressable 
           style={styles.confirmButton}
           onPress={onConfirm}
-        >
+          >
           <Text style={styles.textCategory}>Confirmar Compra</Text>
           <Text style={styles.textCategory}>Total: ${total}</Text>
         </Pressable>
+        }
       </View>
     </View>
   )
@@ -92,5 +103,5 @@ const styles = StyleSheet.create({
     color: colors.white,
     fontSize: 18,
     fontFamily: 'Anton',
-},
+  },
 })

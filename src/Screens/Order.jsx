@@ -1,3 +1,6 @@
+// Las ordenes llegan por json local, hay que agregar uno para ordenes en RDB
+// y que lleguen por usuario. 
+
 import { 
   FlatList,
   StyleSheet,

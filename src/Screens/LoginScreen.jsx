@@ -13,15 +13,12 @@ const LoginScreen = ({navigation}) => {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [errorMail, setErrorMail] = useState("");
-    const [errorPassword, setErrorPassword] = useState("")
+    const [errorEmailPassword, setErrorEmailPassword] = useState("")
 
     const dispatch = useDispatch()
 
     const [triggerSignIn, resultSignIn] = useSignInMutation()
     const onSubmit = () => {
-
-        //Submit logic with validations
         const isValidVariableEmail = isValidEmail(email)
         const isCorrectPassword = isAtLeastSixCharacters(password)
 
@@ -33,11 +30,7 @@ const LoginScreen = ({navigation}) => {
             });
         }
         
-        if (!isValidVariableEmail) setErrorMail ('Email is not correct')
-        else setErrorMail('')
-        if (!isCorrectPassword) setErrorPassword ('Password must be at least 6 characters')
-        else setErrorPassword('')
-
+        if (!isValidVariableEmail || !isCorrectPassword) setErrorEmailPassword ('The Email or the Password is/are not correct')
     }
 
     console.log(resultSignIn);
@@ -62,20 +55,22 @@ const LoginScreen = ({navigation}) => {
                 <InputForm 
                     label={"email"}
                     onChange={(email)=>setEmail(email)}
-                    error={errorMail}
                 />
                 <InputForm 
                     label={"password"}
                     onChange={(password)=>setPassword(password)}
-                    error={errorPassword}
+                    error={errorEmailPassword}
                     isSecure={true}
                 />
                 <SubmitButton 
                     onPress={onSubmit}
                     title = "Send"
                 />
-                <Text style={styles.sub}>Not have an account?</Text>
-                <Pressable onPress={()=> navigation.navigate('Signup')}>
+                <Text style={styles.sub}>If don't have an account... Sign Up!</Text>
+                <Pressable
+                    style={styles.buttonSignUp}
+                    onPress={()=> navigation.navigate('Signup')}>
+                    <Text style={styles.subLink}>Here to</Text>
                     <Text style={styles.subLink}>Sign up</Text>
                 </Pressable>
             </View>
@@ -97,21 +92,28 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        // backgroundColor: colors.lightPink,
         gap: 15,
         paddingVertical: 20,
         borderRadius: 10,
     },
     title: {
         fontSize: 22,
-        // fontFamily: 'Josefin'
     },
     sub: {
         fontSize: 14,
         color: 'black',
     },
+    buttonSignUp: {
+        backgroundColor: colors.onyx,
+        height: 60,
+        width: 80,
+        borderRadius: 5,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
     subLink: {
-        fontSize: 14,
-        color: 'blue',
+        fontFamily: 'Anton',
+        fontSize: 16,
+        color: colors.white
     }
 })

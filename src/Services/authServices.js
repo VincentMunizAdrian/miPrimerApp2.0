@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 import { api_key } from "../Database/firebaseConfig"
-// https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[API_KEY]
 
 export const authApi = createApi({
     reducerPath: 'authApi',

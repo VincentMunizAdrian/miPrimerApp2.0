@@ -9,22 +9,18 @@ import React from 'react'
 import { colors } from '../Global/Colors'
 
 import { Ionicons } from '@expo/vector-icons';
-import { FontAwesome5 } from '@expo/vector-icons';
-import { useDispatch, useSelector } from 'react-redux';
-import { signOut } from '../Features/User/userSlice';
+import { useSelector } from 'react-redux';
 
 const Header = ({
     route,
     navigation,
 }) => {
 
-    const dispatch = useDispatch()
     const {email} = useSelector(state => state.userReducer.value)
 
     return (
         <View style = {styles.containerHeader}>
             {
-            // Intentar crear mas simple la logica para los titulos
             route.name === "Home" ? 
             <Text style = {styles.textHeader}> Mundial de Figus </Text> :
             route.name === "ListCategory" ? 
@@ -44,13 +40,6 @@ const Header = ({
                     <Ionicons name="arrow-back-circle-outline" size={38} color="black" />
             </Pressable>
             }
-            {email ? 
-            <Pressable 
-                style={styles.buttonUser}
-                onPress={()=> dispatch(signOut())}>
-                    <FontAwesome5 name="user-circle" size={34} color="black" />
-            </Pressable>
-            : null}
         </View>
     )
 }
@@ -73,10 +62,5 @@ const styles = StyleSheet.create({
     textHeader: {
         fontSize: 32,
         fontFamily: 'Anton',
-    },
-    buttonUser:{
-        position: 'absolute',
-        right: 10,
-        top: '37%'
     },
 })

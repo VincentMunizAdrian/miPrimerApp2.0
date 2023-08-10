@@ -5,13 +5,13 @@ import AddButton from "../Components/AddButton";
 import { usePostUserLocationMutation } from "../Services/shopServices";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserLocation } from "../Features/User/userSlice";
-import { colors } from "../Global/Colors";
 import MapPreview from "../Components/MapPreview";
 import { google_maps_api_key } from "../Database/firebaseConfig";
 
 const LocationSelector = ({ navigation }) => {
 
     const [location, setLocation] = useState({ latitude: "", longitude: "" });
+    // console.log(location);
     const [error, setError] = useState("");
 
     const [address, setAddress] = useState("");
@@ -20,11 +20,6 @@ const LocationSelector = ({ navigation }) => {
     const {localId} = useSelector(state => state.userReducer.value)
     const dispatch = useDispatch()
 
-    /* const {localId} = useSelector(state => state.userReducer.value)
-    const [triggerPostAddress, result] = usePostUserLocationMutation();
-    const dispatch = useDispatch(); */
-
-    console.log(location);
 
     const onConfirmAddress = () => {
 
@@ -44,17 +39,8 @@ const LocationSelector = ({ navigation }) => {
         })
 
         navigation.goBack()
-        /* const locationFormatted = {
-            latitude: location.latitude,
-            longitude: location.longitude,
-            address: address
-        }
-        dispatch(setUserLocation(locationFormatted))
-        
-        triggerPostAddress({location: locationFormatted, localId}) */
     }
     
-    //Location requested on mount
     useEffect(() => {
         (async () => {
             try {
@@ -77,7 +63,6 @@ const LocationSelector = ({ navigation }) => {
         })()
     }, [])
 
-    //Reverse geocoding
     useEffect(() => {
         (async () => {
             try {
@@ -99,7 +84,6 @@ const LocationSelector = ({ navigation }) => {
             <Text
                 style = {styles.text}
             >My Address</Text>
-            {/* Flatlist con las directions */}
             {location ? (
                 <>
                     <Text 
@@ -136,21 +120,18 @@ const styles = StyleSheet.create({
     },
     text: {
         paddingTop: 20,
-        // fontFamily: 'Josefin',
         fontSize: 18
     },
     noLocationContainer: {
         width: 200,
         height: 200,
         borderWidth: 2,
-        // borderColor: colors.peach,
         padding: 10,
         justifyContent: "center",
         alignItems: "center",
     },
     address: {
         padding: 10,
-        // fontFamily: "Ubuntu",
         fontSize: 16,
     },
 });

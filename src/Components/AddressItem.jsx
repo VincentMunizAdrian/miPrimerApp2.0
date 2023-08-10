@@ -1,7 +1,6 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import React from "react";
-import { colors } from "../Global/Colors";
 
 const AddressItem = ({ location, navigation }) => {
 
@@ -12,7 +11,7 @@ const AddressItem = ({ location, navigation }) => {
     }
 
     return (
-        <View style={styles.card} onPress={() => {}}>
+        <View style={styles.card}>
             <View style={styles.textContainer}>
                 <Text style={styles.text}>
                     {location.address}
@@ -32,7 +31,6 @@ export default AddressItem;
 const styles = StyleSheet.create({
     card: {
         height: 100,
-        // backgroundColor: colors.red,
         padding: 10,
         margin: 10,
         borderWidth: 2,
@@ -48,13 +46,10 @@ const styles = StyleSheet.create({
         alignItems: "flex-start",
     },
     text: {
-        // fontFamily: "Josefin",
         fontSize: 17,
         color: "black",
     },
     text2: {
-        // fontFamily: "Josefin",
         fontSize: 19,
-        // color: colors.pink,
     },
 });

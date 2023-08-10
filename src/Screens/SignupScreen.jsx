@@ -1,6 +1,5 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
-// import InputForm from "../~/InputForm";
 import SubmitButton from "../Components/SubmitButton";
 import { colors } from "../Global/Colors";
 import { useSignUpMutation } from "../Services/authServices";
@@ -8,10 +7,6 @@ import { useDispatch } from "react-redux";
 import { setUser } from "../Features/User/userSlice";
 import { isAtLeastSixCharacters, isValidEmail } from "../Validations/auth";
 import InputForm from "../Components/InputForm";
-/* import { useSignUpMutation } from "../services/authService";
-import { useDispatch } from "react-redux";
-import { setUser } from "../features/auth/authSlice";
-import { signupSchema } from "../validations/singupSchema"; */
 
 const SignupScreen = ({ navigation }) => {
     const [email, setEmail] = useState("");
@@ -41,7 +36,6 @@ const SignupScreen = ({ navigation }) => {
 
     const onSubmit = () => {
         try {
-            //Submit logic with validations
             const isValidVariableEmail = isValidEmail(email)
             const isCorrectPassword = isAtLeastSixCharacters(password)
             const isRepeatedPasswordCorrect = password === confirmPassword
@@ -87,7 +81,9 @@ const SignupScreen = ({ navigation }) => {
                 />
                 <SubmitButton onPress={onSubmit} title="Send" />
                 <Text style={styles.sub}>Already have an account?</Text>
-                <Pressable onPress={() => navigation.navigate("Login")}>
+                <Pressable
+                    style={styles.buttonLogin}
+                    onPress={() => navigation.navigate("Login")}>
                     <Text style={styles.subLink}>Login</Text>
                 </Pressable>
             </View>
@@ -109,23 +105,27 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        // backgroundColor: colors.lightPink,
         gap: 15,
         paddingVertical: 20,
         borderRadius: 10,
     },
     title: {
         fontSize: 22,
-        // fontFamily: "Josefin",
     },
     sub: {
         fontSize: 14,
-        // fontFamily: "Josefin",
         color: "black",
     },
+    buttonLogin: {
+        backgroundColor: colors.onyx,
+        height: 30,
+        width: 50,
+        alignItems: 'center',
+        borderRadius: 5
+    },
     subLink: {
-        fontSize: 14,
-        // fontFamily: "Josefin",
-        color: "blue",
+        fontSize: 16,
+        fontFamily: "Anton",
+        color: colors.white,
     },
 });

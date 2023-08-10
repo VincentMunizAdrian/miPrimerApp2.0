@@ -23,7 +23,7 @@ const OrderItem = ({order}) => {
     const [modalVisible, setModalVisible] = useState(false);
 
     return (
-        <View style={styles.card} onPress={() => {}}>
+        <View style={styles.card}>
             <View style={styles.textContainer}>
                 <Text style={styles.text}>Fecha y Hora:</Text>
                 <Text style={styles.text}>

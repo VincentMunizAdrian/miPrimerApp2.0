@@ -17,6 +17,7 @@ import { colors } from '../Global/Colors';
 import { Ionicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
 import AuthStack from './AuthStack';
 import { useSelector } from 'react-redux';
 import MyProfileStack from './MyProfileStack';
@@ -61,8 +62,6 @@ const Navigator = () => {
                                     return (
                                         <View>
                                             <Ionicons name="md-cart-outline" size={28} color={ focused ? "black" : colors.gray} />
-                                            {/* lo dejo para un condicional */}
-                                            {/* <Ionicons name="md-cart-sharp" size={34} color="black" /> */}
                                         </View>
                                     )
                                 }} 
@@ -88,7 +87,7 @@ const Navigator = () => {
                                 tabBarIcon: ({focused}) => {
                                     return (
                                         <View>
-                                            <MaterialCommunityIcons name="clipboard-list-outline" size={28} color={ focused ? "black" : colors.gray} />
+                                            <FontAwesome5 name="user-circle" size={28} color={ focused ? "black" : colors.gray}/>
                                         </View>
                                     )
                                 }} 

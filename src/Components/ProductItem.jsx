@@ -22,7 +22,6 @@ const ProductItem = ({
     const dispatch = useDispatch()
 
     const onSelect = () => {
-        // dispatch(setIdSelected(item.id))
         dispatch(setIdSelected(item))
         navigation.navigate('Detail', {objectId: item.id, title: item.nombre})
     }

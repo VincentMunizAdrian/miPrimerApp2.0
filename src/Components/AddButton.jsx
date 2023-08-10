@@ -5,12 +5,11 @@ import { colors } from "../Global/Colors";
 const AddButton = ({
     title = "",
     onPress = () => {},
-    // color = colors.pink,
+    color = colors.platinum,
 }) => {
     return (
         <Pressable
-            // style={{ ...styles.button, backgroundColor: color }}
-            style={{ ...styles.button }}
+            style={{ ...styles.button, backgroundColor: color }}
             onPress={onPress}
         >
             <Text style={styles.text}>{title}</Text>
@@ -23,15 +22,13 @@ export default AddButton;
 const styles = StyleSheet.create({
     button: {
         width: "80%",
-        borderWidth: 1,
-        // backgroundColor: colors.pink,
+        borderWidth: 2,
         justifyContent: "center",
         alignItems: "center",
         padding: 8
     },
     text: {
-        // fontFamily: "Ubuntu",
+        fontFamily: "Anton",
         fontSize: 18,
-        // color: colors.lightPink,
     },
 });

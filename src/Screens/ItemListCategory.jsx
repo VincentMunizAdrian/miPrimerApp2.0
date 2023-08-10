@@ -21,7 +21,6 @@ const ItemListCategory = ({
 }) => {
 
     const {category} = route.params
-    // const productsSelected = useSelector(state => state.shopReducer.value.productsSelected)
     const categorySelected = useSelector(state => state.shopReducer.value.categorySelected)
     const {data: productsSelected, isLoading, isError} = useGetProductsByCategoryQuery(categorySelected)
 
@@ -37,10 +36,6 @@ const ItemListCategory = ({
         setProducts(productsFiltred)
         }
     }, [productsSelected, keyWord])
-    // useEffect(() => {
-    // const productsFiltred = productsSelected.filter(product => product.category === category && product.nombre.toLowerCase().includes(keyWord.toLowerCase()))
-    // setProducts(productsFiltred)
-    // }, [productsSelected, keyWord])
 
     const onSearch = (input) => {
     const searching = /^[a-zA-Z0-9\ ]*$/

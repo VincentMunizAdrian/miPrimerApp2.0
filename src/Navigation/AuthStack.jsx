@@ -2,7 +2,6 @@ import React from "react";
 import Header from '../Components/Header'
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import Cart from "../Screens/Cart";
 import SignupScreen from "../Screens/SignupScreen";
 import LoginScreen from "../Screens/LoginScreen";
 

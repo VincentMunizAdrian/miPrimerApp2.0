@@ -4,7 +4,7 @@ import {
   Text, 
   View,
   ImageBackground,
-  Button
+  Button,
 } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,6 +20,7 @@ const imagenBack = {uri: 'https://i.imgur.com/qQhkm4N.jpg'}
 
 const ItemDetail = ({
   route,
+  navigation
 }) => {
 
   const dispatch = useDispatch()
@@ -37,8 +38,11 @@ const ItemDetail = ({
 
   const onAddCart = () => {
       dispatch(addCartItem({...object, quantity: cantidad}))
-      // dispatch(addCartItem({...object, quantity: 1}))
+      navigation.navigate('Home')
   }
+
+  const returnHome = () => {
+}
 
   return (
     <ImageBackground
@@ -75,11 +79,10 @@ const ItemDetail = ({
               </View>
             </View>
             <View>
-                {/* por ahora el Button queda sin funcionar */}
                 <Button
-                    onPress={onAddCart}
-                    title="Agregar al carrito"
-                    color= {colors.onyx}
+                  onPress={onAddCart}
+                  title="Agregar al carrito"
+                  color= {colors.onyx}
                 />
             </View>
         </Card>

@@ -28,9 +28,7 @@ const CategoryItem = ({
 
     return (
         <View style={{width: width, alignItems: 'center'}}>
-            <Pressable
-            onPress={onSelectCategory}
-            >
+            <Pressable onPress={onSelectCategory}>
                 <Card>
                     <Text style={styles.textCategory}>{item}</Text>
                 </Card>

@@ -6,7 +6,6 @@ import {
 } from 'react-native';
 import React from 'react';
 
-// import categories from '../Data/categories.json';
 import CategoryItem from '../Components/CategoryItem';
 import { useGetCategoriesQuery } from '../Services/shopServices';
 
