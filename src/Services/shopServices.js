@@ -16,7 +16,7 @@ export const shopApi = createApi({
             transformResponse: (response) => {
                 console.log(response);
                 const productsTransformed = Object.values(response)
-                console.log(productsTransformed);
+                // console.log(productsTransformed);
                 return (productsTransformed)
             }
         }),

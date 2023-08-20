@@ -41,8 +41,8 @@ const ItemDetail = ({
       navigation.navigate('Home')
   }
 
-  const returnHome = () => {
-}
+//   const returnHome = () => {
+// }
 
   return (
     <ImageBackground

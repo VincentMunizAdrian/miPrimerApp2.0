@@ -32,7 +32,7 @@ const Cart = () => {
   const totalCompra = useSelector(state => state.cartReducer.value.item)
   
   console.log(totalCompra);
-  console.log(result);
+  // console.log(result);
 
   return (
     <View style={styles.containerCart}>

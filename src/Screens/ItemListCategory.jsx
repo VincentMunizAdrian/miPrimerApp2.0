@@ -64,8 +64,8 @@ const ItemListCategory = ({
                     data={products}
                     keyExtractor={product => product.id}
                     renderItem={({item}) => <ProductItem 
-                    item={item}
-                    navigation={navigation}
+                        item={item}
+                        navigation={navigation}
                     />} 
                     showsVerticalScrollIndicator={false}
                 />

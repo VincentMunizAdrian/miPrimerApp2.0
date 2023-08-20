@@ -33,6 +33,10 @@ const Home = ({
                     renderItem={({item}) => <CategoryItem item={item} navigation={navigation} 
                     />}
                     showsVerticalScrollIndicator={false}
+                    // showsHorizontalScrollIndicator={false}
+                    // contentContainerStyle={styles.wrapper}
+                    // horizontal={true}
+                    // style={styles.flatlist}
                 />
             </ImageBackground>
         </View>
@@ -50,4 +54,10 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%'
     },
+    // wrapper: {
+    //     gap: 20,
+    // },
+    // flatlist: {
+    //     width: '80%'
+    // }
 })

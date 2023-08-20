@@ -8,6 +8,7 @@ import { useState } from 'react'
 import { isAtLeastSixCharacters, isValidEmail } from '../Validations/auth'
 import { setUser } from '../Features/User/userSlice'
 import { useDispatch } from 'react-redux'
+import { insertSession } from '../SQLite'
 
 const LoginScreen = ({navigation}) => {
 
@@ -30,23 +31,55 @@ const LoginScreen = ({navigation}) => {
             });
         }
         
-        if (!isValidVariableEmail || !isCorrectPassword) setErrorEmailPassword ('The Email or the Password is/are not correct')
+        if (!isValidVariableEmail || !isCorrectPassword) setErrorEmailPassword ('The Email or the Password are not correct')
     }
 
-    console.log(resultSignIn);
+    useEffect(()=> {
+        (async ()=> {
+            try {
+                if(resultSignIn.isSuccess) {
 
-    useEffect(() => {
-        if (resultSignIn.isSuccess) {
-            dispatch(
-                setUser({
-                    email: resultSignIn.data.email,
-                    idToken: resultSignIn.data.idToken,
-                    localId: resultSignIn.data.localId,
-                    profileImage: ""
-                })
-            )
-        }
+                    //Insert session in SQLite database
+                    console.log('inserting Session');
+                    const response = await insertSession({
+                        idToken: resultSignIn.data.idToken,
+                        localId: resultSignIn.data.localId,
+                        email: resultSignIn.data.email,
+                    })
+                    // console.log('Session inserted: ');
+                    console.log(response);
+
+                    dispatch(setUser({
+                        email: resultSignIn.data.email,
+                        idToken: resultSignIn.data.idToken,
+                        localId: resultSignIn.data.localId,
+                        profileImage: "",
+                        location: {
+                            latitude: "",
+                            longitude: "",
+                        }
+                    }))
+                }
+            } catch (error) {
+                // console.log(error.message);
+            }
+        })()
     }, [resultSignIn])
+
+    // console.log(resultSignIn);
+
+    // useEffect(() => {
+    //     if (resultSignIn.isSuccess) {
+    //         dispatch(
+    //             setUser({
+    //                 email: resultSignIn.data.email,
+    //                 idToken: resultSignIn.data.idToken,
+    //                 localId: resultSignIn.data.localId,
+    //                 profileImage: ""
+    //             })
+    //         )
+    //     }
+    // }, [resultSignIn])
 
     return (
         <View style={styles.main}>
@@ -55,6 +88,7 @@ const LoginScreen = ({navigation}) => {
                 <InputForm 
                     label={"email"}
                     onChange={(email)=>setEmail(email)}
+                    error={errorEmailPassword}
                 />
                 <InputForm 
                     label={"password"}

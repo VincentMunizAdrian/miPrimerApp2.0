@@ -4,7 +4,7 @@ import React from "react";
 
 const AddressItem = ({ location, navigation }) => {
 
-    console.log(location);
+    // console.log(location);
 
     const onChangeLocation = () => {
         navigation.navigate('Location Selector')

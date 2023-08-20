@@ -19,7 +19,7 @@ const SignupScreen = ({ navigation }) => {
     const [triggerSignUp, result] = useSignUpMutation()
     const dispatch = useDispatch()
 
-    console.log(result);
+    // console.log(result);
 
     useEffect(()=> {
         if (result.isSuccess) {
@@ -29,6 +29,10 @@ const SignupScreen = ({ navigation }) => {
                     idToken: result.data.idToken,
                     localId: result.data.localId,
                     profileImage: "",
+                    location: {
+                        latitude: "",
+                        longitude: "",
+                    },
                 })
             )
         }
@@ -58,7 +62,7 @@ const SignupScreen = ({ navigation }) => {
 
         } catch (err) {
             console.log("Catch error");
-            console.log(err.message);
+            // console.log(err.message);
         }
     };
 

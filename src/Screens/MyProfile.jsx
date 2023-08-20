@@ -1,9 +1,10 @@
 import { Image, StyleSheet, View } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import AddButton from "../Components/AddButton";
 import { useDispatch, useSelector } from "react-redux";
 import { useGetProfileImageQuery } from "../Services/shopServices";
 import { signOut } from "../Features/User/userSlice";
+import { deleteSession } from "../SQLite";
 
 const MyProfile = ({navigation}) => {
 
@@ -20,6 +21,19 @@ const MyProfile = ({navigation}) => {
     }
     
     const dispatch = useDispatch()
+
+    const onSignout = async () => {
+        try {
+            console.log("Deleting session...");
+            const response = await deleteSession(localId)
+            console.log("Session deleted: ")
+            console.log(response)
+            dispatch(signOut())
+        } catch (error) {
+            console.log('Error while sign out:')
+            console.log(error.message);
+        }
+    }
 
 
     return (
@@ -39,7 +53,8 @@ const MyProfile = ({navigation}) => {
             )}
             <AddButton onPress={launchCamera} title="Add profile picture" />
             <AddButton onPress={launchLocation} title="My Address" />
-            <AddButton onPress={()=> dispatch(signOut())} title="Close Session" />
+            <AddButton onPress={onSignout} title="Sign Out" />
+            {/* <AddButton onPress={()=> dispatch(signOut())} title="Sign Out" /> */}
         </View>
     );
 };
