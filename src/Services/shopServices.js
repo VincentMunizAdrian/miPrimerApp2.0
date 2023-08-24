@@ -27,6 +27,13 @@ export const shopApi = createApi({
                 return (productsTransformed)
             }
         }),
+        makingOrder: builder.mutation({
+            query: (preOrder) => ({
+                url: 'preOrders.json',
+                method: 'POST',
+                body: preOrder
+            })
+        }),
         postCart: builder.mutation({
             query: (order) => ({
                 url: 'orders.json',
@@ -68,6 +75,7 @@ export const {
     useGetProductsQuery,
     useGetProductsByCategoryQuery,
     useGetProductsByIdQuery,
+    useMakingOrderMutation,
     usePostCartMutation,
     useGetProfileImageQuery,
     usePostProfileImageMutation,

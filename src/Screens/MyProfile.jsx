@@ -2,9 +2,10 @@ import { Image, StyleSheet, View } from "react-native";
 import React from "react";
 import AddButton from "../Components/AddButton";
 import { useDispatch, useSelector } from "react-redux";
-import { useGetProfileImageQuery } from "../Services/shopServices";
+import { useGetProfileImageQuery, useMakingOrderMutation } from "../Services/shopServices";
 import { signOut } from "../Features/User/userSlice";
 import { deleteSession } from "../SQLite";
+import { clearUserCart } from "../Features/Cart/cartSlice";
 
 const MyProfile = ({navigation}) => {
 
@@ -19,7 +20,11 @@ const MyProfile = ({navigation}) => {
     const launchLocation = async () => {
         navigation.navigate('List Address')
     }
+
+    const {items: CartData, total, updatedAt, user} = useSelector(state => state.cartReducer.value)
     
+    const [triggerMakingOrder, orderResult] = useMakingOrderMutation()
+
     const dispatch = useDispatch()
 
     const onSignout = async () => {
@@ -29,6 +34,8 @@ const MyProfile = ({navigation}) => {
             console.log("Session deleted: ")
             console.log(response)
             dispatch(signOut())
+            triggerMakingOrder({items: CartData, total, updatedAt, user})
+            dispatch(clearUserCart())
         } catch (error) {
             console.log('Error while sign out:')
             console.log(error.message);

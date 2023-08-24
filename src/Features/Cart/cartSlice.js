@@ -30,6 +30,7 @@ export const cartSlice = createSlice({
             )
 
             state.value.updatedAt = new Date().toLocaleString()
+
         },
         removeCartItem: (state, action) => {
             let newItems = state.value.items.filter(item => item.id != action.payload)
@@ -47,6 +48,12 @@ export const cartSlice = createSlice({
             state.value.items = []
             state.value.total = 0
             state.value.updatedAt = Date.now()
+        },
+        clearUserCart: (state) => {
+            state.value.user = ""
+            state.value.items = []
+            state.value.total = 0
+            state.value.updatedAt = Date.now()
         }
     }
 })
@@ -54,8 +61,9 @@ export const cartSlice = createSlice({
 export const {
     addCartItem, 
     removeCartItem, 
-    removeFullCart, 
-    setUserCart
+    setUserCart,
+    removeFullCart,
+    clearUserCart
 } = cartSlice.actions
 
 export default cartSlice.reducer

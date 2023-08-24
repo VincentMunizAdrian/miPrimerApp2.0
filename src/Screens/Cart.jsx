@@ -15,7 +15,7 @@ import { useEffect } from 'react';
 import { removeFullCart } from '../Features/Cart/cartSlice';
 
 const Cart = () => {
-  const {items: CartData, total, updateAt, user} = useSelector(state => state.cartReducer.value)
+  const {items: CartData, total, updatedAt, user} = useSelector(state => state.cartReducer.value)
   const [triggerPostCart, result] = usePostCartMutation()
   const dispatch = useDispatch()
 
@@ -26,7 +26,7 @@ const Cart = () => {
   }, [result])
   
   const onConfirm = () => {
-    triggerPostCart({items: CartData, total, user, updateAt})
+    triggerPostCart({items: CartData, total, updatedAt, user})
   }
 
   const totalCompra = useSelector(state => state.cartReducer.value.item)

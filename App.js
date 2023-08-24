@@ -18,9 +18,6 @@ export default function App() {
   }, [])
 
   const [fontsLoaded] = useFonts(font);
-  // const [fontsLoaded] = useFonts({
-  //   'Anton': require('./src/Assets/Fonts/Anton/Anton-Regular.ttf'),
-  // });
 
   if (!fontsLoaded) {
     return null;

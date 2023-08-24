@@ -8,15 +8,21 @@ import {
 } from 'react-native'
 import React from 'react'
 
-import OrderInfo from '../Data/ordes.json'
+// import OrderInfo from '../Data/ordes.json'
 import OrderItem from '../Components/OrderItem'
 import { colors } from '../Global/Colors'
+import { useSelector } from 'react-redux'
+import { useGetOrdersQuery } from '../Services/orderServices'
 
 const Order = () => {
+  const email = useSelector(state => state.userReducer.value.email)
+    const { data: orderData, isLoading, isError } = useGetOrdersQuery(email);
+
   return (
     <View style={styles.containerOrder}>
       <FlatList 
-        data={OrderInfo}
+        // data={OrderInfo}
+        data={orderData}
         keyExtractor={orderItem => orderItem.id}
         renderItem={({item}) => {
           return (

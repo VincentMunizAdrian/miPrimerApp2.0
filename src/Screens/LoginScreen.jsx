@@ -9,6 +9,7 @@ import { isAtLeastSixCharacters, isValidEmail } from '../Validations/auth'
 import { setUser } from '../Features/User/userSlice'
 import { useDispatch } from 'react-redux'
 import { insertSession } from '../SQLite'
+import { setUserCart } from '../Features/Cart/cartSlice'
 
 const LoginScreen = ({navigation}) => {
 
@@ -16,9 +17,45 @@ const LoginScreen = ({navigation}) => {
     const [password, setPassword] = useState("")
     const [errorEmailPassword, setErrorEmailPassword] = useState("")
 
-    const dispatch = useDispatch()
-
     const [triggerSignIn, resultSignIn] = useSignInMutation()
+    
+    const dispatch = useDispatch()
+    
+    
+    useEffect(()=> {
+        (async ()=> {
+            try {
+                if(resultSignIn.isSuccess) {
+                    
+                    //Insert session in SQLite database
+                    console.log('inserting Session');
+                    const response = await insertSession({
+                        idToken: resultSignIn.data.idToken,
+                        localId: resultSignIn.data.localId,
+                        email: resultSignIn.data.email,
+                    })
+                    // console.log('Session inserted: ');
+                    console.log(response);
+                    
+                    dispatch(setUser({
+                        email: resultSignIn.data.email,
+                        idToken: resultSignIn.data.idToken,
+                        localId: resultSignIn.data.localId,
+                        profileImage: "",
+                        location: {
+                            latitude: "",
+                            longitude: "",
+                            address: "",
+                        }
+                    }))
+                    dispatch(setUserCart(resultSignIn.data.email))
+                }
+            } catch (error) {
+                // console.log(error.message);
+            }
+        })()
+    }, [resultSignIn])
+    
     const onSubmit = () => {
         const isValidVariableEmail = isValidEmail(email)
         const isCorrectPassword = isAtLeastSixCharacters(password)
@@ -33,39 +70,7 @@ const LoginScreen = ({navigation}) => {
         
         if (!isValidVariableEmail || !isCorrectPassword) setErrorEmailPassword ('The Email or the Password are not correct')
     }
-
-    useEffect(()=> {
-        (async ()=> {
-            try {
-                if(resultSignIn.isSuccess) {
-
-                    //Insert session in SQLite database
-                    console.log('inserting Session');
-                    const response = await insertSession({
-                        idToken: resultSignIn.data.idToken,
-                        localId: resultSignIn.data.localId,
-                        email: resultSignIn.data.email,
-                    })
-                    // console.log('Session inserted: ');
-                    console.log(response);
-
-                    dispatch(setUser({
-                        email: resultSignIn.data.email,
-                        idToken: resultSignIn.data.idToken,
-                        localId: resultSignIn.data.localId,
-                        profileImage: "",
-                        location: {
-                            latitude: "",
-                            longitude: "",
-                        }
-                    }))
-                }
-            } catch (error) {
-                // console.log(error.message);
-            }
-        })()
-    }, [resultSignIn])
-
+    
     // console.log(resultSignIn);
 
     // useEffect(() => {

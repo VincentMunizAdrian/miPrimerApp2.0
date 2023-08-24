@@ -7,6 +7,8 @@ import { useDispatch } from "react-redux";
 import { setUser } from "../Features/User/userSlice";
 import { isAtLeastSixCharacters, isValidEmail } from "../Validations/auth";
 import InputForm from "../Components/InputForm";
+import { setUserCart } from "../Features/Cart/cartSlice";
+import { insertSession } from "../SQLite";
 
 const SignupScreen = ({ navigation }) => {
     const [email, setEmail] = useState("");
@@ -21,29 +23,31 @@ const SignupScreen = ({ navigation }) => {
 
     // console.log(result);
 
-    useEffect(()=> {
-        if (result.isSuccess) {
-            dispatch(
-                setUser({
-                    email: result.data.email,
-                    idToken: result.data.idToken,
-                    localId: result.data.localId,
-                    profileImage: "",
-                    location: {
-                        latitude: "",
-                        longitude: "",
-                    },
-                })
-            )
-        }
-    }, [result])
+    
+    // useEffect(()=> {
+    //     if (result.isSuccess) {
+    //         dispatch(
+    //             setUser({
+    //                 email: result.data.email,
+    //                 idToken: result.data.idToken,
+    //                 localId: result.data.localId,
+    //                 profileImage: "",
+    //                 location: {
+    //                     latitude: "",
+    //                     longitude: "",
+    //                     address: "",
+    //                 },
+    //             })
+    //         )
+    //     }
+    // }, [result])
 
     const onSubmit = () => {
         try {
             const isValidVariableEmail = isValidEmail(email)
             const isCorrectPassword = isAtLeastSixCharacters(password)
             const isRepeatedPasswordCorrect = password === confirmPassword
-
+            
             if (isValidVariableEmail && isCorrectPassword && isRepeatedPasswordCorrect) {
                 const request = {
                     email,
@@ -52,7 +56,7 @@ const SignupScreen = ({ navigation }) => {
                 }
                 triggerSignUp(request)
             }
-
+            
             if (!isValidVariableEmail) setErrorMail ('Email is not correct')
             else setErrorMail('')
             if (!isCorrectPassword) setErrorPassword ('Password must be at least 6 characters')
@@ -65,6 +69,36 @@ const SignupScreen = ({ navigation }) => {
             // console.log(err.message);
         }
     };
+
+    useEffect(() => {
+        (async () => {
+            try {
+                if (result.isSuccess) {
+                    const response = await insertSession({
+                        idToken: result.data.idToken,
+                        localId: result.data.localId,
+                        email: result.data.email,
+                    })
+
+                    dispatch(
+                        setUser({
+                            email: result.data.email,
+                            idToken: result.data.idToken,
+                            localId: result.data.localId,
+                            profileImage: "",
+                            location: {
+                                latitude: "",
+                                longitude: "",
+                                address: ""
+                            },
+                        })
+                    )
+                    dispatch(setUserCart(result.data.email))
+                }
+            } catch (error) {
+            }
+        })()
+    }, [result])
 
     return (
         <View style={styles.main}>
