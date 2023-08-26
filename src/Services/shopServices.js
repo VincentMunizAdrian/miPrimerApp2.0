@@ -14,14 +14,14 @@ export const shopApi = createApi({
         getProductsByCategory: builder.query({
             query: (category) => `products.json?orderBy="category"&equalTo="${category}"`,
             transformResponse: (response) => {
-                console.log(response);
+                // console.log(response);
                 const productsTransformed = Object.values(response)
                 // console.log(productsTransformed);
                 return (productsTransformed)
             }
         }),
         getProductsById: builder.query({
-            query: (productId) => `products.json?orderBy="id"&equalTo=${productId}`,
+            query: (productId) => `products.json?orderBy="id"&equalTo="${productId}"`,
             transformResponse: (response) =>{
                 const productsTransformed = Object.values(response).pop()
                 return (productsTransformed)

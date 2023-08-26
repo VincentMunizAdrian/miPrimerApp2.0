@@ -13,9 +13,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { usePostCartMutation } from '../Services/shopServices';
 import { useEffect } from 'react';
 import { removeFullCart } from '../Features/Cart/cartSlice';
+// import { useGetPreOrdersQuery } from '../Services/orderServices';
 
 const Cart = () => {
   const {items: CartData, total, updatedAt, user} = useSelector(state => state.cartReducer.value)
+  const email = useSelector(state => state.userReducer.value.email)
+  // const {data: preOrderData, isLoading, isError} = useGetPreOrdersQuery(email);
   const [triggerPostCart, result] = usePostCartMutation()
   const dispatch = useDispatch()
 
@@ -29,15 +32,16 @@ const Cart = () => {
     triggerPostCart({items: CartData, total, updatedAt, user})
   }
 
-  const totalCompra = useSelector(state => state.cartReducer.value.item)
+  // const totalCompra = useSelector(state => state.cartReducer.value.item)
   
-  console.log(totalCompra);
+  // console.log(totalCompra);
   // console.log(result);
 
   return (
     <View style={styles.containerCart}>
       <FlatList
         data={CartData}
+        // data={preOrderData}
         keyExtractor={cartItem => cartItem.id} 
         renderItem={({item}) => {
           return (

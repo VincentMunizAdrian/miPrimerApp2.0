@@ -13,8 +13,9 @@ import { addCartItem } from '../Features/Cart/cartSlice'
 
 import Card from '../Components/Card';
 import Counter from '../Components/Counter';
-import objects from '../Data/products.json';
+// import objects from '../Data/products.json';
 import { colors } from '../Global/Colors';
+import { useGetProductsByIdQuery } from '../Services/shopServices';
 
 const imagenBack = {uri: 'https://i.imgur.com/qQhkm4N.jpg'}
 
@@ -25,14 +26,17 @@ const ItemDetail = ({
 
   const dispatch = useDispatch()
 
-  const {objectId: idChoice} = route.params;
+  // const {objectId: idChoice} = route.params;
 
-  const [object, setObject] = useState(null)
+  // useEffect(() => {
+  //   const objectChoice = objects.find(object => object.id === idChoice)
+  //   setObject(objectChoice)
+  // }, [idChoice])
 
-  useEffect(() => {
-    const objectChoice = objects.find(object => object.id === idChoice)
-    setObject(objectChoice)
-  }, [idChoice])
+  
+  // const [object, setObject] = useState(null)
+  const object = useSelector(state => state.shopReducer.value.idSelected)
+  const { data, isLoading, isError } = useGetProductsByIdQuery(object);
 
   const cantidad = useSelector(state => state.counterReducer.value)
 

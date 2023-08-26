@@ -14,11 +14,11 @@ import { colors } from "../Global/Colors";
 
 const OrderItem = ({order}) => {
       // additional queda para el costo de envio
-    const additional = 0
-    const factura = order.items.reduce(
-    (acc, currentItem) => (acc += currentItem.precio * currentItem.quantity), additional 
-    );
-    console.log(factura);
+    // const additional = 0
+    // const factura = order.items.reduce(
+    // (acc, currentItem) => (acc += currentItem.precio * currentItem.quantity), additional 
+    // );
+    // console.log(factura);
 
     const [modalVisible, setModalVisible] = useState(false);
 
@@ -29,9 +29,10 @@ const OrderItem = ({order}) => {
                 <Text style={styles.text}>
                     {new Date(order.createdAt).toLocaleString()}
                 </Text>
-                <Text style={styles.text2}>Total: ${factura}</Text>
+                {/* <Text style={styles.text2}>Total: ${factura}</Text> */}
+                <Text style={styles.text2}>Total: ${order.total}</Text>
                 <Text>
-                    {order.items.nombre}
+                    {/* {order.items.nombre} */}
                 </Text>
             </View>
             <Pressable

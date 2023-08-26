@@ -34,7 +34,9 @@ const MyProfile = ({navigation}) => {
             console.log("Session deleted: ")
             console.log(response)
             dispatch(signOut())
-            triggerMakingOrder({items: CartData, total, updatedAt, user})
+            {total != 0 ?
+                triggerMakingOrder({items: CartData, total, updatedAt, user})
+            : null}
             dispatch(clearUserCart())
         } catch (error) {
             console.log('Error while sign out:')

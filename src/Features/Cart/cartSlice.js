@@ -6,7 +6,7 @@ export const cartSlice = createSlice({
         value: {
             user: "",
             updatedAt: "",
-            total: null,
+            total: 0,
             items: []
         }
     },
