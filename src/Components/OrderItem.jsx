@@ -12,7 +12,7 @@ import { Fontisto } from '@expo/vector-icons';
 
 import { colors } from "../Global/Colors";
 
-const OrderItem = ({order}) => {
+const OrderItem = ({item}) => {
       // additional queda para el costo de envio
     // const additional = 0
     // const factura = order.items.reduce(
@@ -27,13 +27,14 @@ const OrderItem = ({order}) => {
             <View style={styles.textContainer}>
                 <Text style={styles.text}>Fecha y Hora:</Text>
                 <Text style={styles.text}>
-                    {new Date(order.createdAt).toLocaleString()}
+                    {item.updatedAt}
+                    {/* {new Date(item.createdAt).toLocaleString()} */}
                 </Text>
                 {/* <Text style={styles.text2}>Total: ${factura}</Text> */}
-                <Text style={styles.text2}>Total: ${order.total}</Text>
-                <Text>
-                    {/* {order.items.nombre} */}
-                </Text>
+                <Text style={styles.text2}>Total: ${item.total}</Text>
+                {/* <Text>
+                    {item.total}
+                </Text> */}
             </View>
             <Pressable
                 style={styles.button}
@@ -51,7 +52,7 @@ const OrderItem = ({order}) => {
             }}>
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
-                    <Text style={styles.modalText}>N° de pedido: {order.id} </Text>
+                    <Text style={styles.modalText}>N° de pedido: {item.id} </Text>
                         <Pressable
                             style={[styles.button, styles.buttonClose]}
                             onPress={() => setModalVisible(!modalVisible)}

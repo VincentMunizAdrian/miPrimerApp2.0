@@ -67,6 +67,15 @@ export const shopApi = createApi({
                 }
             })
         }),
+        // getOrders: builder.query({
+        //     // query: () => 'orders.json'
+        //     query: (email) => `orders.json?orderBy="user"&equalTo="${email}"`,
+        //     transformResponse: (response) => {
+        //         // const ordersTransformed = Object.values(response)
+        //         const ordersTransformed = Object.values(response)
+        //         return (ordersTransformed)
+        //     }
+        // }),
     })
 })
 
@@ -81,4 +90,5 @@ export const {
     usePostProfileImageMutation,
     useGetUserLocationQuery,
     usePostUserLocationMutation,
+    useGetOrdersQuery
 } = shopApi

@@ -13,14 +13,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { usePostCartMutation } from '../Services/shopServices';
 import { useEffect } from 'react';
 import { removeFullCart } from '../Features/Cart/cartSlice';
+import { useGetPreOrdersQuery } from '../Services/orderServices';
 // import { useGetPreOrdersQuery } from '../Services/orderServices';
 
 const Cart = () => {
-  const {items: CartData, total, updatedAt, user} = useSelector(state => state.cartReducer.value)
-  const email = useSelector(state => state.userReducer.value.email)
-  // const {data: preOrderData, isLoading, isError} = useGetPreOrdersQuery(email);
+  const {items: CartData, total, updatedAt, user, id} = useSelector(state => state.cartReducer.value)
   const [triggerPostCart, result] = usePostCartMutation()
   const dispatch = useDispatch()
+
+  const email = useSelector(state => state.userReducer.value.email)
+  const {data: preOrder, isLoading, isError} = useGetPreOrdersQuery(email)
 
   useEffect(() => {
     if (result.isSuccess) {
@@ -29,9 +31,10 @@ const Cart = () => {
   }, [result])
   
   const onConfirm = () => {
-    triggerPostCart({items: CartData, total, updatedAt, user})
+    triggerPostCart({items: CartData, total, updatedAt, user, id})
   }
-
+  
+  // const {data: preOrderData, isLoading, isError} = useGetPreOrdersQuery(email);
   // const totalCompra = useSelector(state => state.cartReducer.value.item)
   
   // console.log(totalCompra);
@@ -39,7 +42,20 @@ const Cart = () => {
 
   return (
     <View style={styles.containerCart}>
-      <FlatList
+      {preOrder ? 
+        <FlatList
+        data={preOrder}
+        // data={preOrderData}
+        keyExtractor={cartItem => cartItem.id} 
+        renderItem={({item}) => {
+          return (
+            <CartItem
+              cartItem={item}
+            />
+          )
+        }}
+      /> :
+        <FlatList
         data={CartData}
         // data={preOrderData}
         keyExtractor={cartItem => cartItem.id} 
@@ -50,7 +66,7 @@ const Cart = () => {
             />
           )
         }}
-      />
+      />}
       <View style={styles.totalContainer}>
 
         {

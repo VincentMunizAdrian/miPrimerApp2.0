@@ -21,7 +21,7 @@ const MyProfile = ({navigation}) => {
         navigation.navigate('List Address')
     }
 
-    const {items: CartData, total, updatedAt, user} = useSelector(state => state.cartReducer.value)
+    const {items: CartData, total, updatedAt, user, id } = useSelector(state => state.cartReducer.value)
     
     const [triggerMakingOrder, orderResult] = useMakingOrderMutation()
 
@@ -35,7 +35,7 @@ const MyProfile = ({navigation}) => {
             console.log(response)
             dispatch(signOut())
             {total != 0 ?
-                triggerMakingOrder({items: CartData, total, updatedAt, user})
+                triggerMakingOrder({items: CartData, total, updatedAt, user, id})
             : null}
             dispatch(clearUserCart())
         } catch (error) {

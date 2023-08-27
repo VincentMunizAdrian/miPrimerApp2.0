@@ -12,18 +12,13 @@ import React, { useEffect } from 'react'
 import OrderItem from '../Components/OrderItem'
 import { colors } from '../Global/Colors'
 import { useSelector } from 'react-redux'
+// import { useGetOrdersQuery } from '../Services/orderServices'
 import { useGetOrdersQuery } from '../Services/orderServices'
 // import { useState } from 'react'
 
 const Order = () => {
-  // const email = useSelector(state => state.cartReducer.value.user)
-  // const email = useSelector(state => state.userReducer.value.email)
-  const email = useSelector(state => state.cartReducer.value.user)
-  console.log(email);
+  const email = useSelector(state => state.userReducer.value.email)
   const { data: orderData, isLoading, isError } = useGetOrdersQuery(email);
-
-  console.log(isLoading);
-  console.log(isError);
 
   // const [orders, setOrders] = useState([])
 
@@ -38,14 +33,12 @@ const Order = () => {
   return (
     <View style={styles.containerOrder}>
       <FlatList 
-        // data={OrderInfo}
         data={orderData}
-        // data={orders}
         keyExtractor={orderItem => orderItem.id}
         renderItem={({item}) => {
           return (
             <OrderItem
-              order={item}
+              item={item}
             />
           )
         }}

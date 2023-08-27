@@ -7,7 +7,8 @@ export const cartSlice = createSlice({
             user: "",
             updatedAt: "",
             total: 0,
-            items: []
+            items: [],
+            id: ""
         }
     },
     reducers: {
@@ -31,6 +32,7 @@ export const cartSlice = createSlice({
 
             state.value.updatedAt = new Date().toLocaleString()
 
+            state.value.id = Math.random() * 1000000000
         },
         removeCartItem: (state, action) => {
             let newItems = state.value.items.filter(item => item.id != action.payload)
@@ -47,13 +49,15 @@ export const cartSlice = createSlice({
         removeFullCart: (state) => {
             state.value.items = []
             state.value.total = 0
-            state.value.updatedAt = Date.now()
+            state.value.updatedAt = ""
+            state.value.id = ""
         },
         clearUserCart: (state) => {
             state.value.user = ""
             state.value.items = []
             state.value.total = 0
-            state.value.updatedAt = Date.now()
+            state.value.updatedAt = ""
+            state.value.id = ""
         }
     }
 })
