@@ -42,7 +42,19 @@ const Cart = () => {
 
   return (
     <View style={styles.containerCart}>
-      {preOrder ? 
+      <FlatList
+        data={CartData}
+        // data={preOrderData}
+        keyExtractor={cartItem => cartItem.id} 
+        renderItem={({item}) => {
+          return (
+            <CartItem
+              cartItem={item}
+            />
+          )
+        }}
+      />
+      {/* {preOrder ? 
         <FlatList
         data={preOrder}
         // data={preOrderData}
@@ -66,7 +78,7 @@ const Cart = () => {
             />
           )
         }}
-      />}
+      />} */}
       <View style={styles.totalContainer}>
 
         {
