@@ -20,6 +20,25 @@ const OrderItem = ({item}) => {
     // );
     // console.log(factura);
 
+
+    // const detalleNombre = item.items.map(item =>
+    // [item.nombre, item.precio, item.quantity] );
+
+    // const detalleNombre = item.items.map(item =>
+    //     item.nombre );
+    // const detallePrecio = item.items.map(item =>
+    //     item.precio );
+    // const detalleQuantity = item.items.map(item =>
+    //     item.quantity );
+
+
+    // const detalletodo = item.map(item => {
+    //     item.items[""] 
+    // });
+
+        // console.log(detalleNombre);
+        // console.log(detalletodo);
+
     const [modalVisible, setModalVisible] = useState(false);
 
     return (
@@ -53,6 +72,10 @@ const OrderItem = ({item}) => {
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
                     <Text style={styles.modalText}>N° de pedido: {item.id} </Text>
+                    {/* <Text style={styles.text2}>{detalleNombre}</Text> */}
+                {/* <Text style={styles.text2}>{detallePrecio}</Text>
+                <Text style={styles.text2}>{detalleQuantity}</Text> */}
+
                         <Pressable
                             style={[styles.button, styles.buttonClose]}
                             onPress={() => setModalVisible(!modalVisible)}

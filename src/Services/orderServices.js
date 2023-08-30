@@ -17,7 +17,7 @@ export const orderApi = createApi({
             transformResponse: (response) => {
                 const ordersTransformed = Object.values(response)
                 return (ordersTransformed)
-            }
+            },
         }),
     })
 })
