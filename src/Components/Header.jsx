@@ -26,7 +26,9 @@ const Header = ({
             route.name === "ListCategory" ? 
             <Text style = {styles.textHeader}> {route.params.category} </Text> :
             route.name === "Detail" ?
-            <Text style = {styles.textHeader}> {route.params.title} </Text> : 
+            <Text style = {styles.textHeader}> {route.params.title} </Text> :
+            // route.name === "My Order List" ? 
+            // <Text style = {styles.textHeader}> My Order List </Text> :
             <Text style = {styles.textHeader}> {route.name} </Text> 
             }
             

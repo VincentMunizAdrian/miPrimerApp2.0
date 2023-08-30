@@ -5,6 +5,7 @@ import {
     Alert,
     Modal,
     Pressable,
+    FlatList
 } from 'react-native'
 import React, {useState} from 'react';
 
@@ -35,6 +36,16 @@ const OrderItem = ({item}) => {
     // const detalletodo = item.map(item => {
     //     item.items[""] 
     // });
+
+const nuevoArreglo = item.items.map(objeto => ({
+    nombre: objeto.nombre,
+    quantity: objeto.quantity,
+    precio: objeto.precio
+}));
+
+// console.log(nuevoArreglo);
+// console.log(nombre);
+// console.log(objeto.precio);
 
         // console.log(detalleNombre);
         // console.log(detalletodo);
@@ -71,10 +82,32 @@ const OrderItem = ({item}) => {
             }}>
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
-                    <Text style={styles.modalText}>N° de pedido: {item.id} </Text>
+                    {/* <Text style={styles.modalText}>N° de pedido: {item.id} </Text> */}
+
+                    <FlatList
+                        data={nuevoArreglo}
+                        keyExtractor={(item, index) => index.toString()}
+                        renderItem={({ item }) => (
+                            <View style={styles.orderList}>
+                                <View style={styles.itemsColum}>
+                                    <Text>Name Item:</Text>
+                                    <Text>{item.nombre}</Text>
+                                </View>
+                                <View>
+                                    <Text>Quantity:</Text>
+                                    <Text>{item.quantity}</Text>
+                                </View>
+                                <View>
+                                    <Text>Price:</Text>
+                                    <Text>{item.precio}</Text>
+                                </View>
+                            </View>)}
+                    />
+
                     {/* <Text style={styles.text2}>{detalleNombre}</Text> */}
                 {/* <Text style={styles.text2}>{detallePrecio}</Text>
                 <Text style={styles.text2}>{detalleQuantity}</Text> */}
+                {/* <Text style={styles.text2}>{{nuevoArreglo}}</Text> */}
 
                         <Pressable
                             style={[styles.button, styles.buttonClose]}
@@ -159,5 +192,15 @@ const styles = StyleSheet.create({
         fontFamily: 'Anton',
         textAlign: 'center',
         marginBottom: 15,
+    },
+    orderList: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        width: '99%',
+        gap: 10,
+        padding: 30,
+        borderColor: 'red'
+
     },
 });

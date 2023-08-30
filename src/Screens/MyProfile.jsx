@@ -21,6 +21,10 @@ const MyProfile = ({navigation}) => {
         navigation.navigate('List Address')
     }
 
+    const launchOrders = async () => {
+        navigation.navigate('My Order List')
+    }
+
     const {items: CartData, total, updatedAt, user, id } = useSelector(state => state.cartReducer.value)
     
     const [triggerMakingOrder, orderResult] = useMakingOrderMutation()
@@ -62,6 +66,7 @@ const MyProfile = ({navigation}) => {
             )}
             <AddButton onPress={launchCamera} title="Add profile picture" />
             <AddButton onPress={launchLocation} title="My Address" />
+            <AddButton onPress={launchOrders} title="My Order List" />
             <AddButton onPress={onSignout} title="Sign Out" />
             {/* <AddButton onPress={()=> dispatch(signOut())} title="Sign Out" /> */}
         </View>

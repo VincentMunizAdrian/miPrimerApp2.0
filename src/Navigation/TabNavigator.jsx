@@ -55,7 +55,7 @@ const TabNavigator = () => {
                     }} 
                 }
             />
-            <Tab.Screen
+            {/* <Tab.Screen
                 name='Order'
                 component={OrderStack}
                 options={{
@@ -67,7 +67,7 @@ const TabNavigator = () => {
                         )
                     }} 
                 }
-            />
+            /> */}
             <Tab.Screen
                 name='myProfile'
                 component={MyProfileStack}

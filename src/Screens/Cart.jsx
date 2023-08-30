@@ -14,22 +14,24 @@ import { usePostCartMutation } from '../Services/shopServices';
 import { useEffect } from 'react';
 import { removeFullCart } from '../Features/Cart/cartSlice';
 import { useGetPreOrdersQuery } from '../Services/orderServices';
+import PreCartItem from '../Components/PreCartItem';
 // import { useGetPreOrdersQuery } from '../Services/orderServices';
 
 const Cart = () => {
   const {items: CartData, total, updatedAt, user, id} = useSelector(state => state.cartReducer.value)
-  const [triggerPostCart, result] = usePostCartMutation()
-  const dispatch = useDispatch()
-
+  
   const email = useSelector(state => state.userReducer.value.email)
   const {data: preOrder, isLoading, isError} = useGetPreOrdersQuery(email)
-
+  
+  const dispatch = useDispatch()
+  
   useEffect(() => {
     if (result.isSuccess) {
       dispatch(removeFullCart())
     }
   }, [result])
   
+  const [triggerPostCart, result] = usePostCartMutation()
   const onConfirm = () => {
     triggerPostCart({items: CartData, total, updatedAt, user, id})
   }
@@ -58,11 +60,11 @@ const Cart = () => {
         <FlatList
         data={preOrder}
         // data={preOrderData}
-        keyExtractor={cartItem => cartItem.id} 
+        keyExtractor={preCartItem => preCartItem.id} 
         renderItem={({item}) => {
           return (
-            <CartItem
-              cartItem={item}
+            <PreCartItem
+              PreCartItem={item}
             />
           )
         }}
