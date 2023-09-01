@@ -1,11 +1,16 @@
-import { Image, StyleSheet, View } from "react-native";
+import { 
+    Image, 
+    StyleSheet, 
+    View 
+} from "react-native";
 import React from "react";
-import AddButton from "../Components/AddButton";
 import { useDispatch, useSelector } from "react-redux";
+
+import AddButton from "../Components/AddButton";
 import { useGetProfileImageQuery, useMakingOrderMutation } from "../Services/shopServices";
 import { signOut } from "../Features/User/userSlice";
-import { deleteSession } from "../SQLite";
 import { clearUserCart } from "../Features/Cart/cartSlice";
+import { deleteSession } from "../SQLite";
 
 const MyProfile = ({navigation}) => {
 
@@ -68,7 +73,6 @@ const MyProfile = ({navigation}) => {
             <AddButton onPress={launchLocation} title="My Address" />
             <AddButton onPress={launchOrders} title="My Order List" />
             <AddButton onPress={onSignout} title="Sign Out" />
-            {/* <AddButton onPress={()=> dispatch(signOut())} title="Sign Out" /> */}
         </View>
     );
 };

@@ -8,8 +8,8 @@ import {
 import React from 'react'
 import { useDispatch } from 'react-redux'
 
-import { setCategorySelected } from '../Features/Shop/shopSlice'
 import Card from './Card'
+import { setCategorySelected } from '../Features/Shop/shopSlice'
 import { colors } from '../Global/Colors'
 
 const CategoryItem = ({

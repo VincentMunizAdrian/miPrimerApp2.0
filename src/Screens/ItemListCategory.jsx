@@ -2,8 +2,8 @@ import {
     StyleSheet,
     View,
     FlatList,
+    ImageBackground
 } from 'react-native';
-import { ImageBackground } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
@@ -23,8 +23,6 @@ const ItemListCategory = ({
     const {category} = route.params
     const categorySelected = useSelector(state => state.shopReducer.value.categorySelected)
     const {data: productsSelected, isLoading, isError} = useGetProductsByCategoryQuery(categorySelected)
-
-    // console.log(productsSelected);
     
     const [products, setProducts] = useState([])
     const [keyWord, setKeyWord] = useState("")
@@ -62,6 +60,7 @@ const ItemListCategory = ({
                 <FlatList
                     style={styles.list}
                     data={products}
+                    // numColumns={2}
                     keyExtractor={product => product.id}
                     renderItem={({item}) => <ProductItem 
                         item={item}

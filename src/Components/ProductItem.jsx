@@ -7,9 +7,9 @@ import {
     View,
 } from 'react-native'
 import React from 'react'
+import { useDispatch } from 'react-redux';
 
 import Card from './Card'
-import { useDispatch } from 'react-redux';
 import { setIdSelected } from '../Features/Shop/shopSlice';
 
 const ProductItem = ({

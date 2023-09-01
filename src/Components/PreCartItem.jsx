@@ -2,16 +2,16 @@ import {
     Modal,
     StyleSheet, 
     Text, 
-    View 
+    View,
+    Pressable 
 } from "react-native";
+import { useDispatch } from "react-redux";
 import React, { useState } from "react";
 
 import { colors } from "../Global/Colors";
+import { removeCartItem } from "../Features/Cart/cartSlice";
 
 import { FontAwesome } from '@expo/vector-icons';
-import { Pressable } from "react-native";
-import { useDispatch } from "react-redux";
-import { removeCartItem } from "../Features/Cart/cartSlice";
 
 const PreCartItem = ({ preOrders }) => {
 
@@ -26,11 +26,6 @@ const PreCartItem = ({ preOrders }) => {
 
     return (
         <View style={styles.card}>
-            {/* <View style={styles.textContainer}>
-                <Text style={styles.text}>{cartItem.nombre} </Text>
-                <Text>Cantidad: {cartItem.quantity} U.</Text>
-                <Text style={styles.text2}>Subtotal: ${cartItem.total}</Text>
-            </View> */}
             <View style={styles.textContainer}>
                 <Text style={styles.text}>{objeto.nombre} </Text>
                 <Text>Cantidad: {objeto.quantity} U.</Text>

@@ -1,5 +1,10 @@
-import { Image, StyleSheet, View } from "react-native";
+import { 
+    Image, 
+    StyleSheet, 
+    View 
+} from "react-native";
 import React from "react";
+
 import { google_maps_api_key } from "../Database/firebaseConfig";
 
 const MapPreview = ({ location }) => {

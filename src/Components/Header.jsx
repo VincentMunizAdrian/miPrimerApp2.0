@@ -5,11 +5,11 @@ import {
     View 
 } from 'react-native'
 import React from 'react'
+import { useSelector } from 'react-redux';
 
 import { colors } from '../Global/Colors'
 
 import { Ionicons } from '@expo/vector-icons';
-import { useSelector } from 'react-redux';
 
 const Header = ({
     route,
@@ -27,8 +27,6 @@ const Header = ({
             <Text style = {styles.textHeader}> {route.params.category} </Text> :
             route.name === "Detail" ?
             <Text style = {styles.textHeader}> {route.params.title} </Text> :
-            // route.name === "My Order List" ? 
-            // <Text style = {styles.textHeader}> My Order List </Text> :
             <Text style = {styles.textHeader}> {route.name} </Text> 
             }
             

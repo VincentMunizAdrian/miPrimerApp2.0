@@ -1,12 +1,18 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { 
+    Pressable, 
+    StyleSheet, 
+    Text, 
+    View 
+} from "react-native";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+
 import SubmitButton from "../Components/SubmitButton";
+import InputForm from "../Components/InputForm";
 import { colors } from "../Global/Colors";
 import { useSignUpMutation } from "../Services/authServices";
-import { useDispatch } from "react-redux";
-import { setUser } from "../Features/User/userSlice";
 import { isAtLeastSixCharacters, isValidEmail } from "../Validations/auth";
-import InputForm from "../Components/InputForm";
+import { setUser } from "../Features/User/userSlice";
 import { setUserCart } from "../Features/Cart/cartSlice";
 import { insertSession } from "../SQLite";
 
@@ -20,27 +26,6 @@ const SignupScreen = ({ navigation }) => {
 
     const [triggerSignUp, result] = useSignUpMutation()
     const dispatch = useDispatch()
-
-    // console.log(result);
-
-    
-    // useEffect(()=> {
-    //     if (result.isSuccess) {
-    //         dispatch(
-    //             setUser({
-    //                 email: result.data.email,
-    //                 idToken: result.data.idToken,
-    //                 localId: result.data.localId,
-    //                 profileImage: "",
-    //                 location: {
-    //                     latitude: "",
-    //                     longitude: "",
-    //                     address: "",
-    //                 },
-    //             })
-    //         )
-    //     }
-    // }, [result])
 
     const onSubmit = () => {
         try {
@@ -66,7 +51,6 @@ const SignupScreen = ({ navigation }) => {
 
         } catch (err) {
             console.log("Catch error");
-            // console.log(err.message);
         }
     };
 

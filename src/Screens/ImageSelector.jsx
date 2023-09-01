@@ -1,12 +1,19 @@
+import { 
+    Image, 
+    View, 
+    StyleSheet, 
+    Text 
+} from "react-native";
 import React, { useState } from "react";
-import { Image, View, StyleSheet, Text } from "react-native";
-import * as ImagePicker from "expo-image-picker";
+import { useDispatch, useSelector } from "react-redux";
+
 import AddButton from "../Components/AddButton";
 import { colors } from "../Global/Colors";
-import * as MediaLibrary from "expo-media-library";
 import { usePostProfileImageMutation } from "../Services/shopServices";
-import { useDispatch, useSelector } from "react-redux";
 import { saveImage } from "../Features/User/userSlice";
+
+import * as MediaLibrary from "expo-media-library";
+import * as ImagePicker from "expo-image-picker";
 
 const ImageSelector = ({ navigation }) => {
     const [image, setImage] = useState(null);

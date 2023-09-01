@@ -9,46 +9,17 @@ import {
 } from 'react-native'
 import React, {useState} from 'react';
 
-import { Fontisto } from '@expo/vector-icons';
-
 import { colors } from "../Global/Colors";
 
+import { Fontisto } from '@expo/vector-icons';
+
 const OrderItem = ({item}) => {
-      // additional queda para el costo de envio
-    // const additional = 0
-    // const factura = order.items.reduce(
-    // (acc, currentItem) => (acc += currentItem.precio * currentItem.quantity), additional 
-    // );
-    // console.log(factura);
 
-
-    // const detalleNombre = item.items.map(item =>
-    // [item.nombre, item.precio, item.quantity] );
-
-    // const detalleNombre = item.items.map(item =>
-    //     item.nombre );
-    // const detallePrecio = item.items.map(item =>
-    //     item.precio );
-    // const detalleQuantity = item.items.map(item =>
-    //     item.quantity );
-
-
-    // const detalletodo = item.map(item => {
-    //     item.items[""] 
-    // });
-
-const nuevoArreglo = item.items.map(objeto => ({
-    nombre: objeto.nombre,
-    quantity: objeto.quantity,
-    precio: objeto.precio
-}));
-
-// console.log(nuevoArreglo);
-// console.log(nombre);
-// console.log(objeto.precio);
-
-        // console.log(detalleNombre);
-        // console.log(detalletodo);
+    const nuevoArreglo = item.items.map(objeto => ({
+        nombre: objeto.nombre,
+        quantity: objeto.quantity,
+        precio: objeto.precio
+    }));
 
     const [modalVisible, setModalVisible] = useState(false);
 
@@ -58,13 +29,8 @@ const nuevoArreglo = item.items.map(objeto => ({
                 <Text style={styles.text}>Fecha y Hora:</Text>
                 <Text style={styles.text}>
                     {item.updatedAt}
-                    {/* {new Date(item.createdAt).toLocaleString()} */}
                 </Text>
-                {/* <Text style={styles.text2}>Total: ${factura}</Text> */}
                 <Text style={styles.text2}>Total: ${item.total}</Text>
-                {/* <Text>
-                    {item.total}
-                </Text> */}
             </View>
             <Pressable
                 style={styles.button}
@@ -82,8 +48,6 @@ const nuevoArreglo = item.items.map(objeto => ({
             }}>
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
-                    {/* <Text style={styles.modalText}>N° de pedido: {item.id} </Text> */}
-
                     <FlatList
                         data={nuevoArreglo}
                         keyExtractor={(item, index) => index.toString()}
@@ -103,11 +67,6 @@ const nuevoArreglo = item.items.map(objeto => ({
                                 </View>
                             </View>)}
                     />
-
-                    {/* <Text style={styles.text2}>{detalleNombre}</Text> */}
-                {/* <Text style={styles.text2}>{detallePrecio}</Text>
-                <Text style={styles.text2}>{detalleQuantity}</Text> */}
-                {/* <Text style={styles.text2}>{{nuevoArreglo}}</Text> */}
 
                         <Pressable
                             style={[styles.button, styles.buttonClose]}
@@ -201,6 +160,5 @@ const styles = StyleSheet.create({
         gap: 10,
         padding: 30,
         borderColor: 'red'
-
     },
 });

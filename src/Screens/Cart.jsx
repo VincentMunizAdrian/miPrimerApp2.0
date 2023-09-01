@@ -19,11 +19,11 @@ import PreCartItem from '../Components/PreCartItem';
 
 const Cart = () => {
   const {items: CartData, total, updatedAt, user, id} = useSelector(state => state.cartReducer.value)
+  const [triggerPostCart, result] = usePostCartMutation()
+  const dispatch = useDispatch()
   
   const email = useSelector(state => state.userReducer.value.email)
   const {data: preOrder, isLoading, isError} = useGetPreOrdersQuery(email)
-  
-  const dispatch = useDispatch()
   
   useEffect(() => {
     if (result.isSuccess) {
@@ -31,7 +31,6 @@ const Cart = () => {
     }
   }, [result])
   
-  const [triggerPostCart, result] = usePostCartMutation()
   const onConfirm = () => {
     triggerPostCart({items: CartData, total, updatedAt, user, id})
   }

@@ -1,17 +1,22 @@
-import { StyleSheet, Text, View } from "react-native";
+import { 
+    StyleSheet, 
+    Text, 
+    View 
+} from "react-native";
 import React, { useEffect, useState } from "react";
-import * as Location from "expo-location";
+import { useDispatch, useSelector } from "react-redux";
+
 import AddButton from "../Components/AddButton";
 import { usePostUserLocationMutation } from "../Services/shopServices";
-import { useDispatch, useSelector } from "react-redux";
 import { setUserLocation } from "../Features/User/userSlice";
 import MapPreview from "../Components/MapPreview";
 import { google_maps_api_key } from "../Database/firebaseConfig";
 
+import * as Location from "expo-location";
+
 const LocationSelector = ({ navigation }) => {
 
     const [location, setLocation] = useState({ latitude: "", longitude: "" });
-    // console.log(location);
     const [error, setError] = useState("");
 
     const [address, setAddress] = useState("");
@@ -57,7 +62,6 @@ const LocationSelector = ({ navigation }) => {
                 });
                 
             } catch (error) {
-                // console.log(error.message);
                 setError(error.message)
             }
         })()

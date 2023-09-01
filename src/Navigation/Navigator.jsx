@@ -4,8 +4,7 @@ import {
     Platform,
     StatusBar,
 } from 'react-native';
-import React from 'react';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 

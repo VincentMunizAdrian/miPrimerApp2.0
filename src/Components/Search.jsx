@@ -8,10 +8,10 @@ import {
 } from 'react-native';
 import React, { useState } from 'react';
 
+import { colors } from '../Global/Colors';
+
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
-
-import { colors } from '../Global/Colors';
 
 const Search = ({
     onSearch,

@@ -1,4 +1,8 @@
-import { Pressable, StyleSheet, Text } from "react-native";
+import { 
+    Pressable, 
+    StyleSheet, 
+    Text 
+} from "react-native";
 import React from "react";
 
 const SubmitButton = ({ onPress, title }) => {

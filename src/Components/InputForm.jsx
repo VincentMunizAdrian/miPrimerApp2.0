@@ -1,4 +1,9 @@
-import { StyleSheet, Text, TextInput, View } from 'react-native'
+import { 
+    StyleSheet, 
+    Text, 
+    TextInput, 
+    View 
+} from 'react-native'
 import React, { useState } from 'react'
 
 const InputForm = ({

@@ -6,14 +6,12 @@ import {
   ImageBackground,
   Button,
 } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { addCartItem } from '../Features/Cart/cartSlice'
-
 import Card from '../Components/Card';
 import Counter from '../Components/Counter';
-// import objects from '../Data/products.json';
 import { colors } from '../Global/Colors';
 import { useGetProductsByIdQuery } from '../Services/shopServices';
 
@@ -26,15 +24,6 @@ const ItemDetail = ({
 
   const dispatch = useDispatch()
 
-  // const {objectId: idChoice} = route.params;
-
-  // useEffect(() => {
-  //   const objectChoice = objects.find(object => object.id === idChoice)
-  //   setObject(objectChoice)
-  // }, [idChoice])
-
-  
-  // const [object, setObject] = useState(null)
   const object = useSelector(state => state.shopReducer.value.idSelected)
   const { data, isLoading, isError } = useGetProductsByIdQuery(object);
 
@@ -44,9 +33,6 @@ const ItemDetail = ({
       dispatch(addCartItem({...object, quantity: cantidad}))
       navigation.navigate('Home')
   }
-
-//   const returnHome = () => {
-// }
 
   return (
     <ImageBackground

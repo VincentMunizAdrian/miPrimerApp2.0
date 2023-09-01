@@ -1,13 +1,18 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native'
-import React, { useEffect } from 'react'
+import { 
+    Pressable, 
+    StyleSheet, 
+    Text, 
+    View 
+} from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+
 import InputForm from '../Components/InputForm'
 import SubmitButton from '../Components/SubmitButton'
 import { colors } from '../Global/Colors'
 import { useSignInMutation } from '../Services/authServices'
-import { useState } from 'react'
 import { isAtLeastSixCharacters, isValidEmail } from '../Validations/auth'
 import { setUser } from '../Features/User/userSlice'
-import { useDispatch } from 'react-redux'
 import { insertSession } from '../SQLite'
 import { setUserCart } from '../Features/Cart/cartSlice'
 
@@ -71,21 +76,6 @@ const LoginScreen = ({navigation}) => {
         if (!isValidVariableEmail || !isCorrectPassword) setErrorEmailPassword ('The Email or the Password are not correct')
     }
     
-    // console.log(resultSignIn);
-
-    // useEffect(() => {
-    //     if (resultSignIn.isSuccess) {
-    //         dispatch(
-    //             setUser({
-    //                 email: resultSignIn.data.email,
-    //                 idToken: resultSignIn.data.idToken,
-    //                 localId: resultSignIn.data.localId,
-    //                 profileImage: ""
-    //             })
-    //         )
-    //     }
-    // }, [resultSignIn])
-
     return (
         <View style={styles.main}>
             <View style={styles.container}>
