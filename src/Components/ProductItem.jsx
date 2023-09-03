@@ -11,6 +11,7 @@ import { useDispatch } from 'react-redux';
 
 import Card from './Card'
 import { setIdSelected } from '../Features/Shop/shopSlice';
+import { colors } from '../Global/Colors';
 
 const ProductItem = ({
     item,
@@ -18,7 +19,6 @@ const ProductItem = ({
 }) => {
 
     const {width} = useWindowDimensions();
-    
     const dispatch = useDispatch()
 
     const onSelect = () => {
@@ -48,11 +48,17 @@ export default ProductItem
 
 const styles = StyleSheet.create({
     otherStyleCard: {
-        justifyContent: 'center',
+        flexDirection: 'column',
+        alignItems: 'center',
     },
     image: {
         height: 150,
         width: '100%',
         borderRadius: 8,
+    },
+    categoryText: {
+        fontSize: 14,
+        fontFamily: 'Anton',
+        color: colors.white,
     },
 })

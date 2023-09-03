@@ -1,6 +1,9 @@
 import { 
     FlatList, 
+    Image, 
     ImageBackground, 
+    SafeAreaView, 
+    ScrollView, 
     StyleSheet,
     Text,
     View 
@@ -12,8 +15,7 @@ import { useGetCategoriesQuery, useGetProductsQuery } from '../Services/shopServ
 import { useEffect } from 'react';
 import ProductItem from '../Components/ProductItem';
 import Loader from '../Components/Loader';
-
-const imagenBack = {uri: 'https://i.imgur.com/qQhkm4N.jpg'}
+import { colors } from '../Global/Colors';
 
 const Home = ({
     navigation,
@@ -67,77 +69,89 @@ const Home = ({
         }
     }, [randomObjects])
     
-    // console.log(cards);
-    // console.log(isError);
-    // console.log(isLoading);
-    // console.log(categories);
     return (
-        <View style = {styles.containerHome}>
 
-            {/* <Loader/> */}
-            
-                
-                <ImageBackground
-                source={imagenBack}
-                resizeMode='stretch'
-                style={styles.imagen}
-            >
-                <Text>Categories</Text>
+        <View style = {styles.containerHome}>
+        { waitLoading ? <Loader/> :
+
+            <ScrollView>
+                <View style={styles.separateLine}>
+                    <Text style={styles.separateText}>Categories</Text>
+                    <View style={[styles.borderLine, styles.borderLineCategories]}></View>
+                </View>
                 <FlatList
                     data={categories}
                     keyExtractor={category => category}
-                    renderItem={({item}) => <CategoryItem item={item} navigation={navigation} 
-                    />}
+                    renderItem={({item}) => 
+                        <CategoryItem 
+                            item={item} 
+                            navigation={navigation} 
+                        />}
                     showsVerticalScrollIndicator={false}
                     showsHorizontalScrollIndicator={false}
                     contentContainerStyle={styles.wrapper}
                     horizontal={true}
-                    style={styles.flatlist}
-                    
+                    style={styles.flatlistCategories}
                 />
+                
+                <View style={styles.separateLine}>
+                    <Text style={styles.separateText}>Cards</Text>
+                    <View style={[styles.borderLine, styles.borderLineCards]}></View>
+                </View>
                 <FlatList
                     data={cards}
                     keyExtractor={cards => cards.id}
-                    renderItem={({item}) => <ProductItem 
-                        item={item}
-                        navigation={navigation}
-                    // renderItem={({item}) => <CategoryItem item={item} navigation={navigation} 
-                    />}
+                    renderItem={({item}) => 
+                        <ProductItem 
+                            item={item}
+                            navigation={navigation}
+                        />}
                     showsVerticalScrollIndicator={false}
                     showsHorizontalScrollIndicator={false}
                     contentContainerStyle={styles.wrapper}
                     horizontal={true}
                     style={styles.flatlist}
                 />
+
+                <View style={styles.separateLine}>
+                    <Text style={styles.separateText}>Figuritas</Text>
+                    <View style={[styles.borderLine, styles.borderLineFiguritas]}></View>
+                </View>
                 <FlatList
                     data={figuritas}
                     keyExtractor={figuritas => figuritas.id}
-                    renderItem={({item}) => <ProductItem 
-                        item={item}
-                        navigation={navigation}
-                    // renderItem={({item}) => <CategoryItem item={item} navigation={navigation} 
-                    />}
+                    renderItem={({item}) => 
+                        <ProductItem 
+                            item={item}
+                            navigation={navigation}
+                        />}
                     showsVerticalScrollIndicator={false}
                     showsHorizontalScrollIndicator={false}
                     contentContainerStyle={styles.wrapper}
                     horizontal={true}
                     style={styles.flatlist}
                 />
+                
+                <View style={styles.separateLine}>
+                    <Text style={styles.separateText}>Album</Text>
+                    <View style={[styles.borderLine, styles.borderLineAlbum]}></View>
+                </View>
                 <FlatList
                     data={album}
                     keyExtractor={album => album.id}
-                    renderItem={({item}) => <ProductItem 
-                        item={item}
-                        navigation={navigation}
-                    // renderItem={({item}) => <CategoryItem item={item} navigation={navigation} 
-                    />}
+                    renderItem={({item}) => 
+                        <ProductItem 
+                            item={item}
+                            navigation={navigation}
+                        />}
                     showsVerticalScrollIndicator={false}
                     showsHorizontalScrollIndicator={false}
                     contentContainerStyle={styles.wrapper}
                     horizontal={true}
                     style={styles.flatlist}
                 />
-            </ImageBackground>
+            </ScrollView>
+            }
         </View>
     )
 }
@@ -145,18 +159,52 @@ const Home = ({
 export default Home
 
 const styles = StyleSheet.create({
+    borderLine: {
+        height: 5,
+        backgroundColor: 'green',
+        borderRadius: 15,
+        marginTop: 10,
+    },
+    borderLineCategories: {
+        width: '61%'
+    },
+    borderLineCards: {
+        width: '75%'
+    },
+    borderLineFiguritas: {
+        width: '66.5%'
+    },
+    borderLineAlbum: {
+        width: '73%'
+    },
+    separateText: {
+        fontSize: 24,
+        fontFamily: 'Anton',
+        fontStyle: 'italic',
+    },
+    separateLine: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        marginLeft: 10,
+        marginTop: 10,
+        gap: 10
+    },
     containerHome: {
+        flexDirection: 'column',
+        width: '100%',
         height: '100%',
         alignItems: 'center',
-    },
-    imagen: {
-        width: '100%',
-        height: '100%'
+        justifyContent: 'center'
     },
     wrapper: {
-        gap: 20,
+        paddingVertical: 20,
+        marginBottom: 10,
     },
-    // flatlist: {
-    //     width: '80%'
-    // }
+    flatlist: {
+        height: '70%'
+    },  
+    flatlistCategories: {
+        height: '50%',
+    },
 })

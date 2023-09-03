@@ -5,6 +5,7 @@ import {
     View 
 } from 'react-native'
 import React, { useState } from 'react'
+import { colors } from '../Global/Colors';
 
 const InputForm = ({
     label, 
@@ -17,24 +18,25 @@ const InputForm = ({
         setInput(text)
         onChange(text)
     }
-  return (
-    <View style={styles.inputContainer}>
-      <Text style={styles.subtitle}>{label}</Text>
-      <TextInput
-        style ={styles.input}
-        value={input}
-        onChangeText={onChangeText}
-        secureTextEntry={isSecure}
-      />
-      {error ? 
-        <Text style = {styles.error}>
-            {error}
-        </Text>
-        :
-        null
-    }
-    </View>
-  )
+    return (
+        <View style={styles.inputContainer}>
+            <Text style={styles.subtitle}>{label}</Text>
+            <TextInput
+                style ={styles.input}
+                value={input}
+                onChangeText={onChangeText}
+                secureTextEntry={isSecure}
+                blurOnSubmit={true}
+            />
+            {error ? 
+                <Text style = {styles.error}>
+                    {error}
+                </Text>
+                :
+                null
+            }
+        </View>
+    )
 }
 
 export default InputForm
@@ -42,13 +44,15 @@ export default InputForm
 const styles = StyleSheet.create({
     inputContainer: {
         flexDirection: 'column',
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
         alignItems: 'center',
-        width: '100%'
+        width: '80%',
     },
     subtitle: {
         width: '90%',
         fontSize: 16,
+        color: colors.black,
+        fontFamily: 'Anton'
     },
     error: {
         fontSize: 16,
@@ -56,10 +60,13 @@ const styles = StyleSheet.create({
         fontStyle: 'italic',
     },
     input: {
-        width: '90%',
+        width: '95%',
         borderWidth: 0,
         borderBottomWidth: 3,
         padding: 2,
         fontSize: 14,
+        color: colors.black,
+        borderColor: colors.black,
+        marginBottom: 2
     }
 })

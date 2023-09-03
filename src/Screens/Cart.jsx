@@ -5,9 +5,11 @@ import {
   View 
 } from 'react-native'
 import React from 'react'
+import { Pressable } from 'react-native';
+
+import { FontAwesome5 } from '@expo/vector-icons';
 
 import CartItem from '../Components/CartItem';
-import { Pressable } from 'react-native';
 import { colors } from '../Global/Colors';
 import { useDispatch, useSelector } from 'react-redux';
 import { usePostCartMutation } from '../Services/shopServices';
@@ -15,7 +17,6 @@ import { useEffect } from 'react';
 import { removeFullCart } from '../Features/Cart/cartSlice';
 import { useGetPreOrdersQuery } from '../Services/orderServices';
 import PreCartItem from '../Components/PreCartItem';
-// import { useGetPreOrdersQuery } from '../Services/orderServices';
 
 const Cart = () => {
   const {items: CartData, total, updatedAt, user, id} = useSelector(state => state.cartReducer.value)
@@ -23,8 +24,8 @@ const Cart = () => {
   const dispatch = useDispatch()
   
   const email = useSelector(state => state.userReducer.value.email)
-  const {data: preOrder, isLoading, isError} = useGetPreOrdersQuery(email)
-  
+  const {data: preOrder} = useGetPreOrdersQuery(email)
+
   useEffect(() => {
     if (result.isSuccess) {
       dispatch(removeFullCart())
@@ -45,7 +46,6 @@ const Cart = () => {
     <View style={styles.containerCart}>
       <FlatList
         data={CartData}
-        // data={preOrderData}
         keyExtractor={cartItem => cartItem.id} 
         renderItem={({item}) => {
           return (
@@ -53,17 +53,20 @@ const Cart = () => {
               cartItem={item}
             />
           )
-        }}
+        }
+      }
+      showsVerticalScrollIndicator={false}
       />
+      
       {/* {preOrder ? 
         <FlatList
         data={preOrder}
         // data={preOrderData}
-        keyExtractor={preCartItem => preCartItem.id} 
+        keyExtractor={cartItem => cartItem.id} 
         renderItem={({item}) => {
           return (
             <PreCartItem
-              PreCartItem={item}
+              cartItem={item}
             />
           )
         }}
@@ -80,11 +83,14 @@ const Cart = () => {
           )
         }}
       />} */}
-      <View style={styles.totalContainer}>
 
+      <View style={styles.totalContainer}>
         {
           total === 0 ? 
-          <Text>El carrito esta vacio</Text>
+          <View style={styles.emptyCartContainer}>
+            <Text style={styles.emptyCartMsj}>The cart is empty</Text>
+            <FontAwesome5 name="sad-cry" size={32} color="black" />
+          </View>
           : 
           <Pressable 
           style={styles.confirmButton}
@@ -105,7 +111,6 @@ const styles = StyleSheet.create({
   containerCart: {
     flex: 1,
     justifyContent: 'space-between',
-    backgroundColor: colors.platinum,
   },
   totalContainer: {
     flexDirection: 'row',
@@ -113,7 +118,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   confirmButton: {
-    width: 150,
+    width: 130,
     shadowColor: "#000",
     shadowOffset:{
         width: 0,
@@ -130,11 +135,20 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 120,
+    marginBottom: 10,
   },
   textCategory: {
     color: colors.white,
-    fontSize: 18,
+    fontSize: 15,
     fontFamily: 'Anton',
+  },
+  emptyCartContainer: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    bottom: '70%',
+  },
+  emptyCartMsj: {
+    fontSize: 28,
+    fontFamily: 'Anton'
   },
 })

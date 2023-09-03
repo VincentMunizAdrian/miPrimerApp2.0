@@ -5,6 +5,7 @@ import {
   View,
   ImageBackground,
   Button,
+  ToastAndroid,
 } from 'react-native';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,8 +15,9 @@ import Card from '../Components/Card';
 import Counter from '../Components/Counter';
 import { colors } from '../Global/Colors';
 import { useGetProductsByIdQuery } from '../Services/shopServices';
-
-const imagenBack = {uri: 'https://i.imgur.com/qQhkm4N.jpg'}
+import { setCounterBack } from '../Features/Counter/counterSlice';
+import CardDetail from '../Components/CardDetail';
+import { BlurView } from 'expo-blur';
 
 const ItemDetail = ({
   route,
@@ -30,57 +32,61 @@ const ItemDetail = ({
   const cantidad = useSelector(state => state.counterReducer.value)
 
   const onAddCart = () => {
-      dispatch(addCartItem({...object, quantity: cantidad}))
-      navigation.navigate('Home')
+    dispatch(addCartItem({...object, quantity: cantidad}))
+    navigation.navigate('Home')
+    dispatch(setCounterBack())
+    showToastWithGravity()
   }
 
+  const showToastWithGravity = () => {
+    ToastAndroid.showWithGravity(
+      'your product has been added to the cart',
+      ToastAndroid.SHORT,
+      ToastAndroid.TOP,
+    );
+  };
+
   return (
-    <ImageBackground
-        source={imagenBack}
-        resizeMode='stretch'
-        style={{width: '100%', height: '100%'}}
-      >
-    <View style={styles.containerCard}>
 
+    <BlurView intensity={70} tint='light'>
       { object ? (
-          
-        <Card anotherStyle={styles.anotherStyleCard}>
-            <View style={styles.containerTitle}>
-              <Text style={styles.textTitle}>{object.nombre}</Text>
-            </View>
-
+        
+        <CardDetail style={styles.anotherStyleCard}>
             <View style={styles.internalContainer}>
               <View>
                 <Image
                   source={{uri: object.imagen}}
                   style={styles.image}
                   resizeMode='cover'
-                />
-              </View>
-              <View style={styles.textAndButtonContainer}>
-                <View style={styles.text}>
-                  <Text>Posición: {object.posicion}</Text>
-                  <Text>Pais: {object.category}</Text>
-                  <Text>Torneo: {object.torneo}</Text>
-                  <Text>Precio: $ {object.precio}</Text>
-                </View>
-                <Counter
                   />
               </View>
+              
+              <View style={styles.containerTextTitle}>
+                <Text style={styles.textTitle}>{object.nombre}</Text>
+              
+                  <View style={styles.containerText}>
+                    <Text style={styles.text}>Posición: {object.posicion}</Text>
+                    <Text style={styles.text}>Pais: {object.category}</Text>
+                    <Text style={styles.text}>Torneo: {object.torneo}</Text>
+                    <Text style={styles.text}>Precio: $ {object.precio}</Text>
+                  </View>
+              </View>
             </View>
-            <View>
-                <Button
-                  onPress={onAddCart}
-                  title="Agregar al carrito"
-                  color= {colors.onyx}
-                />
-            </View>
-        </Card>
-            ) : null 
-        } 
 
-    </View>
-        </ImageBackground>
+            
+            <View style={styles.ButtonContainer}>
+              <Button
+                onPress={onAddCart}
+                title="Add to Cart"
+                color= {colors.onyx}
+                />
+              <Counter/>
+            </View>
+            
+        </CardDetail>
+            ) : null 
+          } 
+          </BlurView>
   )
 }
 
@@ -89,42 +95,44 @@ export default ItemDetail
 const styles = StyleSheet.create({
   anotherStyleCard: {
     flexDirection: 'column',
-    width: '90%',
-    height: '45%',
-  },
-  containerCard:{
-    height: '100%',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
   },
-  containerTitle:{
-    width: '100%',
-    justifyContent:'flex-start',
-    fontStyle: 'Anton'
+  containerTextTitle:{
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '50%'
   },
   textTitle: {
-    fontSize: 28,
+    fontSize: 36,
+    fontFamily: 'Anton',
+    color: colors.onyx,
+    marginBottom: 20,
   },
-  internalContainer:{
-    width: '100%',
-    height: 250,
-    flexDirection:'row',
-    justifyContent: 'space-around',
-    alignItems: 'center'
-  },
-  textAndButtonContainer: {
-    width: '50%',
-    alignItems: 'center',
+  containerText: {
+    gap: 10
   },
   text: {
-    width: '80%',
-    padding: 8,
-    backgroundColor: colors.white,
-    borderRadius: 6,
+    fontSize: 16,
+    fontFamily: 'Anton'
+  },
+  internalContainer:{
+    flexDirection:'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    width: '100%',
+    height: '75%',
+  },
+  ButtonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 30,
   },
   image: {
-    width: 150,
-    height: 200,
+    width: 160,
+    height: 240,
     borderRadius: 10,
   },
 })

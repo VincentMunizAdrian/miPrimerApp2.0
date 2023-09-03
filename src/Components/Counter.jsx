@@ -12,8 +12,8 @@ import { colors } from '../Global/Colors'
 const Counter = () => {
     
     const dispatch = useDispatch()
-
     const count = useSelector(state => state.counterReducer.value);
+    
 
     return (
         <View style={styles.container}>
@@ -42,30 +42,26 @@ export default Counter;
 
 const styles = StyleSheet.create({
     container: {
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "100%",
-        padding: 10,
+        width: "40%",
+        marginTop: 10,
     },
     buttonsContainer: {
         backgroundColor: colors.frenchGray,
         flexDirection: "row",
-        justifyContent: "center",
+        justifyContent: "space-around",
         alignItems: "center",
-        marginBottom: 10,
         borderRadius: 5
     },
     button: {
-        backgroundColor: colors.gray,
-        borderRadius: 5
+        borderRadius: 5,
     },
     span: {
-        width: "50%",
-        textAlign: "center",
-        fontSize: 26,
+        fontSize: 24,
+        fontFamily: 'Anton',
     },
     buttonText: {
-        fontSize: 30,
+        fontSize: 28,
+        fontFamily: 'Anton',
+        bottom: 3,
     },
 });

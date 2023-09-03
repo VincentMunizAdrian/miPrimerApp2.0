@@ -7,19 +7,35 @@ import {
     Pressable,
     FlatList
 } from 'react-native'
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import { colors } from "../Global/Colors";
 
 import { Fontisto } from '@expo/vector-icons';
+import { useGetOrdersQuery } from '../Services/orderServices';
 
 const OrderItem = ({item}) => {
-
     const nuevoArreglo = item.items.map(objeto => ({
         nombre: objeto.nombre,
         quantity: objeto.quantity,
         precio: objeto.precio
     }));
+
+    // useEffect(() => {
+    //     (async () => {
+    //         try {
+    //             if (nuevoArreglo) {
+    //                 const orderDone = await useGetOrdersQuery({
+    //                     nombre: objeto.nombre,
+    //                     quantity: objeto.quantity,
+    //                     precio: objeto.precio
+    //                 })
+    //             }
+    //         }catch (err) {
+    //         }
+    //     })
+    // }, [])
+
 
     const [modalVisible, setModalVisible] = useState(false);
 

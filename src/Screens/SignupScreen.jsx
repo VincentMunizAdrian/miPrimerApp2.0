@@ -1,11 +1,14 @@
 import { 
-    Pressable, 
+    ImageBackground,
+    TouchableOpacity,
     StyleSheet, 
     Text, 
     View 
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+
+import { BlurView } from 'expo-blur';
 
 import SubmitButton from "../Components/SubmitButton";
 import InputForm from "../Components/InputForm";
@@ -78,38 +81,60 @@ const SignupScreen = ({ navigation }) => {
                         })
                     )
                     dispatch(setUserCart(result.data.email))
-                }
+                } 
             } catch (error) {
             }
         })()
     }, [result])
 
+
+
     return (
-        <View style={styles.main}>
-            <View style={styles.container}>
-                <Text style={styles.title}>Signup</Text>
-                <InputForm label={"email"} onChange={setEmail} error={errorMail} />
-                <InputForm
-                    label={"password"}
-                    onChange={setPassword}
-                    error={errorPassword}
-                    isSecure={true}
-                />
-                <InputForm
-                    label={"confirm password"}
-                    onChange={setconfirmPassword}
-                    error={errorConfirmPassword}
-                    isSecure={true}
-                />
-                <SubmitButton onPress={onSubmit} title="Send" />
-                <Text style={styles.sub}>Already have an account?</Text>
-                <Pressable
-                    style={styles.buttonLogin}
-                    onPress={() => navigation.navigate("Login")}>
-                    <Text style={styles.subLink}>Login</Text>
-                </Pressable>
+        <ImageBackground
+            source={require('../Assets/Images/backGroundImage.jpg')}
+            resizeMode='stretch'
+            style={styles.imagen}
+        >                
+            <View style={styles.main}>
+                <BlurView intensity={70} tint='light' style={styles.blurContainer}>
+                    <View style={styles.container}>
+                        <Text style={styles.title}>Signup</Text>
+                        <InputForm 
+                            label={"email"} 
+                            onChange={setEmail} 
+                            error={errorMail} 
+                        />
+                        <InputForm
+                            label={"password"}
+                            onChange={setPassword}
+                            error={errorPassword}
+                            isSecure={true}
+                        />
+                        <InputForm
+                            label={"confirm password"}
+                            onChange={setconfirmPassword}
+                            error={errorConfirmPassword}
+                            isSecure={true}
+                        />
+                        <View style={styles.buttonContainer}>
+                            <View style={styles.buttonSubmit}>
+                                <SubmitButton onPress={onSubmit} title="Send" />
+                            </View>
+                            <TouchableOpacity
+                                activeOpacity={0.1}
+                                style={styles.buttonLogin}
+                                onPress={() => navigation.navigate("Login")}>
+                                <Text style={styles.subLink}>Login</Text>
+                            </TouchableOpacity>
+                        </View>
+                        {errorMail ? 
+                        <Text style={styles.sub}>Already have an account?</Text>
+                        : null
+                        }
+                    </View>
+                </BlurView>    
             </View>
-        </View>
+        </ImageBackground>
     );
 };
 
@@ -123,7 +148,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     container: {
-        width: "90%",
+        width: "100%",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
@@ -132,22 +157,48 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     title: {
-        fontSize: 22,
+        fontSize: 42,
+        fontFamily: 'Anton',
+        color: 'black',
     },
     sub: {
-        fontSize: 14,
+        fontSize: 16,
         color: "black",
+    },
+    buttonSubmit: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderColor: 'green',
+        backgroundColor: colors.white,
+        width: '32%',
+        borderRadius: 20
     },
     buttonLogin: {
         backgroundColor: colors.onyx,
-        height: 30,
-        width: 50,
+        height: 40,
+        width: 80,
+        borderRadius: 5,
         alignItems: 'center',
-        borderRadius: 5
+        justifyContent: 'center'
     },
     subLink: {
         fontSize: 16,
         fontFamily: "Anton",
         color: colors.white,
+    },
+    imagen: {
+        width: '100%',
+        height: '100%'
+    },
+    blurContainer: {
+        borderRadius: 15,
+        width: '90%'
+    },
+    buttonContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        width: '100%',
     },
 });

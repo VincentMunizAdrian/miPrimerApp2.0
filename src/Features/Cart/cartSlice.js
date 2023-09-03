@@ -31,8 +31,10 @@ export const cartSlice = createSlice({
             )
 
             state.value.updatedAt = new Date().toLocaleString()
-
-            state.value.id = Math.random() * 1000000000
+                
+            const idOrder = Math.floor(
+                Math.random()*10000000000) 
+            state.value.id =  idOrder
         },
         removeCartItem: (state, action) => {
             let newItems = state.value.items.filter(item => item.id != action.payload)

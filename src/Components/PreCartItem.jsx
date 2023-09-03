@@ -13,23 +13,25 @@ import { removeCartItem } from "../Features/Cart/cartSlice";
 
 import { FontAwesome } from '@expo/vector-icons';
 
-const PreCartItem = ({ preOrders }) => {
+const PreCartItem = ({ cartItem }) => {
 
     const dispatch = useDispatch()
     const [modalVisible, setModalVisible] = useState(false);
 
-    const nuevoArreglo = preOrders.items.map(objeto => ({
+    const nuevoArreglo = cartItem.items.map(objeto => ({
         nombre: objeto.nombre,
         quantity: objeto.quantity,
         precio: objeto.precio
     }));
 
+    console.log(...nuevoArreglo);
+
     return (
         <View style={styles.card}>
             <View style={styles.textContainer}>
-                <Text style={styles.text}>{objeto.nombre} </Text>
-                <Text>Cantidad: {objeto.quantity} U.</Text>
-                <Text style={styles.text2}>Subtotal: ${objeto.precio * objeto.quantity}</Text>
+                <Text style={styles.text}>{cartItem.nombre}</Text>
+                <Text>Cantidad: {cartItem.quantity} U.</Text>
+                <Text style={styles.text2}>Subtotal: ${cartItem.precio * cartItem.quantity}</Text>
             </View>
                 <Pressable
                     style={styles.button}

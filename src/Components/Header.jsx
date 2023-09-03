@@ -1,8 +1,8 @@
 import { 
+    Image,
     Pressable, 
     StyleSheet, 
     Text, 
-    View 
 } from 'react-native'
 import React from 'react'
 import { useSelector } from 'react-redux';
@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 import { colors } from '../Global/Colors'
 
 import { Ionicons } from '@expo/vector-icons';
+import { BlurView } from 'expo-blur';
 
 const Header = ({
     route,
@@ -19,28 +20,34 @@ const Header = ({
     const {email} = useSelector(state => state.userReducer.value)
 
     return (
-        <View style = {styles.containerHeader}>
+        <BlurView style = {styles.containerHeader}>
+            <Image
+                source={require('../Assets/Images/backGroundImage.jpg')}
+                resizeMode='cover'
+                style={styles.imagen}
+            />
             {
-            route.name === "Home" ? 
+                route.name === "Home" ? 
             <Text style = {styles.textHeader}> Mundial de Figus </Text> :
             route.name === "ListCategory" ? 
             <Text style = {styles.textHeader}> {route.params.category} </Text> :
             route.name === "Detail" ?
             <Text style = {styles.textHeader}> {route.params.title} </Text> :
             <Text style = {styles.textHeader}> {route.name} </Text> 
-            }
+        }
             
             {
-            route.name === "Home" ? null : 
-            route.name === "Signup" ? null :
-            route.name === "Login" ? null 
-            : <Pressable 
+                route.name === "Home" ? null : 
+                route.name === "Signup" ? null :
+                route.name === "Login" ? null 
+                : <Pressable 
                 style={styles.buttonBack}
                 onPress={()=> navigation.goBack()}>
                     <Ionicons name="arrow-back-circle-outline" size={38} color="black" />
             </Pressable>
             }
-        </View>
+            
+        </BlurView>
     )
 }
 
@@ -48,19 +55,31 @@ export default Header
 
 const styles = StyleSheet.create({
     containerHeader: {
-        height: 80,
-        backgroundColor: colors.frenchGray,
+        marginTop: 10,
+        width: '95%',
+        height: 70,
         justifyContent: 'center',
         alignItems: 'center',
-        position: 'relative'
+        position: 'relative',
+        alignSelf: 'center',
+        borderRadius: 15
     },
     buttonBack:{
         position: 'absolute',
         left: 10,
-        top: '37%'
+        top: '27%'
     },
     textHeader: {
         fontSize: 32,
         fontFamily: 'Anton',
+        color: colors.black
+    },
+    imagen: {
+        flexDirection: 'column',
+        alignItems: 'center',
+        borderRadius: 15,
+        width: '100%',
+        height: '100%',
+        position: 'absolute'
     },
 })

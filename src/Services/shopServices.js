@@ -79,5 +79,4 @@ export const {
     usePostProfileImageMutation,
     useGetUserLocationQuery,
     usePostUserLocationMutation,
-    useGetOrdersQuery
 } = shopApi

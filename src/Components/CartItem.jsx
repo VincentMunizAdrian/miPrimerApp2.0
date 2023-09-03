@@ -3,7 +3,8 @@ import {
     StyleSheet, 
     Text, 
     View,
-    Pressable
+    Pressable,
+    Image
 } from "react-native";
 import { useDispatch } from "react-redux";
 import React, { useState } from "react";
@@ -20,17 +21,26 @@ const CartItem = ({ cartItem }) => {
 
     return (
         <View style={styles.card}>
-            <View style={styles.textContainer}>
-                <Text style={styles.text}>{cartItem.nombre} </Text>
-                <Text>Cantidad: {cartItem.quantity} U.</Text>
-                <Text style={styles.text2}>Subtotal: ${cartItem.precio * cartItem.quantity}</Text>
+            <View style={styles.textImgContainer}>
+                <Image
+                    source={{uri: cartItem.imagen}}
+                    style={styles.image}
+                    resizeMode='cover'
+                />
+                <View style={styles.textContainer}>
+                    <Text style={styles.text}>{cartItem.nombre} </Text>
+                    <Text>Cantidad: {cartItem.quantity} U.</Text>
+                    <Text style={styles.text2}>Subtotal: ${cartItem.precio * cartItem.quantity}</Text>
+                </View>
             </View>
-                <Pressable
-                    style={styles.button}
-                    onPress={() => setModalVisible(true)}
-                >
-                    <FontAwesome name="trash-o" size={34} color="black" />
-                </Pressable>
+
+            <Pressable
+                style={styles.button}
+                onPress={() => setModalVisible(true)}
+            >
+                <FontAwesome name="trash-o" size={34} color="black" />
+            </Pressable>
+            
             <Modal
                 animationType="slide"
                 transparent={true}
@@ -71,7 +81,7 @@ export default CartItem;
 const styles = StyleSheet.create({
     card: {
         height: 100,
-        backgroundColor: colors.whiteGray,
+        backgroundColor: colors.platinum,
         padding: 10,
         margin: 10,
         borderWidth: 2,
@@ -80,8 +90,16 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
     },
+    textImgContainer: {
+        flexDirection: 'row',
+        gap: 10,
+    },
+    image: {
+        width: 60,
+        borderRadius: 7,
+    },
     textContainer: {
-        width: "70%",
+        width: "60%",
         flexDirection: "column",
         justifyContent: "flex-start",
         alignItems: "flex-start",

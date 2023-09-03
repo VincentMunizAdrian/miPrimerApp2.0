@@ -2,7 +2,8 @@ import {
     StyleSheet,
     View,
     FlatList,
-    ImageBackground
+    ImageBackground,
+    useWindowDimensions
 } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -13,7 +14,7 @@ import { colors } from '../Global/Colors';
 import { useGetProductsByCategoryQuery } from '../Services/shopServices';
 
 
-const imagenBack = {uri: 'https://i.imgur.com/qQhkm4N.jpg'}
+// const imagenBack = {uri: 'https://i.imgur.com/qQhkm4N.jpg'}
 
 const ItemListCategory = ({
     navigation,
@@ -23,10 +24,12 @@ const ItemListCategory = ({
     const {category} = route.params
     const categorySelected = useSelector(state => state.shopReducer.value.categorySelected)
     const {data: productsSelected, isLoading, isError} = useGetProductsByCategoryQuery(categorySelected)
+    const {data: randomObjects} = useGetProductsByCategoryQuery(categorySelected)
     
     const [products, setProducts] = useState([])
     const [keyWord, setKeyWord] = useState("")
     const [searchError, setSearchError] = useState("")
+    const [object, setObject] = useState([])
 
     useEffect(() => {
     if (productsSelected) {
@@ -46,29 +49,36 @@ const ItemListCategory = ({
         setSearchError("ERROR: Ingresar solo letras y numeros")}
     }
 
+    useEffect(() => {
+        if (randomObjects) {
+            
+            const filterData = randomObjects.filter((itemListHome) => itemListHome.category === categorySelected )
+            const randomData = filterData.sort(() => Math.random() - 0.5);
+            
+            setObject(randomData)
+        }
+    }, [randomObjects])
+    
+    const {width} = useWindowDimensions();
+    // console.log(width);
     return (
         <View style = {styles.containerHome}>
-            <ImageBackground
-                source={imagenBack}
-                resizeMode='stretch'
-                style={{width: '100%', height: '100%'}}
-            >
                 <Search
                 onSearch={onSearch}
                 error= {searchError}
                 />
                 <FlatList
-                    style={styles.list}
-                    data={products}
+                    // style={styles.list}
+                    data={object}
                     // numColumns={2}
                     keyExtractor={product => product.id}
-                    renderItem={({item}) => <ProductItem 
-                        item={item}
-                        navigation={navigation}
-                    />} 
+                    renderItem={({item}) => 
+                        <ProductItem 
+                            item={item}
+                            navigation={navigation}
+                        />} 
                     showsVerticalScrollIndicator={false}
                 />
-            </ImageBackground>
         </View>
     )
 }
@@ -77,8 +87,8 @@ export default ItemListCategory
 
 const styles = StyleSheet.create({
     containerHome: {
+        width: '100%',
         height: '100%',
-        backgroundColor: colors.platinum,
-        alignItems: 'center',
+        // alignItems: 'center',
     },
 })
