@@ -1,5 +1,6 @@
 import { 
     Image, 
+    ImageBackground, 
     StyleSheet, 
     View 
 } from "react-native";
@@ -56,23 +57,33 @@ const MyProfile = ({navigation}) => {
 
     return (
         <View style={styles.container}>
-            {profileImage || cameraImage  ? (
-                <Image
-                    source={{uri: profileImage || cameraImage}}
-                    style={styles.image}
-                    resizeMode="cover"
-                />
-            ) : (
-                <Image
-                    source={require("../Assets/Images/defaultProfile.png")}
-                    style={styles.image}
-                    resizeMode="cover"
-                />
-            )}
-            <AddButton onPress={launchCamera} title="Add profile picture" />
-            <AddButton onPress={launchLocation} title="My Address" />
-            <AddButton onPress={launchOrders} title="My Order List" />
-            <AddButton onPress={onSignout} title="Sign Out" />
+            <ImageBackground 
+                source={require('../Assets/Images/elDiego.jpg')}
+                resizeMode="cover"
+                style={styles.imagenBack}
+            >
+            <View
+                style={styles.containerBlur}
+            >
+                    {profileImage || cameraImage  ? (
+                        <Image
+                        source={{uri: profileImage || cameraImage}}
+                        style={styles.image}
+                        resizeMode="cover"
+                        />
+                        ) : (
+                            <Image
+                            source={require("../Assets/Images/defaultProfile.png")}
+                            style={styles.image}
+                            resizeMode="cover"
+                            />
+                            )}
+                    <AddButton onPress={launchCamera} title="Add profile picture" />
+                    <AddButton onPress={launchLocation} title="My Address" />
+                    <AddButton onPress={launchOrders} title="My Order List" />
+                    <AddButton onPress={onSignout} title="Sign Out" />
+                </View>
+            </ImageBackground>
         </View>
     );
 };
@@ -82,13 +93,25 @@ export default MyProfile;
 const styles = StyleSheet.create({
     container: {
         padding: 10,
-        gap: 15,
+        flexDirection: 'column',
         alignItems: "center",
-        justifyContent: "flex-start",
+        justifyContent: "center",
+    },
+    containerBlur: {
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 20,
+        gap: 20,
+        top: '35%',
     },
     image: {
         width: 100,
         height: 100,
         borderRadius: 50,
+    },
+    imagenBack: {
+        width: '100%',
+        height: '98%',
     },
 });

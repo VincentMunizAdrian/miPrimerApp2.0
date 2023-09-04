@@ -1,40 +1,36 @@
 import { 
     FlatList, 
-    Image, 
-    ImageBackground, 
-    SafeAreaView, 
     ScrollView, 
     StyleSheet,
     Text,
     View 
 } from 'react-native';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import CategoryItem from '../Components/CategoryItem';
-import { useGetCategoriesQuery, useGetProductsQuery } from '../Services/shopServices';
-import { useEffect } from 'react';
 import ProductItem from '../Components/ProductItem';
 import Loader from '../Components/Loader';
-import { colors } from '../Global/Colors';
+import { useGetCategoriesQuery, useGetProductsQuery } from '../Services/shopServices';
+
+//no se pudo llegar a componetizar toda esta screen
 
 const Home = ({
     navigation,
 }) => {
     const [waitLoading, setWaitLoading] = useState(true)
-
-    const {data: categories, isLoading, isError} = useGetCategoriesQuery()
-    const {data: randomObjects} = useGetProductsQuery()
     const [cards, setCards] = useState([])
     const [figuritas, setFiguritas] = useState([])
     const [album, setAlbum] = useState([])
+
+    const {data: categories, isLoading, isError} = useGetCategoriesQuery()
+    const {data: randomObjects} = useGetProductsQuery()
+    
 
     useEffect(() => {
         setTimeout(() => {
             setWaitLoading(false);
         }, 3000)
     }, []);
-
-    // Limitar el array a un máximo de 7 elementos
     
     useEffect(() => {
         if (randomObjects) {

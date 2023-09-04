@@ -7,10 +7,17 @@ import {
 import React from 'react'
 import { useSelector } from 'react-redux';
 
+import { BlurView } from 'expo-blur';
+
 import { colors } from '../Global/Colors'
 
 import { Ionicons } from '@expo/vector-icons';
-import { BlurView } from 'expo-blur';
+
+/**
+ * Navigation header for CartStack, MyProfileStack and ShopStack
+ * @param route navigate between route names
+ * @param navigation navigate back
+ */
 
 const Header = ({
     route,

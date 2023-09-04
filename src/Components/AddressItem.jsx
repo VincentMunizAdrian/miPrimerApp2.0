@@ -8,7 +8,16 @@ import React from "react";
 
 import { Entypo } from "@expo/vector-icons";
 
-const AddressItem = ({ location, navigation }) => {
+/**
+ * Set and return your location for ListAddress
+ * @param location set the address
+ * @param navigation travel to another screen
+ */
+
+const AddressItem = ({ 
+    location, 
+    navigation 
+}) => {
     const onChangeLocation = () => {
         navigation.navigate('Location Selector')
     }

@@ -7,6 +7,13 @@ import React from "react";
 
 import { colors } from "../Global/Colors";
 
+/**
+ * Perform an action that is required for ImageSelector, ListAddress, LocationSelector and MyProfile
+ * @param title name the button with the title of your need
+ * @param onPress take the action you need
+ * @param color return for default the color of the button already set
+ */
+
 const AddButton = ({
     title = "",
     onPress = () => {},
@@ -30,7 +37,8 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         justifyContent: "center",
         alignItems: "center",
-        padding: 8
+        padding: 8,
+        borderRadius: 20,
     },
     text: {
         fontFamily: "Anton",

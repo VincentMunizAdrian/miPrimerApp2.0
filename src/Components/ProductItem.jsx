@@ -2,7 +2,6 @@ import {
     StyleSheet,
     Text,
     Image,
-    useWindowDimensions,
     Pressable,
     View,
 } from 'react-native'
@@ -10,15 +9,19 @@ import React from 'react'
 import { useDispatch } from 'react-redux';
 
 import Card from './Card'
-import { setIdSelected } from '../Features/Shop/shopSlice';
 import { colors } from '../Global/Colors';
+import { setIdSelected } from '../Features/Shop/shopSlice';
+
+/**
+ * Returns an array for Home and ItemListCategory
+ * @param item
+ * @param navigation
+ */
 
 const ProductItem = ({
     item,
     navigation
 }) => {
-
-    const {width} = useWindowDimensions();
     const dispatch = useDispatch()
 
     const onSelect = () => {
@@ -27,7 +30,7 @@ const ProductItem = ({
     }
 
     return (
-        <View style={{ width: width, alignItems: 'center'}}>
+        <View style={styles.container}>
             <Pressable onPress={onSelect}>
                 <Card
                     otherStyle={styles.otherStyleCard}
@@ -47,9 +50,15 @@ const ProductItem = ({
 export default ProductItem
 
 const styles = StyleSheet.create({
+    container: {
+        padding: 25,
+        marginLeft: 3,
+    },
     otherStyleCard: {
+        height: 220,
         flexDirection: 'column',
         alignItems: 'center',
+        justifyContent: 'center',
     },
     image: {
         height: 150,

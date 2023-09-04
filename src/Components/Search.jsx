@@ -10,8 +10,13 @@ import React, { useState } from 'react';
 
 import { colors } from '../Global/Colors';
 
-import { Ionicons } from '@expo/vector-icons';
-import { MaterialIcons } from '@expo/vector-icons';
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
+
+/**
+ * Searching items component for ItemListContainer
+ * @param onSearch return any item when found
+ * @param error return a msj for errors
+ */
 
 const Search = ({
     onSearch,

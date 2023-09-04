@@ -3,21 +3,20 @@ import {
   StyleSheet, 
   Text, 
   View,
-  ImageBackground,
   Button,
   ToastAndroid,
 } from 'react-native';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { addCartItem } from '../Features/Cart/cartSlice'
-import Card from '../Components/Card';
+import { BlurView } from 'expo-blur';
+
 import Counter from '../Components/Counter';
+import CardDetail from '../Components/CardDetail';
 import { colors } from '../Global/Colors';
+import { addCartItem } from '../Features/Cart/cartSlice'
 import { useGetProductsByIdQuery } from '../Services/shopServices';
 import { setCounterBack } from '../Features/Counter/counterSlice';
-import CardDetail from '../Components/CardDetail';
-import { BlurView } from 'expo-blur';
 
 const ItemDetail = ({
   route,
@@ -42,7 +41,7 @@ const ItemDetail = ({
     ToastAndroid.showWithGravity(
       'your product has been added to the cart',
       ToastAndroid.SHORT,
-      ToastAndroid.TOP,
+      ToastAndroid.CENTER,
     );
   };
 
@@ -66,7 +65,7 @@ const ItemDetail = ({
               
                   <View style={styles.containerText}>
                     <Text style={styles.text}>Posición: {object.posicion}</Text>
-                    <Text style={styles.text}>Pais: {object.category}</Text>
+                    <Text style={styles.text}>Pais: {object.pais}</Text>
                     <Text style={styles.text}>Torneo: {object.torneo}</Text>
                     <Text style={styles.text}>Precio: $ {object.precio}</Text>
                   </View>

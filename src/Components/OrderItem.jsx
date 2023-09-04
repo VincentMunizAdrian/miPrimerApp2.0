@@ -7,46 +7,34 @@ import {
     Pressable,
     FlatList
 } from 'react-native'
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 
 import { colors } from "../Global/Colors";
 
 import { Fontisto } from '@expo/vector-icons';
-import { useGetOrdersQuery } from '../Services/orderServices';
 
-const OrderItem = ({item}) => {
+/**
+ * Callback the data into FlatList for Orders
+ * @param item return data
+ */
+
+const OrderItem = ({
+    item
+}) => {
+
     const nuevoArreglo = item.items.map(objeto => ({
         nombre: objeto.nombre,
         quantity: objeto.quantity,
         precio: objeto.precio
     }));
 
-    // useEffect(() => {
-    //     (async () => {
-    //         try {
-    //             if (nuevoArreglo) {
-    //                 const orderDone = await useGetOrdersQuery({
-    //                     nombre: objeto.nombre,
-    //                     quantity: objeto.quantity,
-    //                     precio: objeto.precio
-    //                 })
-    //             }
-    //         }catch (err) {
-    //         }
-    //     })
-    // }, [])
-
-
     const [modalVisible, setModalVisible] = useState(false);
 
     return (
         <View style={styles.card}>
             <View style={styles.textContainer}>
-                <Text style={styles.text}>Fecha y Hora:</Text>
-                <Text style={styles.text}>
-                    {item.updatedAt}
-                </Text>
-                <Text style={styles.text2}>Total: ${item.total}</Text>
+                <Text style={styles.text}>Date & Time: {item.updatedAt}</Text>
+                <Text style={styles.text2}>Id Number: {item.id}</Text>
             </View>
             <Pressable
                 style={styles.button}
@@ -112,8 +100,6 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     textContainer: {
-        width: "70%",
-        paddingTop: 20,
         flexDirection: "column",
         justifyContent: "flex-start",
         alignItems: "flex-start",
@@ -163,11 +149,11 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
     },
-    modalText: {
-        fontFamily: 'Anton',
-        textAlign: 'center',
-        marginBottom: 15,
-    },
+    // modalText: {
+    //     fontFamily: 'Anton',
+    //     textAlign: 'center',
+    //     marginBottom: 15,
+    // },
     orderList: {
         flexDirection: 'row',
         alignItems: 'center',

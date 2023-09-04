@@ -6,9 +6,18 @@ import React from 'react'
 
 import { colors } from '../Global/Colors'
 
-const Card = ({children, otherStyle=[], anotherStyle=[]}) => {
+/**
+ * Format of the containerItems for CategoryItem, ProductItem
+ * @param children format for default
+ * @param otherStyle format for customize
+ */
+
+const Card = ({
+    children, 
+    otherStyle=[]
+}) => {
     return (
-        <View style = {[styles.containerCard, otherStyle, anotherStyle]}>
+        <View style = {[styles.containerCard, otherStyle]}>
             {children}
         </View>
     )
@@ -31,8 +40,6 @@ const styles = StyleSheet.create({
         padding: 15,
         marginVertical: 12,
         borderColor: colors.black,
-        justifyContent: 'center',
-        alignItems:'center',
         backgroundColor: colors.lightOnyx,
         borderRadius: 7,
     },

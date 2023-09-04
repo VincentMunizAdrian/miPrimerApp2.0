@@ -5,13 +5,6 @@ export const orderApi = createApi({
     reducerPath: 'orderApi',
     baseQuery: fetchBaseQuery({ baseUrl: realtime_database_url }),
     endpoints: (builder) => ({
-        getPreOrders: builder.query({
-            query: (email) => `preOrders.json?orderBy="user"&equalTo="${email}"`,
-            transformResponse: (response) => {
-                const productsTransformed = Object.values(response)
-                return (productsTransformed)
-            }
-        }),
         getOrders: builder.query({
             query: (email) => `orders.json?orderBy="user"&equalTo="${email}"`,
             transformResponse: (response) => {
@@ -23,6 +16,5 @@ export const orderApi = createApi({
 })
 
 export const {
-    useGetPreOrdersQuery,
     useGetOrdersQuery,
 } = orderApi

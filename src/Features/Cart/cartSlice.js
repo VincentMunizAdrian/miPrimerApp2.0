@@ -34,7 +34,7 @@ export const cartSlice = createSlice({
                 
             const idOrder = Math.floor(
                 Math.random()*10000000000) 
-            state.value.id =  idOrder
+                state.value.id =  idOrder
         },
         removeCartItem: (state, action) => {
             let newItems = state.value.items.filter(item => item.id != action.payload)

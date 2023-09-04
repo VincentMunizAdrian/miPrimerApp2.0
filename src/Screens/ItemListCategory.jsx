@@ -2,19 +2,13 @@ import {
     StyleSheet,
     View,
     FlatList,
-    ImageBackground,
-    useWindowDimensions
 } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import Search from '../Components/Search';
 import ProductItem from '../Components/ProductItem';
-import { colors } from '../Global/Colors';
 import { useGetProductsByCategoryQuery } from '../Services/shopServices';
-
-
-// const imagenBack = {uri: 'https://i.imgur.com/qQhkm4N.jpg'}
 
 const ItemListCategory = ({
     navigation,
@@ -59,8 +53,6 @@ const ItemListCategory = ({
         }
     }, [randomObjects])
     
-    const {width} = useWindowDimensions();
-    // console.log(width);
     return (
         <View style = {styles.containerHome}>
                 <Search
@@ -68,9 +60,8 @@ const ItemListCategory = ({
                 error= {searchError}
                 />
                 <FlatList
-                    // style={styles.list}
                     data={object}
-                    // numColumns={2}
+                    numColumns={2}
                     keyExtractor={product => product.id}
                     renderItem={({item}) => 
                         <ProductItem 
@@ -89,6 +80,5 @@ const styles = StyleSheet.create({
     containerHome: {
         width: '100%',
         height: '100%',
-        // alignItems: 'center',
     },
 })

@@ -6,6 +6,8 @@ import ItemListCategory from '../Screens/ItemListCategory';
 import Home from '../Screens/Home';
 import ItemDetail from '../Screens/ItemDetail';
 
+// NavigationStack Shop
+
 const Stack = createNativeStackNavigator();
 
 const ShopStack = () => {

@@ -9,6 +9,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { increment, decrement } from '../Features/Counter/counterSlice'
 import { colors } from '../Global/Colors'
 
+/**
+ * select the number of objects ordered for ItemDetail
+ */
+
 const Counter = () => {
     
     const dispatch = useDispatch()

@@ -5,7 +5,16 @@ import {
     View 
 } from 'react-native'
 import React, { useState } from 'react'
+
 import { colors } from '../Global/Colors';
+
+/**
+ * Inputform to enter data for LoginScreen and SignupScreen
+ * @param label
+ * @param onChange
+ * @param error
+ * @param isSecure
+ */
 
 const InputForm = ({
     label, 

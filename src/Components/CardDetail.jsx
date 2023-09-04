@@ -7,7 +7,16 @@ import React from 'react'
 
 import { colors } from '../Global/Colors'
 
-const CardDetail = ({children, anotherStyle=[]}) => {
+/**
+ * Format of the containerItems for ItemDetail
+ * @param children format for default
+ * @param anotherStyle format for customize
+ */
+
+const CardDetail = ({
+    children, 
+    anotherStyle=[]
+}) => {
     return (
         <View style={styles.container}>
             <View style = {[styles.containerCard, anotherStyle]}>
@@ -46,12 +55,8 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.41,
         shadowRadius: 9.11,
-        // elevation: 14,
         borderWidth: 2,
-        // padding: 15,
-        // marginVertical: 12,
         borderColor: colors.black,
-        // backgroundColor: 'red',
         borderRadius: 7,
     },
     imagen: {

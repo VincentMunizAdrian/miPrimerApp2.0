@@ -14,7 +14,14 @@ import { removeCartItem } from "../Features/Cart/cartSlice";
 
 import { FontAwesome } from '@expo/vector-icons';
 
-const CartItem = ({ cartItem }) => {
+/**
+ * Format with data of the items for Cart
+ * @param cartItem return the format flatList container
+ */
+
+const CartItem = ({ 
+    cartItem 
+}) => {
 
     const dispatch = useDispatch()
     const [modalVisible, setModalVisible] = useState(false);

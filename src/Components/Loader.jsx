@@ -1,9 +1,16 @@
+import { 
+    View, 
+    Animated, 
+    Image 
+} from 'react-native';
 import React from 'react';
-import { View, Animated, Image } from 'react-native';
+
+/**
+ * Loader for Home
+ */
 
 const Loader = () => {
     const rebotaAnimada = new Animated.Value(0);
-
 
     Animated.loop(
         Animated.sequence([

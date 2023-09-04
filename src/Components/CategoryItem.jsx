@@ -9,8 +9,14 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 
 import Card from './Card'
-import { setCategorySelected } from '../Features/Shop/shopSlice'
 import { colors } from '../Global/Colors'
+import { setCategorySelected } from '../Features/Shop/shopSlice'
+
+/**
+ * Returns an array for each category for Home
+ * @param item get the data of the objects
+ * @param navigation navigate to array with selected name
+ */
 
 const CategoryItem = ({
     item,
@@ -18,7 +24,6 @@ const CategoryItem = ({
 }) => {
 
     const {width} = useWindowDimensions()
-
     const dispatch = useDispatch()
 
     const onSelectCategory = () => {
@@ -27,9 +32,9 @@ const CategoryItem = ({
     }
 
     return (
-        <View style={{width: width, alignItems: 'center'}}>
+        <View style={{width: width, justifyContent: 'center', alignItems: 'center'}}>
             <Pressable onPress={onSelectCategory}>
-                <Card>
+                <Card otherStyle={styles.otherStyleCard}>
                     <Text style={styles.textCategory}>{item}</Text>
                 </Card>
             </Pressable>
@@ -40,9 +45,12 @@ const CategoryItem = ({
 export default CategoryItem
 
 const styles = StyleSheet.create({
+    otherStyleCard: {
+        width: '100%',
+    },
     textCategory: {
         color: colors.white,
-        fontSize: 20,
+        fontSize: 45,
         fontFamily: 'Anton',
     },
 })
